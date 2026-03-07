@@ -5,11 +5,10 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { PRODUCTS } from '@/lib/products';
 import { useCart } from '@/context/cart-context';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { ChevronLeft, ShoppingBag, Heart, Share2, Info, Wind, Zap, Microscope, Flame, Sparkles } from 'lucide-react';
+import { ChevronLeft, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles } from 'lucide-react';
 import { AIRecommendations } from '@/components/ai-recommendations';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -20,21 +19,33 @@ import {
 } from "@/components/ui/accordion";
 
 export default function ProductPage() {
-  const { id } = useParams();
+  const params = useParams();
   const router = useRouter();
   const { addToCart } = useCart();
   const { toast } = useToast();
   
-  const product = PRODUCTS.find(p => p.id === id);
+  // Safely get the ID string
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
+  
+  const product = useMemo(() => {
+    if (!id) return null;
+    return PRODUCTS.find(p => p.id === id);
+  }, [id]);
 
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || '');
 
   if (!product) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
-        <Button onClick={() => router.push('/shop')}>BACK TO SHOP</Button>
+      <div className="container mx-auto px-4 py-24 text-center">
+        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6 text-muted-foreground">
+          <ShoppingBag className="h-8 w-8" />
+        </div>
+        <h1 className="font-headline text-3xl font-black uppercase tracking-tighter mb-4">Strain Not Found</h1>
+        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">This drop might have expired or been rotated out of the harvest.</p>
+        <Button asChild size="lg" className="font-bold uppercase tracking-widest">
+          <Link href="/shop">BACK TO THE HARVEST</Link>
+        </Button>
       </div>
     );
   }
@@ -43,7 +54,7 @@ export default function ProductPage() {
     addToCart(product, selectedSize, selectedColor);
     toast({
       title: "Added to bag",
-      description: `${product.name} (${selectedSize}) has been added.`,
+      description: `${product.name} (${selectedSize}) has been added to your drop.`,
     });
   };
 
@@ -51,7 +62,7 @@ export default function ProductPage() {
     <div className="container mx-auto px-4 py-8 md:py-12">
       <button 
         onClick={() => router.back()} 
-        className="flex items-center gap-1 text-muted-foreground hover:text-primary mb-8 font-medium transition-colors"
+        className="flex items-center gap-1 text-muted-foreground hover:text-primary mb-8 font-bold transition-colors uppercase text-[10px] tracking-widest"
       >
         <ChevronLeft className="h-4 w-4" /> BACK
       </button>
@@ -83,7 +94,7 @@ export default function ProductPage() {
             <div className="flex items-center gap-4">
               <span className="text-3xl font-bold text-white">${product.price}</span>
               {product.isNewArrival && (
-                <Badge className="bg-primary text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider">NEW ARRIVAL</Badge>
+                <Badge className="bg-primary text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider">NEW HARVEST</Badge>
               )}
             </div>
           </div>
@@ -101,7 +112,7 @@ export default function ProductPage() {
             </div>
             <div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2 flex items-center gap-1.5">
-                <Flame className="h-3 w-3 text-primary" /> THC Potency
+                <Flame className="h-3 w-3 text-primary" /> Potency
               </h4>
               <p className="font-bold text-sm">{product.thc || 'N/A'}</p>
             </div>
@@ -143,7 +154,7 @@ export default function ProductPage() {
           </div>
 
           <div className="mb-10">
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Select Amount</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Select Weight</h4>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
               {product.sizes.map(size => (
                 <button
@@ -181,7 +192,7 @@ export default function ProductPage() {
             <AccordionItem value="details">
               <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Cultivation Specs</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness.
+                Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness and preserve volatile terpenes.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -192,3 +203,5 @@ export default function ProductPage() {
     </div>
   );
 }
+
+import Link from 'next/link';
