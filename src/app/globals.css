@@ -60,16 +60,26 @@
 }
 
 /* Scroll-driven version of the drawing animation */
-@keyframes text-reveal-scroll {
+@keyframes scroll-draw-reveal {
   0% {
+    stroke-dasharray: 0 1000;
+    fill: transparent;
     opacity: 0;
-    transform: translateY(20px);
-    clip-path: inset(0 100% 0 0);
+    transform: translateY(30px);
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    stroke-dasharray: 1000 0;
+    fill: transparent;
+    transform: translateY(0);
   }
   100% {
+    stroke-dasharray: 1000 0;
+    fill: hsl(var(--primary));
     opacity: 1;
     transform: translateY(0);
-    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -82,25 +92,12 @@
 }
 
 /* Modern scroll-linked animation classes */
-.scroll-reveal-headline {
-  view-timeline-name: --headline;
+.scroll-reveal-text {
+  view-timeline-name: --text-reveal;
   view-timeline-axis: block;
-  animation: text-reveal-scroll linear both;
-  animation-timeline: --headline;
-  animation-range: entry 10% cover 30%;
-}
-
-@supports not (animation-timeline: view()) {
-  .scroll-reveal-headline {
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .scroll-reveal-headline.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: scroll-draw-reveal linear both;
+  animation-timeline: --text-reveal;
+  animation-range: entry 10% cover 40%;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
