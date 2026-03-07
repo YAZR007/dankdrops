@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 /**
  * LoadingScreen component that displays a high-impact logo animation.
- * Features a draw-to-fill sequence before revealing the page.
+ * Features a slow draw-to-fill sequence before revealing the page.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -35,14 +35,14 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Time the fade-out to occur AFTER the logo completes its fill cycle
+      // Time the fade-out to occur AFTER the logo completes its fill cycle (3s animation)
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 3200);
+      }, 3300);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 3900);
+      }, 4000);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -65,13 +65,13 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-5xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-4xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[95px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[85px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
