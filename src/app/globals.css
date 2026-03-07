@@ -48,17 +48,13 @@
   5% {
     opacity: 1;
   }
-  85% {
-    /* Significantly slower stroke drawing (occupies 80% of the 3s) */
+  82% {
+    /* Slower stroke drawing, taking up more of the timeline (approx 2.46s) */
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
-  92% {
-    /* Quicker, snappier transition to fill after drawing ends */
-    stroke-dasharray: 1000 0;
-    fill: hsl(var(--primary));
-  }
   100% {
+    /* Slower, more elegant color fill occurring immediately after the drawing finishes */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
     opacity: 1;
