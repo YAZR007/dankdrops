@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -8,29 +9,32 @@ export function LoadingScreen() {
   const [animationKey, setAnimationKey] = useState(0);
   const pathname = usePathname();
   const lastPathname = useRef(pathname);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Only trigger if pathname actually changed
-    if (lastPathname.current !== pathname) {
+    // Trigger animation on initial mount OR when pathname actually changed
+    // (which corresponds to clicking header buttons or internal links)
+    if (isInitialMount.current || lastPathname.current !== pathname) {
       setStatus('visible');
       setAnimationKey((prev) => prev + 1);
       lastPathname.current = pathname;
+      isInitialMount.current = false;
+
+      // The drawing animation takes 3s (defined in globals.css)
+      const fadeTimer = setTimeout(() => {
+        setStatus('fading');
+      }, 3000);
+
+      // Hide completely after fade transition
+      const hideTimer = setTimeout(() => {
+        setStatus('hidden');
+      }, 3700);
+
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(hideTimer);
+      };
     }
-
-    // The drawing animation takes 3s (defined in globals.css)
-    const fadeTimer = setTimeout(() => {
-      setStatus('fading');
-    }, 3000);
-
-    // Hide completely after fade transition
-    const hideTimer = setTimeout(() => {
-      setStatus('hidden');
-    }, 3700);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(hideTimer);
-    };
   }, [pathname]);
 
   if (status === 'hidden') return null;
