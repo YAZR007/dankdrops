@@ -35,14 +35,14 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Time the fade-out to occur AFTER the logo completes its fill cycle (3s animation)
+      // Time the fade-out to occur AFTER the logo completes its fill cycle (6s animation)
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 3300);
+      }, 6300);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 4000);
+      }, 7000);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;

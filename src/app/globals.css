@@ -49,12 +49,12 @@
     opacity: 1;
   }
   75% {
-    /* Artisanal drawing phase - now taking 75% of the time for a slower feel */
+    /* Artisanal drawing phase - slower and more deliberate */
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
   100% {
-    /* Slower, smoother color fill phase - now taking 25% of the time */
+    /* Smooth, lingering color fill phase */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
     opacity: 1;
@@ -62,10 +62,10 @@
 }
 
 .animate-logo-draw {
-  animation: logo-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Trigger the drawing animation on group hover for the navbar logo */
+/* Trigger the drawing animation on group hover for the navbar logo - slowed down 2x */
 .group:hover .logo-hover-target {
-  animation: logo-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
