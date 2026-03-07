@@ -56,7 +56,7 @@ export function AIRecommendations({ currentProductId }: AIRecommendationsProps) 
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-2 mb-8">
           <Sparkles className="h-5 w-5 text-primary" />
-          <h2 className="font-headline text-2xl font-bold uppercase tracking-tighter">AI Curated Picks</h2>
+          <h2 className="font-headline text-2xl font-bold uppercase tracking-tighter">Curated Picks</h2>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
