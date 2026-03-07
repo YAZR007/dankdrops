@@ -49,12 +49,12 @@
     opacity: 1;
   }
   82% {
-    /* Slower stroke drawing, taking up more of the timeline (approx 2.46s) */
+    /* Slow, artisanal drawing phase */
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
   100% {
-    /* Slower, more elegant color fill occurring immediately after the drawing finishes */
+    /* Smooth, slower color fill */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
     opacity: 1;
@@ -62,5 +62,10 @@
 }
 
 .animate-logo-draw {
+  animation: logo-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Trigger the drawing animation on group hover for the navbar logo */
+.group:hover .logo-hover-target {
   animation: logo-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

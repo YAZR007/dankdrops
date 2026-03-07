@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -56,15 +55,15 @@ export function Navbar() {
               }}
               className="block group p-4 hover:bg-white/5 transition-all border-b border-white/5 last:border-0"
             >
-              <div className="flex items-center justify-between group-hover:scale-[1.02] transition-transform duration-300">
-                <div className="flex flex-col gap-0.5">
+              <div className="flex items-center justify-between group-hover:scale-[1.05] group-hover:shadow-[0_0_30px_rgba(126,42,219,0.3)] rounded-xl transition-all duration-300">
+                <div className="flex flex-col gap-0.5 p-2">
                   <span className="text-[9px] font-black text-primary uppercase tracking-widest">{product.category}</span>
                   <h4 className="font-headline font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">
                     {product.name}
                   </h4>
                   <p className="text-[10px] font-bold text-accent">£{product.price}</p>
                 </div>
-                <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 shadow-lg group-hover:shadow-[0_0_20px_rgba(126,42,219,0.6)] group-hover:border-primary/50 transition-all duration-300">
+                <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 shadow-lg group-hover:border-primary/50 transition-all duration-300 mr-2">
                   <Image 
                     src={product.imageUrl} 
                     alt={product.name} 
@@ -114,14 +113,22 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
-          {/* Desktop Logo (Visible only on md+) */}
+          {/* Desktop Logo */}
           <Link 
             href="/" 
             className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-95 transform-gpu"
           >
-            <span className="font-headline text-2xl font-black tracking-tighter text-primary transition-all duration-300 uppercase drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]">
-              DANKDROPS
-            </span>
+            <svg viewBox="0 0 200 40" className="h-8 w-auto overflow-visible">
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="font-headline font-black uppercase tracking-[-0.05em] text-[22px] stroke-primary stroke-[1.5px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]"
+              >
+                DANKDROPS
+              </text>
+            </svg>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -150,9 +157,17 @@ export function Navbar() {
         {/* Center Logo (Visible only on mobile) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
           <Link href="/" className="flex items-center group active:scale-95 transition-transform">
-            <span className="font-headline text-xl font-black tracking-tighter text-primary uppercase drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]">
-              DANKDROPS
-            </span>
+            <svg viewBox="0 0 160 30" className="h-6 w-auto overflow-visible">
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="font-headline font-black uppercase tracking-[-0.05em] text-[18px] stroke-primary stroke-[1px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]"
+              >
+                DANKDROPS
+              </text>
+            </svg>
           </Link>
         </div>
 
