@@ -12,10 +12,10 @@ To push this project to an existing GitHub repository, open your terminal and ru
    ```
 
 2. **Add your remote repository**:
-   Replace the URL below with your actual repository link. **Note: Remove the < > brackets.**
+   Replace the URL below with your actual repository link (e.g., `https://github.com/username/repo-name.git`). 
+   **IMPORTANT: Do not include the < > brackets.**
    ```bash
-   # Example: git remote add origin https://github.com/username/repo-name.git
-   git remote add origin <YOUR_GITHUB_REPO_URL>
+   git remote add origin YOUR_ACTUAL_GITHUB_REPO_URL
    ```
 
 3. **Stage and commit your files**:

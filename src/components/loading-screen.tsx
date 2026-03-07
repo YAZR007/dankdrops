@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -13,8 +12,11 @@ export function LoadingScreen() {
 
   useEffect(() => {
     // Trigger animation on initial mount OR when pathname actually changed
-    // (which corresponds to clicking header buttons or internal links)
-    if (isInitialMount.current || lastPathname.current !== pathname) {
+    // We skip the loading screen for product detail pages to keep navigation snappy
+    const isNewPath = lastPathname.current !== pathname;
+    const isProductPage = pathname.startsWith('/products/');
+
+    if (isInitialMount.current || (isNewPath && !isProductPage)) {
       setStatus('visible');
       setAnimationKey((prev) => prev + 1);
       lastPathname.current = pathname;
@@ -34,6 +36,10 @@ export function LoadingScreen() {
         clearTimeout(fadeTimer);
         clearTimeout(hideTimer);
       };
+    } else if (isNewPath && isProductPage) {
+      // Just update the ref so we don't trigger next time unless it's a header click
+      lastPathname.current = pathname;
+      setStatus('hidden');
     }
   }, [pathname]);
 
