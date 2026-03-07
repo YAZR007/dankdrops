@@ -1,10 +1,15 @@
 
 import { Product } from '@/types/product';
 
-const MACRO_IMG = "https://static.wixstatic.com/media/a82ad9_cda5746897164e49912146db6a489808~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_cda5746897164e49912146db6a489808~mv2.webp";
-const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_244,h_243,fp_0.50_0.50,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";
+// Generic placeholder for other products
+const GENERIC_MACRO = "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp";
+
+// Specific images for Blue Dream
 const BLUE_DREAM_PRIMARY = "https://static.wixstatic.com/media/a82ad9_cda5746897164e49912146db6a489808~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_cda5746897164e49912146db6a489808~mv2.webp";
 const BLUE_DREAM_SECONDARY = "https://static.wixstatic.com/media/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.jpg/v1/fill/w_243,h_243,fp_0.50_0.50,q_90/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.webp";
+
+// Specific images for Permanent Marker
+const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_244,h_243,fp_0.50_0.50,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";
 
 export const PRODUCTS: Product[] = [
   {
@@ -13,7 +18,7 @@ export const PRODUCTS: Product[] = [
     description: 'Leafly 2023 Strain of the Year. This high-potency hybrid is floral, soapy, and gassy with a powerful punch that leaves you in a state of creative bliss.',
     category: 'Flower',
     price: 75,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     secondaryImageUrl: PERMANENT_MARKER_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
@@ -45,7 +50,7 @@ export const PRODUCTS: Product[] = [
     description: 'Also known as "Garlic Cookies," this indica-dominant heavy hitter is famous for its savory, funky aroma and profound sedative effects.',
     category: 'Flower',
     price: 70,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true,
@@ -60,7 +65,7 @@ export const PRODUCTS: Product[] = [
     description: 'A high-end hybrid featuring a complex aroma of sweet sherbet, blueberries, and citrus. Perfect for those looking for a balanced, flavorful smoke.',
     category: 'Flower',
     price: 65,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: false,
@@ -75,7 +80,7 @@ export const PRODUCTS: Product[] = [
     description: 'The backbone of West Coast cannabis. OG Kush has a unique terpene profile that boasts a complex aroma with notes of fuel, skunk, and spice.',
     category: 'Flower',
     price: 60,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: false,
@@ -90,7 +95,7 @@ export const PRODUCTS: Product[] = [
     description: 'Solventless extract made from fresh-frozen Permanent Marker flower. Captures the intense floral and gassy profile in its purest form.',
     category: 'Concentrates',
     price: 85,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['1g', '2g'],
     colors: ['Hybrid'],
     isNewArrival: true,
@@ -105,7 +110,7 @@ export const PRODUCTS: Product[] = [
     description: 'Nano-infused gourmet gummies designed for maximum relaxation. Infused with terpene-rich Granddaddy Purple extract.',
     category: 'Edibles',
     price: 30,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['10pk', '20pk'],
     colors: ['Indica'],
     isNewArrival: false,
@@ -120,7 +125,7 @@ export const PRODUCTS: Product[] = [
     description: 'Top-shelf GMO flower infused with live resin and coated in blonde kief. For those seeking maximum potency and depth.',
     category: 'Prerolls',
     price: 45,
-    imageUrl: MACRO_IMG,
+    imageUrl: GENERIC_MACRO,
     sizes: ['Single', '5-pack'],
     colors: ['Indica'],
     isNewArrival: true,
