@@ -39,54 +39,46 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const SearchResultsList = () => (
-    <div className="absolute top-full left-0 w-full mt-2 bg-background/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
-      <div className="p-3 border-b border-white/5 bg-primary/5">
-        <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-          {searchResults.length > 0 ? `Found ${searchResults.length} Potential Drops` : "No matches in current harvest"}
-        </p>
-      </div>
-      <div className="max-h-[400px] overflow-y-auto">
-        {searchResults.map((product) => (
-          <Link 
-            key={product.id} 
-            href={`/products/${product.id}`}
-            onClick={() => {
-              setSearchQuery("");
-              setIsSearchOpen(false);
-              setIsFocused(false);
-            }}
-            className="block group p-3 hover:bg-white/5 transition-all border-b border-white/5 last:border-0"
-          >
-            <div className="flex items-center justify-between group-hover:scale-[1.02] transition-transform">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[9px] font-black text-primary uppercase tracking-widest">{product.category}</span>
-                <span className="font-headline font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">
-                  {product.name}
-                </span>
-                <span className="text-[10px] font-bold text-accent">£{product.price}</span>
+  const SearchResultsList = () => {
+    if (searchResults.length === 0) return null;
+    
+    return (
+      <div className="absolute top-full left-0 w-full mt-2 bg-background/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="max-h-[400px] overflow-y-auto">
+          {searchResults.map((product) => (
+            <Link 
+              key={product.id} 
+              href={`/products/${product.id}`}
+              onClick={() => {
+                setSearchQuery("");
+                setIsSearchOpen(false);
+                setIsFocused(false);
+              }}
+              className="block group p-4 hover:bg-white/5 transition-all border-b border-white/5 last:border-0"
+            >
+              <div className="flex items-center justify-between group-hover:scale-[1.02] transition-transform duration-300">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[9px] font-black text-primary uppercase tracking-widest">{product.category}</span>
+                  <h4 className="font-headline font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h4>
+                  <p className="text-[10px] font-bold text-accent">£{product.price}</p>
+                </div>
+                <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 shadow-lg group-hover:shadow-[0_0_20px_rgba(126,42,219,0.6)] group-hover:border-primary/50 transition-all duration-300">
+                  <Image 
+                    src={product.imageUrl} 
+                    alt={product.name} 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 shadow-lg group-hover:shadow-[0_0_15px_rgba(126,42,219,0.5)] transition-all">
-                <Image 
-                  src={product.imageUrl} 
-                  alt={product.name} 
-                  fill 
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-      {searchResults.length > 0 && (
-        <div className="p-3 bg-black/40">
-          <Button asChild variant="link" className="h-auto p-0 text-[10px] font-black uppercase tracking-widest text-primary hover:no-underline">
-            <Link href="/shop">View All Products <ChevronRight className="ml-1 h-3 w-3" /></Link>
-          </Button>
+            </Link>
+          ))}
         </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
