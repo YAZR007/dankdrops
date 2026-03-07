@@ -1,0 +1,185 @@
+rules_version = '2';
+
+/**
+ * DankDrops Firestore Security Rules
+ *
+ * Core Philosophy:
+ * This ruleset enforces a strict user-ownership model for all personal and transactional data, 
+ * while maintaining a publicly accessible catalog for products, brands, and categories. 
+ * Authorization is primarily driven by the hierarchical path structure and denormalized 
+ * ownership fields to ensure high performance and reliability.
+ *
+ * Data Structure:
+ * - /users/{userId}: Private user profiles and nested subcollections (addresses, carts, orders).
+ * - /brands, /categories, /products: Top-level public catalog collections.
+ * - Subcollections like /carts/{cartId}/items and /orders/{orderId}/items require denormalized 
+ *   userIds for efficient authorization.
+ *
+ * Key Security Decisions:
+ * - User-Specific Data: Access is strictly limited to the authenticated user matching the {userId} in the path.
+ * - Public Catalog: Brands, Categories, and Products are globally readable (even for anonymous users) 
+ *   but write-protected to prevent unauthorized catalog modifications.
+ * - Administrative Access: Write operations on catalog collections are reserved for administrative 
+ *   roles (placeholder logic provided).
+ * - Relational Integrity: On creation of user-owned documents, the rules enforce that the internal 
+ *   'userId' field matches the authenticated user and the path parameter.
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Helper Functions ---
+
+    /** @description Checks if the user is authenticated. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** @description Checks if the authenticated user's UID matches the provided userId. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /** @description Verifies ownership and ensures the document exists for destructive/update operations. */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    /** @description Placeholder for administrative role check. Defaults to false for security. */
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    // --- User Profile & Private Data ---
+
+    /**
+     * @description Rules for user profile documents. Allows users to manage their own profile.
+     * @path /users/{userId}
+     * @allow (get, list, create, update) if request.auth.uid == userId
+     * @deny (delete) always (profiles should be deactivated, not deleted via client)
+     * @principle Ownership and Self-Creation.
+     */
+    match /users/{userId} {
+      allow get, list: if isOwner(userId);
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if false;
+
+      /**
+       * @description Rules for user-specific addresses.
+       * @path /users/{userId}/addresses/{addressId}
+       * @allow (all) if request.auth.uid == userId
+       * @deny (any) if request.auth.uid != userId
+       * @principle Restricts access to a user's own data tree.
+       */
+      match /addresses/{addressId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && request.resource.data.userId == userId;
+        allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Rules for shopping carts.
+       * @path /users/{userId}/carts/{cartId}
+       * @allow (all) if request.auth.uid == userId
+       * @deny (any) if request.auth.uid != userId
+       * @principle Ownership-based write protection.
+       */
+      match /carts/{cartId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && request.resource.data.userId == userId;
+        allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+        allow delete: if isExistingOwner(userId);
+
+        /**
+         * @description Rules for items within a cart. Requires denormalized userId on the item.
+         * @path /users/{userId}/carts/{cartId}/items/{itemId}
+         * @allow (all) if request.auth.uid == userId
+         * @deny (any) if request.auth.uid != userId
+         * @principle Relational integrity via denormalized ownership.
+         */
+        match /items/{itemId} {
+          allow get, list: if isOwner(userId);
+          allow create: if isOwner(userId) && request.resource.data.userId == userId;
+          allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+          allow delete: if isExistingOwner(userId);
+        }
+      }
+
+      /**
+       * @description Rules for purchase orders.
+       * @path /users/{userId}/orders/{orderId}
+       * @allow (get, list, create) if request.auth.uid == userId
+       * @deny (update, delete) except for administrative intervention.
+       * @principle Immutable transactional history for users.
+       */
+      match /orders/{orderId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && request.resource.data.userId == userId;
+        allow update, delete: if isAdmin();
+
+        /**
+         * @description Rules for items within an order.
+         * @path /users/{userId}/orders/{orderId}/items/{itemId}
+         * @allow (get, list, create) if request.auth.uid == userId
+         * @principle Path-based isolation.
+         */
+        match /items/{itemId} {
+          allow get, list: if isOwner(userId);
+          allow create: if isOwner(userId) && request.resource.data.userId == userId;
+          allow update, delete: if isAdmin();
+        }
+      }
+    }
+
+    // --- Public Catalog Data ---
+
+    /**
+     * @description Publicly readable catalog for Brands.
+     * @path /brands/{brandId}
+     * @allow (get, list) if true
+     * @deny (write) if not admin
+     * @principle Public Read with Restricted Writes.
+     */
+    match /brands/{brandId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly readable catalog for Categories.
+     * @path /categories/{categoryId}
+     * @allow (get, list) if true
+     * @deny (write) if not admin
+     * @principle Public Read with Restricted Writes.
+     */
+    match /categories/{categoryId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly readable catalog for Products.
+     * @path /products/{productId}
+     * @allow (get, list) if true
+     * @deny (write) if not admin
+     * @principle Public Read with Restricted Writes.
+     */
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+
+      /**
+       * @description Publicly readable catalog for Product Variants.
+       * @path /products/{productId}/variants/{variantId}
+       * @allow (get, list) if true
+       * @principle Inherited public visibility for sub-catalog items.
+       */
+      match /variants/{variantId} {
+        allow get, list: if true;
+        allow create, update, delete: if isAdmin();
+      }
+    }
+  }
+}
