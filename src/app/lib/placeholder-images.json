@@ -3,45 +3,45 @@
   "placeholderImages": [
     {
       "id": "macro-flower-1",
-      "description": "High-resolution macro of a premium purple-hued cannabis bud with vibrant orange pistils and dense crystalline trichomes, shot against a deep black background.",
-      "imageUrl": "https://picsum.photos/seed/purple_macro_1/600/800",
-      "imageHint": "cannabis macro"
+      "description": "Black placeholder for macro flower 1",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "macro-flower-2",
-      "description": "Macro shot of a frosty green and purple hybrid bud with intense trichome coverage on a black void background.",
-      "imageUrl": "https://picsum.photos/seed/purple_macro_2/600/800",
-      "imageHint": "cannabis macro"
+      "description": "Black placeholder for macro flower 2",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "macro-flower-3",
-      "description": "Extreme close-up of a deep violet indica flower with fiery orange hairs and shimmering resin glands.",
-      "imageUrl": "https://picsum.photos/seed/purple_macro_3/600/800",
-      "imageHint": "cannabis macro"
+      "description": "Black placeholder for macro flower 3",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "macro-flower-4",
-      "description": "Macro photography of a trichome-caked cannabis cola, displaying vibrant colors against a dark studio backdrop.",
-      "imageUrl": "https://picsum.photos/seed/purple_macro_4/600/800",
-      "imageHint": "cannabis macro"
+      "description": "Black placeholder for macro flower 4",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "macro-concentrate",
-      "description": "Macro detail of golden live resin diamonds refracting light against a black surface.",
-      "imageUrl": "https://picsum.photos/seed/macro_wax_99/600/800",
-      "imageHint": "cannabis concentrate"
+      "description": "Black placeholder for concentrates",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "macro-edible",
-      "description": "Close-up of sugar-dusted artisanal gummies on a matte black plate.",
-      "imageUrl": "https://picsum.photos/seed/macro_edible_99/600/800",
-      "imageHint": "cannabis gummy"
+      "description": "Black placeholder for edibles",
+      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
+      "imageHint": "black square"
     },
     {
       "id": "hero",
-      "description": "Cinematic wide shot of a luxury dispensary interior with deep violet neon accents and dark, textured walls.",
-      "imageUrl": "https://picsum.photos/seed/luxury_dispensary_macro/1920/1080",
-      "imageHint": "luxury dispensary"
+      "description": "Black hero placeholder",
+      "imageUrl": "https://placehold.co/1920x1080/000000/000000/png",
+      "imageHint": "black background"
     }
   ]
 }

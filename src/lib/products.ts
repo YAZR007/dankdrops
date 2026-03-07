@@ -2,13 +2,8 @@
 import { Product } from '@/types/product';
 import { PlaceHolderImages } from './placeholder-images';
 
-const getFlowerImg = (index: number) => {
-  const flowerIds = ['macro-flower-1', 'macro-flower-2', 'macro-flower-3', 'macro-flower-4'];
-  return PlaceHolderImages.find(img => img.id === flowerIds[index % flowerIds.length])?.imageUrl || '';
-};
-
-const getOtherImg = (id: string) => {
-  return PlaceHolderImages.find(img => img.id === id)?.imageUrl || '';
+const getPlaceholderImg = (id: string) => {
+  return PlaceHolderImages.find(img => img.id === id)?.imageUrl || 'https://placehold.co/600x800/000000/000000/png';
 };
 
 export const PRODUCTS: Product[] = [
@@ -18,7 +13,7 @@ export const PRODUCTS: Product[] = [
     description: 'A California classic with deep purple hues and a sweet, grape-like aroma. These buds are heavy with trichomes and provide a deeply relaxing experience.',
     category: 'Flower',
     price: 60,
-    imageUrl: getFlowerImg(0),
+    imageUrl: getPlaceholderImg('macro-flower-1'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true
@@ -29,7 +24,7 @@ export const PRODUCTS: Product[] = [
     description: 'Famous for its oversized bud structure and incredibly vibrant orange pistils. This indica-dominant strain is a macro photographer\'s dream.',
     category: 'Flower',
     price: 55,
-    imageUrl: getFlowerImg(1),
+    imageUrl: getPlaceholderImg('macro-flower-2'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true
@@ -40,7 +35,7 @@ export const PRODUCTS: Product[] = [
     description: 'A potent sativa-dominant strain known for its heavy resin production and cerebral uplift. The buds are dense and frosted with crystalline trichomes.',
     category: 'Flower',
     price: 65,
-    imageUrl: getFlowerImg(2),
+    imageUrl: getPlaceholderImg('macro-flower-3'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Sativa'],
     isNewArrival: true
@@ -51,7 +46,7 @@ export const PRODUCTS: Product[] = [
     description: 'An indica-leaning hybrid with a rich, tangy flavor profile. The buds are dark green and purple, completely coated in sugary resin.',
     category: 'Flower',
     price: 50,
-    imageUrl: getFlowerImg(3),
+    imageUrl: getPlaceholderImg('macro-flower-4'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
   },
@@ -61,7 +56,7 @@ export const PRODUCTS: Product[] = [
     description: 'A pure indica known for its resinous buds and fast flowering. It has a sweet and spicy aroma that radiates through its crystalline coating.',
     category: 'Flower',
     price: 45,
-    imageUrl: getFlowerImg(0),
+    imageUrl: getPlaceholderImg('macro-flower-1'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
   },
@@ -71,7 +66,7 @@ export const PRODUCTS: Product[] = [
     description: 'A world-class sativa with a pungent, fuel-like aroma. The buds are light green with fiery orange hairs that pop against dark backdrops.',
     category: 'Flower',
     price: 55,
-    imageUrl: getFlowerImg(1),
+    imageUrl: getPlaceholderImg('macro-flower-2'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Sativa'],
   },
@@ -81,7 +76,7 @@ export const PRODUCTS: Product[] = [
     description: 'An OG Kush and Durban Poison hybrid cross whose reputation grew too large to stay within the borders of its California homeland.',
     category: 'Flower',
     price: 60,
-    imageUrl: getFlowerImg(2),
+    imageUrl: getPlaceholderImg('macro-flower-3'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
   },
@@ -91,7 +86,7 @@ export const PRODUCTS: Product[] = [
     description: 'The backbone of many modern West Coast strains. It has a unique terpene profile that boasts a complex aroma with notes of fuel, skunk, and spice.',
     category: 'Flower',
     price: 65,
-    imageUrl: getFlowerImg(3),
+    imageUrl: getPlaceholderImg('macro-flower-4'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
   },
@@ -101,7 +96,7 @@ export const PRODUCTS: Product[] = [
     description: 'Among the most famous strains worldwide. A balanced hybrid first bred in the Netherlands, known for its extreme "white" trichome coverage.',
     category: 'Flower',
     price: 50,
-    imageUrl: getFlowerImg(0),
+    imageUrl: getPlaceholderImg('macro-flower-1'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
   },
@@ -111,7 +106,7 @@ export const PRODUCTS: Product[] = [
     description: 'A sativa-dominant strain that has gained as much renown as its namesake, the marijuana activist and author of The Emperor Wears No Clothes.',
     category: 'Flower',
     price: 55,
-    imageUrl: getFlowerImg(1),
+    imageUrl: getPlaceholderImg('macro-flower-2'),
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Sativa'],
   },
@@ -121,7 +116,7 @@ export const PRODUCTS: Product[] = [
     description: 'Concentrated THC-A crystals in a terpene-rich sauce. Perfect for connoisseurs seeking peak potency and flavor.',
     category: 'Concentrates',
     price: 75,
-    imageUrl: getOtherImg('macro-concentrate'),
+    imageUrl: getPlaceholderImg('macro-concentrate'),
     sizes: ['1g', '2g'],
     colors: ['Extract'],
   },
@@ -131,7 +126,7 @@ export const PRODUCTS: Product[] = [
     description: 'Artisanal vegan gummies infused with full-spectrum cannabis oil for a balanced, long-lasting effect.',
     category: 'Edibles',
     price: 25,
-    imageUrl: getOtherImg('macro-edible'),
+    imageUrl: getPlaceholderImg('macro-edible'),
     sizes: ['10-Pack', '20-Pack'],
     colors: ['Mixed Berry'],
   }
