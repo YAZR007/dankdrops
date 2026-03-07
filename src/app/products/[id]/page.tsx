@@ -72,10 +72,11 @@ export default function ProductPage() {
             {[1, 2, 3].map(i => (
               <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted cursor-pointer hover:opacity-80 transition-opacity">
                 <Image 
-                  src={`https://picsum.photos/seed/thumb${i}${product.id}/400/600`} 
-                  alt={`${product.name} thumb ${i}`} 
+                  src={`https://picsum.photos/seed/macro_thumb_${i}_${product.id}/400/600`} 
+                  alt={`${product.name} macro thumb ${i}`} 
                   fill 
                   className="object-cover"
+                  data-ai-hint="cannabis macro"
                 />
               </div>
             ))}
@@ -103,9 +104,9 @@ export default function ProductPage() {
 
           <Separator className="mb-8" />
 
-          {/* Color Selection */}
+          {/* Type Selection */}
           <div className="mb-8">
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Select Color</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Strain Type</h4>
             <div className="flex flex-wrap gap-3">
               {product.colors.map(color => (
                 <button
@@ -123,12 +124,12 @@ export default function ProductPage() {
             </div>
           </div>
 
-          {/* Size Selection */}
+          {/* Quantity/Size Selection */}
           <div className="mb-10">
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-sm font-bold uppercase tracking-wider">Select Size</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider">Select Amount</h4>
               <button className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
-                <Info className="h-3 w-3" /> SIZE GUIDE
+                <Info className="h-3 w-3" /> DOSAGE GUIDE
               </button>
             </div>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
@@ -166,18 +167,18 @@ export default function ProductPage() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="details">
-              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Details & Fit</AccordionTrigger>
+              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Strain Specs</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                - 100% Premium French Terry Cotton<br />
-                - Oversized streetwear fit<br />
-                - High-definition logo embroidery<br />
-                - Pre-shrunk for minimal shrinkage
+                - Hand-trimmed artisanal flower<br />
+                - High-density trichome production<br />
+                - Slow-cured for optimal terpene preservation<br />
+                - Third-party lab tested for purity
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="shipping">
-              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Shipping & Returns</AccordionTrigger>
+              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Delivery & Privacy</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Free shipping on all orders over $150. Standard delivery takes 3-5 business days. Returns are accepted within 30 days of delivery.
+                Discrete, odor-proof packaging. Same-day delivery available in select zones. All orders are tracked in real-time.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

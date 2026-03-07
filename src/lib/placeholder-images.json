@@ -2,44 +2,44 @@
   "placeholderImages": [
     {
       "id": "p1",
-      "description": "High-macro shot of a frosty cannabis bud against a deep black void.",
-      "imageUrl": "https://picsum.photos/seed/dank_bud_1/600/800",
-      "imageHint": "cannabis bud"
+      "description": "Ultra-macro shot of a crystalline Ghost Train Haze bud, heavy with white trichomes against a pitch-black background.",
+      "imageUrl": "https://picsum.photos/seed/macro_bud_1/600/800",
+      "imageHint": "cannabis macro"
     },
     {
       "id": "p2",
-      "description": "Artisanal prerolls resting on a dark slate surface with a black background.",
-      "imageUrl": "https://picsum.photos/seed/dank_preroll_1/600/800",
-      "imageHint": "cannabis joint"
+      "description": "Macro detail of artisanal hand-rolled joints, showing the texture of the organic paper against a dark void.",
+      "imageUrl": "https://picsum.photos/seed/macro_joint_1/600/800",
+      "imageHint": "cannabis joints"
     },
     {
       "id": "p3",
-      "description": "Golden live resin diamonds captured in a studio setting with low-key lighting.",
-      "imageUrl": "https://picsum.photos/seed/dank_concentrate_1/600/800",
-      "imageHint": "cannabis extract"
+      "description": "Extreme close-up of golden live resin diamonds, refracting light in a dark studio setting.",
+      "imageUrl": "https://picsum.photos/seed/macro_wax_1/600/800",
+      "imageHint": "cannabis concentrate"
     },
     {
       "id": "p4",
-      "description": "Premium THC infused gummies with a matte finish on a dark reflective surface.",
-      "imageUrl": "https://picsum.photos/seed/dank_edible_1/600/800",
+      "description": "Macro shot of sugar-coated THC gummies, capturing individual sugar crystals on a matte black surface.",
+      "imageUrl": "https://picsum.photos/seed/macro_edible_1/600/800",
       "imageHint": "cannabis gummy"
     },
     {
       "id": "p5",
-      "description": "Sleek ceramic vape cartridge with a minimalist dark studio backdrop.",
-      "imageUrl": "https://picsum.photos/seed/dank_vape_1/600/800",
-      "imageHint": "vape pen"
+      "description": "Close-up of a high-end ceramic vape tip, highlighting the sleek minimalist design against a dark backdrop.",
+      "imageUrl": "https://picsum.photos/seed/macro_vape_1/600/800",
+      "imageHint": "vape cartridge"
     },
     {
       "id": "p6",
-      "description": "Precision-engineered herb grinder with a metallic finish against black velvet.",
-      "imageUrl": "https://picsum.photos/seed/dank_grinder_1/600/800",
+      "description": "Macro view of the precision teeth inside a matte black magnetic herb grinder.",
+      "imageUrl": "https://picsum.photos/seed/macro_grinder_1/600/800",
       "imageHint": "herb grinder"
     },
     {
       "id": "hero",
-      "description": "Atmospheric shot of a luxury boutique dispensary with neon violet lighting and dark interiors.",
-      "imageUrl": "https://picsum.photos/seed/dank_hero_dark/1920/1080",
+      "description": "Cinematic wide shot of a luxury dispensary interior with deep violet neon accents and dark, textured walls.",
+      "imageUrl": "https://picsum.photos/seed/luxury_dispensary_macro/1920/1080",
       "imageHint": "luxury dispensary"
     }
   ]

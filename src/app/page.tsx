@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, Zap, Shield, Truck, Leaf, Sparkles, Award } from 'lucide-react';
+import { ArrowRight, Leaf, Shield, Award } from 'lucide-react';
 
 export default function HomePage() {
   const featuredProducts = PRODUCTS.slice(0, 4);
@@ -31,7 +31,7 @@ export default function HomePage() {
               Elite <span className="text-primary">Cannabis</span> For The Connoisseur.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
-              Experience the pinnacle of cultivation. Artisanal flower, high-potency concentrates, and chef-curated edibles.
+              Experience the pinnacle of cultivation. Artisanal macro-grown flower, high-potency concentrates, and chef-curated boutique edibles.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-lg">
@@ -50,7 +50,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <h2 className="font-headline text-3xl md:text-4xl font-bold uppercase tracking-tighter">Current Harvest</h2>
-            <p className="text-muted-foreground">Handpicked strains and boutique products from our latest drop.</p>
+            <p className="text-muted-foreground">Macro-captured strains and boutique products from our latest drop.</p>
           </div>
           <Link href="/shop" className="text-primary font-bold flex items-center gap-1 hover:underline">
             VIEW ALL <ArrowRight className="h-4 w-4" />
@@ -68,25 +68,25 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-[600px]">
           <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl">
             <Image 
-              src="https://picsum.photos/seed/cat1/800/800" 
+              src="https://picsum.photos/seed/cat_macro_1/800/800" 
               alt="Flower" 
               fill 
               className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" 
-              data-ai-hint="cannabis buds"
+              data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <h3 className="font-headline text-4xl font-black text-white uppercase tracking-tighter">Boutique Flower</h3>
-              <p className="text-white/70">Sun-grown & Indoor premium strains</p>
+              <p className="text-white/70">Trichome-heavy indoor premium strains</p>
             </div>
           </Link>
           <div className="grid grid-cols-1 gap-8">
             <Link href="/shop?category=Concentrates" className="group relative overflow-hidden rounded-2xl">
               <Image 
-                src="https://picsum.photos/seed/cat2/800/400" 
+                src="https://picsum.photos/seed/cat_macro_2/800/400" 
                 alt="Concentrates" 
                 fill 
                 className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" 
-                data-ai-hint="cannabis oil"
+                data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <h3 className="font-headline text-3xl font-black text-white uppercase tracking-tighter">Concentrates</h3>
@@ -94,11 +94,11 @@ export default function HomePage() {
             </Link>
             <Link href="/shop?category=Edibles" className="group relative overflow-hidden rounded-2xl">
               <Image 
-                src="https://picsum.photos/seed/cat3/800/400" 
+                src="https://picsum.photos/seed/cat_macro_3/800/400" 
                 alt="Edibles" 
                 fill 
                 className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" 
-                data-ai-hint="cannabis candy"
+                data-ai-hint="cannabis gummy"
               />
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <h3 className="font-headline text-3xl font-black text-white uppercase tracking-tighter">Infused Edibles</h3>

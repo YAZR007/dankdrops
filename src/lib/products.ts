@@ -6,7 +6,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p1',
     name: 'Ghost Train Haze',
-    description: 'A legendary Sativa-dominant strain known for its potent cerebral effects and frosty trichomes. Captured here in a high-contrast macro study.',
+    description: 'A legendary Sativa-dominant strain known for its potent cerebral effects and frosty trichomes. Captured here in a high-contrast macro study against a deep black backdrop.',
     category: 'Flower',
     price: 55,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p1')?.imageUrl || '',
@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p2',
     name: 'Skywalker OG Prerolls',
-    description: 'Five pack of premium hand-rolled joints using 100% whole flower. Studio lighting highlights the artisanal craft of the roll.',
+    description: 'Five pack of premium hand-rolled joints using 100% whole flower. Macro lighting highlights the artisanal craft of the roll and paper texture.',
     category: 'Prerolls',
     price: 35,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p2')?.imageUrl || '',
@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p3',
     name: 'Live Resin Diamonds',
-    description: 'Ultra-pure THC-A crystals submersed in a terpene-rich sauce. The golden amber hues pop against the signature black backdrop.',
+    description: 'Ultra-pure THC-A crystals submersed in a terpene-rich sauce. Extreme macro photography captures the prismatic facets of the diamonds.',
     category: 'Concentrates',
     price: 65,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p3')?.imageUrl || '',
@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p4',
     name: 'Midnight Berry Gummies',
-    description: 'Nano-emulsified for fast onset. These 10mg THC gummies are presented in our curated dark aesthetic for the nighttime connoisseur.',
+    description: 'Nano-emulsified for fast onset. Macro detail shows the fine sugar coating on these 10mg THC artisanal gummies.',
     category: 'Edibles',
     price: 25,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p4')?.imageUrl || '',
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p5',
     name: 'Elite Distillate Cart',
-    description: 'High-potency distillate with botanical terpenes. Features a ceramic heating element, shown here in a minimalist studio setting.',
+    description: 'High-potency distillate with botanical terpenes. Macro view features the precision-engineered ceramic heating element.',
     category: 'Vapes',
     price: 45,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p5')?.imageUrl || '',
@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p6',
     name: 'Chromium Magnetic Grinder',
-    description: 'Four-piece aircraft-grade aluminum grinder. The violet-chromium finish catches the low-key studio lighting perfectly.',
+    description: 'Four-piece aircraft-grade aluminum grinder. Close-up macro detail shows the diamond-cut teeth and sleek metallic finish.',
     category: 'Accessories',
     price: 30,
     imageUrl: PlaceHolderImages.find(img => img.id === 'p6')?.imageUrl || '',

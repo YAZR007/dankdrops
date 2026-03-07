@@ -3,44 +3,44 @@
   "placeholderImages": [
     {
       "id": "p1",
-      "description": "Premium boutique cannabis flower with dense trichomes.",
-      "imageUrl": "https://picsum.photos/seed/cannabis1/600/800",
-      "imageHint": "cannabis flower"
+      "description": "Ultra-macro shot of a crystalline Ghost Train Haze bud, heavy with white trichomes against a pitch-black background.",
+      "imageUrl": "https://picsum.photos/seed/macro_bud_1/600/800",
+      "imageHint": "cannabis macro"
     },
     {
       "id": "p2",
-      "description": "Hand-rolled artisanal prerolls in a sleek matte case.",
-      "imageUrl": "https://picsum.photos/seed/cannabis2/600/800",
-      "imageHint": "cannabis prerolls"
+      "description": "Macro detail of artisanal hand-rolled joints, showing the texture of the organic paper against a dark void.",
+      "imageUrl": "https://picsum.photos/seed/macro_joint_1/600/800",
+      "imageHint": "cannabis joints"
     },
     {
       "id": "p3",
-      "description": "High-potency golden live resin concentrates.",
-      "imageUrl": "https://picsum.photos/seed/cannabis3/600/800",
+      "description": "Extreme close-up of golden live resin diamonds, refracting light in a dark studio setting.",
+      "imageUrl": "https://picsum.photos/seed/macro_wax_1/600/800",
       "imageHint": "cannabis concentrate"
     },
     {
       "id": "p4",
-      "description": "Chef-curated THC infused fruit gummies.",
-      "imageUrl": "https://picsum.photos/seed/cannabis4/600/800",
-      "imageHint": "cannabis edibles"
+      "description": "Macro shot of sugar-coated THC gummies, capturing individual sugar crystals on a matte black surface.",
+      "imageUrl": "https://picsum.photos/seed/macro_edible_1/600/800",
+      "imageHint": "cannabis gummy"
     },
     {
       "id": "p5",
-      "description": "Ceramic-core distillate vape cartridge.",
-      "imageUrl": "https://picsum.photos/seed/cannabis5/600/800",
+      "description": "Close-up of a high-end ceramic vape tip, highlighting the sleek minimalist design against a dark backdrop.",
+      "imageUrl": "https://picsum.photos/seed/macro_vape_1/600/800",
       "imageHint": "vape cartridge"
     },
     {
       "id": "p6",
-      "description": "Heavy-duty magnetic herb grinder with a violet finish.",
-      "imageUrl": "https://picsum.photos/seed/cannabis6/600/800",
+      "description": "Macro view of the precision teeth inside a matte black magnetic herb grinder.",
+      "imageUrl": "https://picsum.photos/seed/macro_grinder_1/600/800",
       "imageHint": "herb grinder"
     },
     {
       "id": "hero",
-      "description": "A luxury boutique dispensary interior with neon accents and clean lines.",
-      "imageUrl": "https://picsum.photos/seed/dispensaryhero/1920/1080",
+      "description": "Cinematic wide shot of a luxury dispensary interior with deep violet neon accents and dark, textured walls.",
+      "imageUrl": "https://picsum.photos/seed/luxury_dispensary_macro/1920/1080",
       "imageHint": "luxury dispensary"
     }
   ]
