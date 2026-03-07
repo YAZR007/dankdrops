@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "p1",
+      "description": "Premium oversized hoodie in deep black with subtle embroidery.",
+      "imageUrl": "https://picsum.photos/seed/dank1/600/800",
+      "imageHint": "streetwear hoodie"
+    },
+    {
+      "id": "p2",
+      "description": "Acid wash graphic tee with neon violet design.",
+      "imageUrl": "https://picsum.photos/seed/dank2/600/800",
+      "imageHint": "graphic tshirt"
+    },
+    {
+      "id": "p3",
+      "description": "Techwear cargo pants with multiple utility pockets.",
+      "imageUrl": "https://picsum.photos/seed/dank3/600/800",
+      "imageHint": "cargo pants"
+    },
+    {
+      "id": "p4",
+      "description": "Limited edition high-top sneakers in violet and blue.",
+      "imageUrl": "https://picsum.photos/seed/dank4/600/800",
+      "imageHint": "streetwear sneakers"
+    },
+    {
+      "id": "p5",
+      "description": "Distressed denim jacket with back patch art.",
+      "imageUrl": "https://picsum.photos/seed/dank5/600/800",
+      "imageHint": "denim jacket"
+    },
+    {
+      "id": "p6",
+      "description": "Bucket hat with reflective brand logo.",
+      "imageUrl": "https://picsum.photos/seed/dank6/600/800",
+      "imageHint": "bucket hat"
+    },
+    {
+      "id": "hero",
+      "description": "DankDrops flagship store interior with neon lights.",
+      "imageUrl": "https://picsum.photos/seed/dankhero/1920/1080",
+      "imageHint": "streetwear store"
+    }
+  ]
+}
