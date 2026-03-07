@@ -35,14 +35,14 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Time the fade-out to occur AFTER the logo fills (animation is 2s)
+      // Time the fade-out to occur AFTER the logo fills (animation is 3s)
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 2200);
+      }, 3200);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 2900);
+      }, 3900);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -71,7 +71,7 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[180px] md:text-[140px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[110px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
