@@ -11,6 +11,10 @@ const BLUE_DREAM_SECONDARY = "https://static.wixstatic.com/media/a82ad9_017d2aea
 // Specific images for Permanent Marker
 const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";
 
+// Specific images for GMO Cookies
+const GMO_COOKIES_PRIMARY = "https://static.wixstatic.com/media/a82ad9_4877c8ac51504407a1703ed4eda57dc4~mv2.jpg/v1/fill/w_1124,h_1708,al_c,q_90/a82ad9_4877c8ac51504407a1703ed4eda57dc4~mv2.webp";
+const GMO_COOKIES_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a36855ee1d474b9f9d995b3d4d418dce~mv2.jpg/v1/fill/w_1124,h_1708,al_c,q_90/a82ad9_a36855ee1d474b9f9d995b3d4d418dce~mv2.webp";
+
 export const PRODUCTS: Product[] = [
   {
     id: 'f1',
@@ -50,7 +54,8 @@ export const PRODUCTS: Product[] = [
     description: 'Also known as "Garlic Cookies," this indica-dominant heavy hitter is famous for its savory, funky aroma and profound sedative effects.',
     category: 'Flower',
     price: 70,
-    imageUrl: GENERIC_MACRO,
+    imageUrl: GMO_COOKIES_PRIMARY,
+    secondaryImageUrl: GMO_COOKIES_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true,
