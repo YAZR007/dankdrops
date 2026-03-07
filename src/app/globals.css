@@ -48,13 +48,13 @@
   5% {
     opacity: 1;
   }
-  82% {
-    /* Slow, artisanal drawing phase */
+  75% {
+    /* Artisanal drawing phase - now taking 75% of the time for a slower feel */
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
   100% {
-    /* Smooth, slower color fill */
+    /* Slower, smoother color fill phase - now taking 25% of the time */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
     opacity: 1;

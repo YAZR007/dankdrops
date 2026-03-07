@@ -16,8 +16,13 @@ export function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const mobileSearchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
@@ -27,7 +32,6 @@ export function Navbar() {
     ).slice(0, 5);
   }, [searchQuery]);
 
-  // Handle clicking outside to close search results
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -55,7 +59,7 @@ export function Navbar() {
               }}
               className="block group p-4 hover:bg-white/5 transition-all border-b border-white/5 last:border-0"
             >
-              <div className="flex items-center justify-between group-hover:scale-[1.05] group-hover:shadow-[0_0_30px_rgba(126,42,219,0.3)] rounded-xl transition-all duration-300">
+              <div className="flex items-center justify-between group-hover:scale-[1.02] transition-all duration-300">
                 <div className="flex flex-col gap-0.5 p-2">
                   <span className="text-[9px] font-black text-primary uppercase tracking-widest">{product.category}</span>
                   <h4 className="font-headline font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">
@@ -63,7 +67,7 @@ export function Navbar() {
                   </h4>
                   <p className="text-[10px] font-bold text-accent">£{product.price}</p>
                 </div>
-                <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 shadow-lg group-hover:border-primary/50 transition-all duration-300 mr-2">
+                <div className="relative w-12 h-16 rounded-lg overflow-hidden border border-white/10 group-hover:border-primary/50 transition-all duration-300 mr-2">
                   <Image 
                     src={product.imageUrl} 
                     alt={product.name} 
@@ -82,7 +86,6 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
-        {/* Left Section: Mobile Menu Trigger & Desktop Nav */}
         <div className="flex items-center gap-4 md:gap-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -113,25 +116,27 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
-          {/* Desktop Logo */}
           <Link 
             href="/" 
             className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-95 transform-gpu"
           >
-            <svg viewBox="0 0 200 40" className="h-8 w-auto overflow-visible">
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[22px] stroke-primary stroke-[1.5px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]"
-              >
-                DANKDROPS
-              </text>
-            </svg>
+            {!mounted ? (
+              <span className="font-headline text-2xl font-black tracking-tighter text-primary">DANKDROPS</span>
+            ) : (
+              <svg viewBox="0 0 200 40" className="h-8 w-auto overflow-visible">
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  className="font-headline font-black uppercase tracking-[-0.05em] text-[22px] stroke-primary stroke-[1.5px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]"
+                >
+                  DANKDROPS
+                </text>
+              </svg>
+            )}
           </Link>
 
-          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/shop" 
@@ -154,24 +159,26 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Center Logo (Visible only on mobile) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
           <Link href="/" className="flex items-center group active:scale-95 transition-transform">
-            <svg viewBox="0 0 160 30" className="h-6 w-auto overflow-visible">
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[18px] stroke-primary stroke-[1px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]"
-              >
-                DANKDROPS
-              </text>
-            </svg>
+            {!mounted ? (
+              <span className="font-headline text-lg font-black tracking-tighter text-primary">DANKDROPS</span>
+            ) : (
+              <svg viewBox="0 0 160 30" className="h-6 w-auto overflow-visible">
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  className="font-headline font-black uppercase tracking-[-0.05em] text-[18px] stroke-primary stroke-[1px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]"
+                >
+                  DANKDROPS
+                </text>
+              </svg>
+            )}
           </Link>
         </div>
 
-        {/* Center Section: Desktop Search */}
         <div className="hidden lg:block flex-1 max-w-md mx-8 relative" ref={searchRef}>
           <div className="relative group transition-all hover:scale-[1.02]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
@@ -186,7 +193,6 @@ export function Navbar() {
           {isFocused && searchQuery.trim() && <SearchResultsList />}
         </div>
 
-        {/* Right Section: Mobile Search, Profile, Cart */}
         <div className="flex items-center space-x-1 sm:space-x-2">
           <Button 
             variant="ghost" 
@@ -216,7 +222,6 @@ export function Navbar() {
         </div>
       </div>
       
-      {/* Mobile Search Overlay */}
       {isSearchOpen && (
         <div className="absolute inset-x-0 top-16 bg-background border-b border-white/5 p-4 animate-in slide-in-from-top duration-300 lg:hidden z-40" ref={mobileSearchRef}>
           <div className="relative">

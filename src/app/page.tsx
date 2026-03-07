@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -76,7 +75,7 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.4] contrast-[1.05]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.3] contrast-[1.05]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_8dc8c34159454bee930a7fd5586f2ee6/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
