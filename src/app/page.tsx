@@ -77,11 +77,11 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.2] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/20" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
@@ -102,13 +102,13 @@ export default function HomePage() {
           {/* Card: Elite Flower */}
           <Link 
             href="/shop?category=Flower" 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.5)] hover:ring-2 hover:ring-primary/50"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50"
           >
             <Image 
               src={flowerCatImage} 
               alt="Elite Flower" 
               fill 
-              className="object-cover brightness-50 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000" 
+              className="object-cover brightness-[0.4] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
@@ -120,13 +120,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-4 md:gap-10">
             {/* Card: Artisanal Extracts */}
             <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.5)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               <Image 
                 src={concentratesCatImage} 
                 alt="Artisanal Extracts" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
@@ -137,13 +137,13 @@ export default function HomePage() {
 
             {/* Card: Boutique Edibles */}
             <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.5)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               <Image 
                 src={ediblesCatImage} 
                 alt="Boutique Edibles" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis edible"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
