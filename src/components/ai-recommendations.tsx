@@ -7,7 +7,7 @@ import { Product } from '@/types/product';
 import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from './product-card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Sparkles } from 'lucide-react';
+import { Leaf } from 'lucide-react';
 
 interface AIRecommendationsProps {
   currentProductId?: string;
@@ -38,8 +38,7 @@ export function AIRecommendations({ currentProductId }: AIRecommendationsProps) 
         const products = PRODUCTS.filter(p => recIds.includes(p.id) && p.id !== currentProductId);
         setRecommendations(products.slice(0, 4));
       } catch (error) {
-        console.error("Failed to get recommendations", error);
-        // Fallback to random products if AI fails
+        // Fallback to random products if flow fails
         setRecommendations(PRODUCTS.filter(p => p.id !== currentProductId).slice(0, 4));
       } finally {
         setLoading(false);
@@ -55,7 +54,7 @@ export function AIRecommendations({ currentProductId }: AIRecommendationsProps) 
     <section className="py-12 border-t mt-12">
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-2 mb-8">
-          <Sparkles className="h-5 w-5 text-primary" />
+          <Leaf className="h-5 w-5 text-primary" />
           <h2 className="font-headline text-2xl font-bold uppercase tracking-tighter">Curated Picks</h2>
         </div>
         
