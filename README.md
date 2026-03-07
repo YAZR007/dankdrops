@@ -1,5 +1,35 @@
-# Firebase Studio
+# DankDrops | Premium Boutique Cannabis
 
-This is a NextJS starter in Firebase Studio.
+Elite cultivation, artisanal extracts, and curated cannabis experiences.
 
-To get started, take a look at src/app/page.tsx.
+## Getting Started with GitHub
+
+To push this project to an existing GitHub repository, open your terminal and run the following commands:
+
+1. **Initialize Git**:
+   ```bash
+   git init
+   ```
+
+2. **Add your remote repository**:
+   Replace `<YOUR_GITHUB_REPO_URL>` with your actual repository link (e.g., `https://github.com/username/repo-name.git`).
+   ```bash
+   git remote add origin <YOUR_GITHUB_REPO_URL>
+   ```
+
+3. **Stage and commit your files**:
+   ```bash
+   git add .
+   git commit -m "Initial commit of DankDrops"
+   ```
+
+4. **Push the code**:
+   ```bash
+   git branch -M main
+   git push -u origin main
+   ```
+
+## Development
+
+- `npm run dev`: Start the Next.js development server on port 9002.
+- `npm run genkit:dev`: Start the Genkit developer UI.
