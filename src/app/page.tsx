@@ -38,7 +38,7 @@ export default function HomePage() {
                   x="0"
                   y="80"
                   dominantBaseline="middle"
-                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent"
+                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent scroll-draw-target"
                 >
                   THE <tspan fill="hsl(var(--primary))">MACRO</tspan>
                 </text>
@@ -46,7 +46,7 @@ export default function HomePage() {
                   x="0"
                   y="180"
                   dominantBaseline="middle"
-                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent"
+                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent scroll-draw-target"
                 >
                   COLLECTION.
                 </text>
@@ -77,7 +77,7 @@ export default function HomePage() {
                 x="0"
                 y="35"
                 dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent"
+                className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
               >
                 CURRENT STRAINS
               </text>
@@ -117,7 +117,7 @@ export default function HomePage() {
                 y="50%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[60px] md:text-[80px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent"
+                className="font-headline font-black uppercase tracking-[-0.05em] text-[60px] md:text-[80px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
               >
                 MACRO <tspan fill="hsl(var(--primary))">IN MOTION</tspan>.
               </text>
@@ -150,7 +150,7 @@ export default function HomePage() {
                     x="0"
                     y="35"
                     dominantBaseline="middle"
-                    className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent"
+                    className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
                   >
                     ELITE FLOWER
                   </text>
