@@ -108,9 +108,11 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
               <span className="text-xl font-bold">${totalPrice}</span>
             </div>
             <p className="text-[10px] text-muted-foreground text-center">Taxes and shipping calculated at checkout</p>
-            <Button className="w-full h-12 text-md font-bold tracking-widest bg-primary hover:bg-primary/90">
-              CHECKOUT NOW
-            </Button>
+            <SheetTrigger asChild>
+              <Button asChild className="w-full h-12 text-md font-bold tracking-widest bg-primary hover:bg-primary/90">
+                <Link href="/checkout">CHECKOUT NOW</Link>
+              </Button>
+            </SheetTrigger>
           </SheetFooter>
         )}
       </SheetContent>
