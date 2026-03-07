@@ -6,7 +6,8 @@ import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
 import { useState, useMemo } from 'react';
-import { Filter, SlidersHorizontal } from 'lucide-react';
+import { Filter, SlidersHorizontal, X } from 'lucide-react';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Edibles', 'Vapes', 'Accessories'];
 
@@ -29,15 +30,37 @@ export default function ShopPage() {
   }, [activeCategory, filterParam]);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <header className="mb-12">
-        <h1 className="font-headline text-5xl font-black uppercase tracking-tighter mb-4">The Dispensary</h1>
-        <p className="text-muted-foreground text-lg">Explore our curated selection of premium cannabis products.</p>
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      <header className="mb-8 md:mb-12">
+        <h1 className="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter mb-2 md:mb-4">The Dispensary</h1>
+        <p className="text-muted-foreground text-sm md:text-lg">Explore our curated selection of premium cannabis products.</p>
       </header>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Filters Sidebar */}
-        <aside className="w-full md:w-64 flex-shrink-0 space-y-8">
+        {/* Mobile Categories - Horizontal Scroll */}
+        <div className="md:hidden -mx-4 px-4 mb-4">
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex w-max space-x-2 pb-4">
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-full transition-all font-bold text-xs uppercase tracking-widest border ${
+                    activeCategory === cat 
+                      ? 'bg-primary border-primary text-white shadow-[0_0_10px_rgba(126,42,219,0.3)]' 
+                      : 'bg-secondary/20 border-white/5 text-muted-foreground'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <ScrollBar orientation="horizontal" className="hidden" />
+          </ScrollArea>
+        </div>
+
+        {/* Desktop Filters Sidebar */}
+        <aside className="hidden md:block w-64 flex-shrink-0 space-y-8">
           <div>
             <h3 className="font-headline text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
               <Filter className="h-4 w-4" /> Categories
@@ -59,7 +82,7 @@ export default function ShopPage() {
             </div>
           </div>
 
-          <div className="pt-8 border-t">
+          <div className="pt-8 border-t border-white/5">
             <h3 className="font-headline text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
               <SlidersHorizontal className="h-4 w-4" /> Sort By
             </h3>
@@ -74,7 +97,7 @@ export default function ShopPage() {
         {/* Product Grid */}
         <div className="flex-grow">
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}

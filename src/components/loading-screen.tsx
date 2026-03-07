@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -12,7 +13,7 @@ export function LoadingScreen() {
 
   useEffect(() => {
     // Trigger animation on initial mount OR when pathname actually changed
-    // We skip the loading screen for product detail pages to keep navigation snappy
+    // Only for header buttons or main landing
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
 
@@ -37,7 +38,6 @@ export function LoadingScreen() {
         clearTimeout(hideTimer);
       };
     } else if (isNewPath && isProductPage) {
-      // Just update the ref so we don't trigger next time unless it's a header click
       lastPathname.current = pathname;
       setStatus('hidden');
     }
@@ -51,14 +51,14 @@ export function LoadingScreen() {
         status === 'fading' ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div className="relative w-full flex justify-center px-4" key={animationKey}>
+      <div className="relative w-full flex justify-center px-6" key={animationKey}>
         <svg viewBox="0 0 800 200" className="w-full max-w-4xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-8xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-6xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
