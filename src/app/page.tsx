@@ -22,6 +22,7 @@ export default function HomePage() {
           fill 
           className="object-cover brightness-[0.25]"
           priority
+          data-ai-hint="macro bud"
         />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
