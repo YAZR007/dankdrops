@@ -1,23 +1,44 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function LoadingScreen() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
+  const [animationKey, setAnimationKey] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
-    // We wait for the drawing animation (3.5s) plus a small fade-out window
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 4200);
-    return () => clearTimeout(timer);
-  }, []);
+    // Show the loader and reset animation key on every pathname change
+    setStatus('visible');
+    setAnimationKey((prev) => prev + 1);
+    
+    // The logo-draw animation takes 3.5s. 
+    // We start the fade out slightly after it finishes.
+    const fadeTimer = setTimeout(() => {
+      setStatus('fading');
+    }, 3800);
 
-  if (!isVisible) return null;
+    // Completely remove from DOM after the 1s fade transition
+    const hideTimer = setTimeout(() => {
+      setStatus('hidden');
+    }, 4800);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [pathname]);
+
+  if (status === 'hidden') return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-background animate-out fade-out duration-1000 fill-mode-forwards pointer-events-none">
-      <div className="relative">
+    <div 
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-1000 pointer-events-none ${
+        status === 'fading' ? 'opacity-0' : 'opacity-100'
+      }`}
+    >
+      <div className="relative" key={animationKey}>
         <svg viewBox="0 0 500 100" className="w-[85vw] max-w-3xl h-auto overflow-visible">
           <text
             x="50%"
