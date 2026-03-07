@@ -154,7 +154,7 @@ export default function ProductPage() {
                   left: lensPosition.x - 96,
                   top: lensPosition.y - 96,
                   backgroundImage: `url(${images[activeImageIndex]})`,
-                  backgroundSize: '300%',
+                  backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
                   backgroundRepeat: 'no-repeat'
                 }}
