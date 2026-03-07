@@ -74,11 +74,11 @@ export default function HomePage() {
           muted 
           loop 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover brightness-100"
+          className="absolute inset-0 w-full h-full object-cover brightness-125"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/5" />
+        <div className="absolute inset-0 bg-transparent" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-2xl">

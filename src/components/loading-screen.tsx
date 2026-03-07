@@ -3,14 +3,26 @@
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
+/**
+ * LoadingScreen component that displays a high-impact logo animation.
+ * Optimized to prevent hydration mismatches and handle navigation transitions.
+ */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
   const [animationKey, setAnimationKey] = useState(1);
+  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const lastPathname = useRef(pathname);
   const isInitialMount = useRef(true);
 
+  // Defer rendering until after hydration to prevent mismatches
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
     const shouldAnimate = isInitialMount.current || (isNewPath && !isProductPage);
@@ -41,9 +53,10 @@ export function LoadingScreen() {
       lastPathname.current = pathname;
       setStatus('hidden');
     }
-  }, [pathname]);
+  }, [pathname, isMounted]);
 
-  if (status === 'hidden') return null;
+  // If component is not mounted yet (SSR phase) or hidden, don't render.
+  if (!isMounted || status === 'hidden') return null;
 
   return (
     <div 
@@ -52,13 +65,13 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-5xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-4xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[8rem] sm:text-[12rem] md:text-[11rem] lg:text-[13rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[12rem] sm:text-[14rem] md:text-[9rem] lg:text-[11rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
