@@ -6,22 +6,25 @@ import { usePathname } from 'next/navigation';
 
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
-  const [animationKey, setAnimationKey] = useState(0);
+  // Initialize with 1 to avoid a 0 -> 1 jump on hydration
+  const [animationKey, setAnimationKey] = useState(1);
   const pathname = usePathname();
   const lastPathname = useRef(pathname);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Trigger animation on initial mount OR when pathname actually changed
-    // Only for header buttons or main landing
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
+    const shouldAnimate = isInitialMount.current || (isNewPath && !isProductPage);
 
-    if (isInitialMount.current || (isNewPath && !isProductPage)) {
+    if (shouldAnimate) {
       setStatus('visible');
-      setAnimationKey((prev) => prev + 1);
-      lastPathname.current = pathname;
-      isInitialMount.current = false;
+      
+      // Only increment key on sub-navigation to force restart, 
+      // but avoid it on initial mount to prevent the hydration glitch.
+      if (!isInitialMount.current) {
+        setAnimationKey((prev) => prev + 1);
+      }
 
       // The drawing animation takes 3s (defined in globals.css)
       const fadeTimer = setTimeout(() => {
@@ -32,6 +35,9 @@ export function LoadingScreen() {
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
       }, 3700);
+
+      lastPathname.current = pathname;
+      isInitialMount.current = false;
 
       return () => {
         clearTimeout(fadeTimer);
