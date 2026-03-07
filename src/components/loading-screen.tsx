@@ -13,16 +13,16 @@ export function LoadingScreen() {
     setStatus('visible');
     setAnimationKey((prev) => prev + 1);
     
-    // The logo-draw animation takes 3.5s. 
-    // We start the fade out slightly after it finishes.
+    // The logo-draw animation takes 4s. 
+    // We start the fade out exactly at the 4s mark.
     const fadeTimer = setTimeout(() => {
       setStatus('fading');
-    }, 3800);
+    }, 4000);
 
     // Completely remove from DOM after the 1s fade transition
     const hideTimer = setTimeout(() => {
       setStatus('hidden');
-    }, 4800);
+    }, 5000);
 
     return () => {
       clearTimeout(fadeTimer);
