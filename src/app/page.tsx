@@ -16,9 +16,9 @@ export default function HomePage() {
   const ediblesCatImage = PlaceHolderImages.find(img => img.id === 'edibles')?.imageUrl || '';
 
   return (
-    <div className="flex flex-col gap-12 md:gap-16 pb-16">
+    <div className="flex flex-col gap-8 md:gap-16 pb-16">
       {/* Hero Section */}
-      <section className="relative h-[90vh] md:h-[85vh] min-h-[500px] w-full overflow-hidden flex items-center">
+      <section className="relative h-[80vh] md:h-[85vh] min-h-[500px] w-full overflow-hidden flex items-center">
         <Image 
           src={heroImage} 
           alt="DankDrops Flagship" 
@@ -29,20 +29,20 @@ export default function HomePage() {
         />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-[8px] md:text-xs font-black tracking-[0.2em] uppercase text-white mb-6 md:mb-8">
+            <div className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-[8px] md:text-xs font-black tracking-[0.2em] uppercase text-white mb-4 md:mb-8">
               Micro-Grown • Artisanal • Elite
             </div>
-            <h1 className="font-headline text-5xl md:text-9xl font-black text-white leading-[0.9] tracking-tighter uppercase mb-6 md:mb-8">
+            <h1 className="font-headline text-4xl sm:text-6xl md:text-9xl font-black text-white leading-[0.95] md:leading-[0.9] tracking-tighter uppercase mb-6 md:mb-8">
               The <span className="text-primary">Macro</span><br />Collection.
             </h1>
-            <p className="text-lg md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed">
+            <p className="text-base md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed">
               Experience cannabis through a different lens. High-potency, trichome-rich strains captured in their purest form.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto">
                 <Link href="/shop?category=Flower">Enter The Harvest</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase">
+              <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto">
                 <Link href="/shop">View Full Catalog</Link>
               </Button>
             </div>
@@ -52,16 +52,16 @@ export default function HomePage() {
 
       {/* Featured Strains */}
       <section className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-10 border-b pb-6 border-white/10 gap-4">
+        <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
           <div>
-            <h2 className="font-headline text-3xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
-            <p className="text-muted-foreground text-sm md:text-lg">Hand-picked elite flower from this week's drop.</p>
+            <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
+            <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
           </div>
-          <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-xs md:text-sm tracking-widest">
-            EXPLORE ALL STRAINS <ArrowRight className="h-4 w-4" />
+          <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
+            EXPLORE ALL <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-10">
           {featuredFlowers.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -69,7 +69,7 @@ export default function HomePage() {
       </section>
 
       {/* Cinematic Video Section */}
-      <section className="relative h-[60vh] w-full overflow-hidden flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center">
         <video 
           autoPlay 
           muted 
@@ -82,16 +82,16 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-80" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/50 mx-auto mb-8 animate-pulse">
-            <Play className="h-8 w-8 text-primary fill-primary" />
+          <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/50 mx-auto mb-6 md:mb-8 animate-pulse">
+            <Play className="h-6 w-6 md:h-8 md:w-8 text-primary fill-primary" />
           </div>
-          <h2 className="font-headline text-4xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">
+          <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4">
             Macro <span className="text-primary">In Motion</span>.
           </h2>
-          <p className="text-white/80 text-sm md:text-xl font-bold uppercase tracking-[0.3em] mb-8">
+          <p className="text-white/80 text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8">
             The Living Resin Experience
           </p>
-          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-12">
+          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6">
             <Link href="/shop?category=Flower">EXPLORE THE HARVEST</Link>
           </Button>
         </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
-          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
+          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto">
             <Image 
               src={flowerCatImage} 
               alt="Flower" 
@@ -109,12 +109,12 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-              <h3 className="font-headline text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-2 md:mb-4">Elite Flower</h3>
-              <p className="text-white/70 text-sm md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
+              <h3 className="font-headline text-2xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-2 md:mb-4">Elite Flower</h3>
+              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
             </div>
           </Link>
           <div className="grid grid-cols-1 gap-4 md:gap-10">
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto">
               <Image 
                 src={concentratesCatImage} 
                 alt="Concentrates" 
@@ -122,12 +122,12 @@ export default function HomePage() {
                 className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
                 data-ai-hint="cannabis extract"
               />
-              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Artisanal Extracts</h3>
+              <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+                <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Artisanal Extracts</h3>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto">
               <Image 
                 src={ediblesCatImage} 
                 alt="Edibles" 
@@ -135,9 +135,9 @@ export default function HomePage() {
                 className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
                 data-ai-hint="cannabis edible"
               />
-              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Boutique Edibles</h3>
+              <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+                <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Boutique Edibles</h3>
               </div>
             </div>
           </div>
@@ -145,28 +145,28 @@ export default function HomePage() {
       </section>
 
       {/* Trust Badges */}
-      <section className="bg-secondary/30 py-16 md:py-24">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+      <section className="bg-secondary/30 py-12 md:py-24">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-3">
-              <Leaf className="h-8 w-8 md:h-10 md:w-10" />
+            <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-3">
+              <Leaf className="h-6 w-6 md:h-10 md:w-10" />
             </div>
-            <h4 className="font-headline text-xl md:text-2xl font-black uppercase tracking-tighter">Purity Guaranteed</h4>
-            <p className="text-muted-foreground text-sm md:text-lg max-w-xs">Triple-tested for heavy metals, pesticides, and potency. Clean cannabis only.</p>
+            <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Purity Guaranteed</h4>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Triple-tested for heavy metals, pesticides, and potency. Clean cannabis only.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center text-accent -rotate-3">
-              <Shield className="h-8 w-8 md:h-10 md:w-10" />
+            <div className="w-12 h-12 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center text-accent -rotate-3">
+              <Shield className="h-6 w-6 md:h-10 md:w-10" />
             </div>
-            <h4 className="font-headline text-xl md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
-            <p className="text-muted-foreground text-sm md:text-lg max-w-xs">Double-sealed, vacuum-packed delivery in unbranded luxury packaging.</p>
+            <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Double-sealed, vacuum-packed delivery in unbranded luxury packaging.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">
-              <Award className="h-8 w-8 md:h-10 md:w-10" />
+            <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">
+              <Award className="h-6 w-6 md:h-10 md:w-10" />
             </div>
-            <h4 className="font-headline text-xl md:text-2xl font-black uppercase tracking-tighter">Master Growers</h4>
-            <p className="text-muted-foreground text-sm md:text-lg max-w-xs">Cultivated by our award-winning internal collective of artisanal growers.</p>
+            <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Master Growers</h4>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Cultivated by our award-winning internal collective of artisanal growers.</p>
           </div>
         </div>
       </section>
