@@ -15,6 +15,10 @@ const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_57
 const GMO_COOKIES_PRIMARY = "https://static.wixstatic.com/media/a82ad9_4877c8ac51504407a1703ed4eda57dc4~mv2.jpg/v1/fill/w_1124,h_1708,al_c,q_90/a82ad9_4877c8ac51504407a1703ed4eda57dc4~mv2.webp";
 const GMO_COOKIES_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a36855ee1d474b9f9d995b3d4d418dce~mv2.jpg/v1/fill/w_1124,h_1708,al_c,q_90/a82ad9_a36855ee1d474b9f9d995b3d4d418dce~mv2.webp";
 
+// Specific images for Gelato #41
+const GELATO_41_PRIMARY = "https://static.wixstatic.com/media/a82ad9_56bd23227d7844f09a21700efcdef619~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_56bd23227d7844f09a21700efcdef619~mv2.webp";
+const GELATO_41_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a92ad8ab14fc4476ad4d7216f3f30035~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_a92ad8ab14fc4476ad4d7216f3f30035~mv2.webp";
+
 export const PRODUCTS: Product[] = [
   {
     id: 'f1',
@@ -70,7 +74,8 @@ export const PRODUCTS: Product[] = [
     description: 'A high-end hybrid featuring a complex aroma of sweet sherbet, blueberries, and citrus. Perfect for those looking for a balanced, flavorful smoke.',
     category: 'Flower',
     price: 65,
-    imageUrl: GENERIC_MACRO,
+    imageUrl: GELATO_41_PRIMARY,
+    secondaryImageUrl: GELATO_41_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: false,
