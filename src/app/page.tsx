@@ -31,7 +31,7 @@ export default function HomePage() {
             <div className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-[8px] md:text-xs font-black tracking-[0.2em] uppercase text-white mb-4 md:mb-8">
               Micro-Grown • Artisanal • Elite
             </div>
-            <h1 className="font-headline text-4xl sm:text-6xl md:text-9xl font-black text-white leading-[0.95] md:leading-[0.9] tracking-tighter uppercase mb-6 md:mb-8">
+            <h1 className="font-headline text-4xl sm:text-6xl md:text-9xl font-black text-white leading-[0.95] md:leading-[0.9] tracking-tighter uppercase mb-6 md:mb-8 scroll-reveal-headline">
               The <span className="text-primary">Macro</span><br />Collection.
             </h1>
             <p className="text-base md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed">
@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* Featured Strains */}
       <section className="container mx-auto px-4">
         <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
-          <div>
+          <div className="scroll-reveal-headline">
             <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
             <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
           </div>
@@ -75,13 +75,13 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.3] contrast-[1.05]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.2] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_8dc8c34159454bee930a7fd5586f2ee6/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/30" />
         
-        <div className="relative z-10 text-center px-4 max-w-4xl">
+        <div className="relative z-10 text-center px-4 max-w-4xl scroll-reveal-headline">
           <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-2xl">
             Macro <span className="text-primary">In Motion</span>.
           </h2>
@@ -97,7 +97,7 @@ export default function HomePage() {
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
-          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto">
+          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto scroll-reveal-headline">
             <Image 
               src={flowerCatImage} 
               alt="Flower" 
@@ -144,21 +144,21 @@ export default function HomePage() {
       {/* Trust Badges */}
       <section className="bg-secondary/30 py-12 md:py-24">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-          <div className="flex flex-col items-center text-center gap-4 md:gap-6">
+          <div className="flex flex-col items-center text-center gap-4 md:gap-6 scroll-reveal-headline">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-3">
               <Leaf className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Purity Guaranteed</h4>
             <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Triple-tested for heavy metals, pesticides, and potency. Clean cannabis only.</p>
           </div>
-          <div className="flex flex-col items-center text-center gap-4 md:gap-6">
+          <div className="flex flex-col items-center text-center gap-4 md:gap-6 scroll-reveal-headline">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center text-accent -rotate-3">
               <Shield className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
             <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Double-sealed, vacuum-packed delivery in unbranded luxury packaging.</p>
           </div>
-          <div className="flex flex-col items-center text-center gap-4 md:gap-6">
+          <div className="flex flex-col items-center text-center gap-4 md:gap-6 scroll-reveal-headline">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">
               <Award className="h-6 w-6 md:h-10 md:w-10" />
             </div>

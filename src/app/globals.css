@@ -48,16 +48,28 @@
   5% {
     opacity: 1;
   }
-  75% {
-    /* Artisanal drawing phase - slower and more deliberate */
+  82% {
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
   100% {
-    /* Smooth, lingering color fill phase */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
     opacity: 1;
+  }
+}
+
+/* Scroll-driven version of the drawing animation */
+@keyframes text-reveal-scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -65,7 +77,42 @@
   animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Trigger the drawing animation on group hover for the navbar logo - slowed down 2x */
 .group:hover .logo-hover-target {
   animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Modern scroll-linked animation classes */
+.scroll-reveal-headline {
+  view-timeline-name: --headline;
+  view-timeline-axis: block;
+  animation: text-reveal-scroll linear both;
+  animation-timeline: --headline;
+  animation-range: entry 10% cover 30%;
+}
+
+@supports not (animation-timeline: view()) {
+  .scroll-reveal-headline {
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .scroll-reveal-headline.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
 }
