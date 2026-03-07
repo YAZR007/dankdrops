@@ -72,16 +72,18 @@ export default function HomePage() {
       <section className="container mx-auto px-4">
         <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
           <div className="max-w-[400px] w-full">
-            <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible scroll-reveal-text">
-              <text
-                x="0"
-                y="35"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent"
-              >
-                CURRENT STRAINS
-              </text>
-            </svg>
+            <div className="scroll-reveal-text">
+              <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible">
+                <text
+                  x="0"
+                  y="35"
+                  dominantBaseline="middle"
+                  className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent"
+                >
+                  CURRENT STRAINS
+                </text>
+              </svg>
+            </div>
             <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
           </div>
           <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
@@ -110,8 +112,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/30" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="mb-4">
-            <svg viewBox="0 0 800 100" className="w-full h-auto overflow-visible scroll-reveal-text drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
+          <div className="mb-4 scroll-reveal-text">
+            <svg viewBox="0 0 800 100" className="w-full h-auto overflow-visible drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
               <text
                 x="50%"
                 y="50%"
@@ -144,8 +146,8 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-              <div className="w-full">
-                <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible scroll-reveal-text">
+              <div className="w-full scroll-reveal-text">
+                <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible">
                   <text
                     x="0"
                     y="35"

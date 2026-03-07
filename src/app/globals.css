@@ -95,6 +95,10 @@
 .scroll-reveal-text {
   view-timeline-name: --text-reveal;
   view-timeline-axis: block;
+}
+
+.scroll-reveal-text text, 
+.scroll-reveal-text tspan {
   animation: scroll-draw-reveal linear both;
   animation-timeline: --text-reveal;
   animation-range: entry 10% cover 40%;
