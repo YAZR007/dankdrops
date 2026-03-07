@@ -6,7 +6,7 @@ const GENERIC_MACRO = "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc
 
 // Specific images for Blue Dream
 const BLUE_DREAM_PRIMARY = "https://static.wixstatic.com/media/a82ad9_cda5746897164e49912146db6a489808~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_cda5746897164e49912146db6a489808~mv2.webp";
-const BLUE_DREAM_SECONDARY = "https://static.wixstatic.com/media/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.jpg/v1/fill/w_243,h_243,fp_0.50_0.50,q_90/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.webp";
+const BLUE_DREAM_SECONDARY = "https://static.wixstatic.com/media/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.webp";
 
 // Specific images for Permanent Marker
 const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_244,h_243,fp_0.50_0.50,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";

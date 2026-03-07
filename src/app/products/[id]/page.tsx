@@ -17,6 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from 'next/link';
 
 export default function ProductPage() {
   const params = useParams();
@@ -34,6 +35,7 @@ export default function ProductPage() {
 
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || '');
+  const [zoomStyle, setZoomStyle] = useState({ transformOrigin: 'center', transform: 'scale(1)' });
 
   if (!product) {
     return (
@@ -58,6 +60,23 @@ export default function ProductPage() {
     });
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setZoomStyle({
+      transformOrigin: `${x}% ${y}%`,
+      transform: 'scale(2.5)',
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomStyle({
+      transformOrigin: 'center',
+      transform: 'scale(1)',
+    });
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <button 
@@ -69,14 +88,24 @@ export default function ProductPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div className="space-y-4">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5">
+          <div 
+            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-zoom-in"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             <Image 
               src={product.imageUrl} 
               alt={product.name} 
               fill 
-              className="object-cover"
+              className="object-cover transition-transform duration-200 ease-out"
+              style={zoomStyle}
               priority
             />
+            <div className="absolute bottom-4 left-4 z-10 bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full pointer-events-none">
+              <p className="text-[9px] font-black uppercase tracking-widest text-white/80 flex items-center gap-2">
+                <Microscope className="h-3 w-3 text-primary" /> Macro-Lens Enabled
+              </p>
+            </div>
           </div>
         </div>
 
@@ -203,5 +232,3 @@ export default function ProductPage() {
     </div>
   );
 }
-
-import Link from 'next/link';
