@@ -39,9 +39,9 @@
     },
     {
       "id": "hero",
-      "description": "Black hero placeholder",
-      "imageUrl": "https://placehold.co/1920x1080/000000/000000/png",
-      "imageHint": "black background"
+      "description": "Premium macro crystalline cannabis bud on black background",
+      "imageUrl": "https://picsum.photos/seed/macro_bud_hero_1/1920/1080",
+      "imageHint": "cannabis macro"
     }
   ]
 }
