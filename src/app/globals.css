@@ -39,6 +39,17 @@
   }
 }
 
+@layer utilities {
+  .text-hollow-white {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+  .text-hollow-primary {
+    -webkit-text-stroke: 1px hsl(var(--primary));
+    color: transparent;
+  }
+}
+
 @keyframes logo-draw {
   0% {
     stroke-dasharray: 0 1000;

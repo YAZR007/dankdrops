@@ -33,7 +33,7 @@ export default function HomePage() {
             </div>
             
             <h1 className="font-headline text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 md:mb-8 leading-none">
-              THE <span className="text-primary">MACRO</span> COLLECTION.
+              <span className="text-hollow-white">THE</span> <span className="text-primary">MACRO</span> <span className="text-hollow-white">COLLECTION</span>.
             </h1>
 
             <p className="text-base md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
@@ -85,7 +85,7 @@ export default function HomePage() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
-            MACRO <span className="text-primary">IN MOTION</span>.
+            <span className="text-hollow-white">MACRO</span> <span className="text-primary">IN MOTION</span>.
           </h2>
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
             The Living Resin Experience
@@ -99,7 +99,7 @@ export default function HomePage() {
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
-          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto">
+          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
             <Image 
               src={flowerCatImage} 
               alt="Flower" 
@@ -108,12 +108,12 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-white uppercase tracking-tighter group-hover:text-primary transition-colors">Elite Flower</h3>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter group-hover:text-primary transition-colors">Elite Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
             </div>
           </Link>
           <div className="grid grid-cols-1 gap-4 md:gap-10">
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto">
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
               <Image 
                 src={concentratesCatImage} 
                 alt="Concentrates" 
@@ -123,10 +123,10 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Artisanal Extracts</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-50 group-hover:opacity-100 transition-all">Artisanal Extracts</h3>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto">
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
               <Image 
                 src={ediblesCatImage} 
                 alt="Edibles" 
@@ -136,7 +136,7 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Boutique Edibles</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-50 group-hover:opacity-100 transition-all">Boutique Edibles</h3>
               </div>
             </div>
           </div>
