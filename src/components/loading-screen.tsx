@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -39,11 +40,11 @@ export function LoadingScreen() {
 
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 2500);
+      }, 2000);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 3200);
+      }, 2700);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -77,7 +78,7 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[12rem] md:text-[8rem] lg:text-[9rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[12rem] md:text-[6rem] lg:text-[7rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
