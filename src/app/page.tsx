@@ -10,6 +10,7 @@ import { ArrowRight, Leaf, Shield, Award } from 'lucide-react';
 export default function HomePage() {
   const featuredFlowers = PRODUCTS.filter(p => p.category === 'Flower').slice(0, 4);
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero')?.imageUrl || '';
+  const blackPlaceholder = "https://placehold.co/1000/000000/000000/png";
 
   return (
     <div className="flex flex-col gap-16 pb-16">
@@ -68,11 +69,10 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 h-[650px]">
           <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-3xl">
             <Image 
-              src="https://picsum.photos/seed/macro_flower_hero/1000/1000" 
+              src={blackPlaceholder} 
               alt="Flower" 
               fill 
               className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
-              data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
               <h3 className="font-headline text-5xl font-black text-white uppercase tracking-tighter leading-none mb-4">Elite Flower</h3>
@@ -82,11 +82,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-10">
             <Link href="/shop?category=Concentrates" className="group relative overflow-hidden rounded-3xl">
               <Image 
-                src="https://picsum.photos/seed/macro_wax_hero/1000/500" 
+                src={blackPlaceholder} 
                 alt="Concentrates" 
                 fill 
                 className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
-                data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="font-headline text-3xl font-black text-white uppercase tracking-tighter">Artisanal Extracts</h3>
@@ -94,11 +93,10 @@ export default function HomePage() {
             </Link>
             <Link href="/shop?category=Edibles" className="group relative overflow-hidden rounded-3xl">
               <Image 
-                src="https://picsum.photos/seed/macro_gummy_hero/1000/500" 
+                src={blackPlaceholder} 
                 alt="Edibles" 
                 fill 
                 className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
-                data-ai-hint="cannabis gummy"
               />
               <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="font-headline text-3xl font-black text-white uppercase tracking-tighter">Boutique Edibles</h3>

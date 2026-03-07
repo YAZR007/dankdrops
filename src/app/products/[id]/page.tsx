@@ -47,6 +47,8 @@ export default function ProductPage() {
     });
   };
 
+  const blackPlaceholder = "https://placehold.co/600x800/000000/000000/png";
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <button 
@@ -72,11 +74,10 @@ export default function ProductPage() {
             {[1, 2, 3].map(i => (
               <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted cursor-pointer hover:opacity-80 transition-opacity">
                 <Image 
-                  src={`https://picsum.photos/seed/macro_thumb_${i}_${product.id}/400/600`} 
-                  alt={`${product.name} macro thumb ${i}`} 
+                  src={blackPlaceholder} 
+                  alt={`${product.name} placeholder ${i}`} 
                   fill 
                   className="object-cover"
-                  data-ai-hint="cannabis macro"
                 />
               </div>
             ))}

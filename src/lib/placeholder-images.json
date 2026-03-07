@@ -2,79 +2,79 @@
   "placeholderImages": [
     {
       "id": "p1",
-      "description": "Black placeholder for premium flower",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "p2",
-      "description": "Black placeholder for accessories",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "p3",
-      "description": "Black placeholder for concentrates",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "p4",
-      "description": "Black placeholder for edibles",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "p5",
-      "description": "Black placeholder for vapes",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "p6",
-      "description": "Black placeholder for lifestyle gear",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "hero",
-      "description": "Black hero placeholder",
-      "imageUrl": "https://placehold.co/1920x1080/000000/000000/png",
-      "imageHint": "black background"
+      "description": "Premium macro crystalline cannabis bud on black background",
+      "imageUrl": "https://picsum.photos/seed/macro_bud_hero_1/1920/1080",
+      "imageHint": "cannabis macro"
     },
     {
       "id": "macro-flower-1",
-      "description": "Black placeholder for macro flower 1",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-2",
-      "description": "Black placeholder for macro flower 2",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-3",
-      "description": "Black placeholder for macro flower 3",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-4",
-      "description": "Black placeholder for macro flower 4",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-concentrate",
-      "description": "Black placeholder for concentrates",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-edible",
-      "description": "Black placeholder for edibles",
+      "description": "Black placeholder",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     }
