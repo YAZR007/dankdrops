@@ -64,7 +64,7 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-6xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-7xl sm:text-8xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>

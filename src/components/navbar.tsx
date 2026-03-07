@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { ShoppingBag, User, Search, Menu, X } from 'lucide-react';
+import { ShoppingBag, User, Search, Menu, X, ChevronRight } from 'lucide-react';
 import { useCart } from '@/context/cart-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,7 +16,8 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
+        {/* Left Section: Mobile Menu Trigger & Desktop Nav */}
         <div className="flex items-center gap-4 md:gap-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -47,15 +48,17 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
+          {/* Desktop Logo (Visible only on md+) */}
           <Link 
             href="/" 
-            className="flex items-center group transition-all duration-300 hover:scale-105 active:scale-95 transform-gpu"
+            className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-95 transform-gpu"
           >
-            <span className="font-headline text-lg sm:text-2xl font-black tracking-tighter text-primary transition-all duration-300 uppercase drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]">
+            <span className="font-headline text-2xl font-black tracking-tighter text-primary transition-all duration-300 uppercase drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]">
               DANKDROPS
             </span>
           </Link>
 
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/shop" 
@@ -78,7 +81,17 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex-1 max-w-md hidden lg:block">
+        {/* Center Logo (Visible only on mobile) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
+          <Link href="/" className="flex items-center group active:scale-95 transition-transform">
+            <span className="font-headline text-xl font-black tracking-tighter text-primary uppercase drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]">
+              DANKDROPS
+            </span>
+          </Link>
+        </div>
+
+        {/* Center Section: Desktop Search */}
+        <div className="hidden lg:block flex-1 max-w-md mx-8">
           <div className="relative group transition-all hover:scale-[1.02]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
             <Input 
@@ -88,6 +101,7 @@ export function Navbar() {
           </div>
         </div>
 
+        {/* Right Section: Mobile Search, Profile, Cart */}
         <div className="flex items-center space-x-1 sm:space-x-2">
           <Button 
             variant="ghost" 
@@ -139,24 +153,5 @@ export function Navbar() {
         </div>
       )}
     </nav>
-  );
-}
-
-function ChevronRight({ className }: { className?: string }) {
-  return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="3" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      className={className}
-    >
-      <path d="m9 18 6-6-6-6"/>
-    </svg>
   );
 }
