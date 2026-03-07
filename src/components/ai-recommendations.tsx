@@ -38,7 +38,6 @@ export function AIRecommendations({ currentProductId }: AIRecommendationsProps) 
         const products = PRODUCTS.filter(p => recIds.includes(p.id) && p.id !== currentProductId);
         setRecommendations(products.slice(0, 4));
       } catch (error) {
-        // Fallback to random products if flow fails
         setRecommendations(PRODUCTS.filter(p => p.id !== currentProductId).slice(0, 4));
       } finally {
         setLoading(false);
