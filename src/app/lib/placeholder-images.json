@@ -3,56 +3,56 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "Elite macro shot of a frosty dark purple cannabis bud with heavy crystalline trichomes on a pure black background",
-      "imageUrl": "https://picsum.photos/seed/macro_frosty_purple_bud_hero/1920/1080",
+      "description": "Elite macro shot of a frosty dark purple cannabis bud with heavy crystalline trichomes",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "macro bud"
     },
     {
       "id": "flower-1",
       "description": "Macro shot of Purple Urkle strain",
-      "imageUrl": "https://picsum.photos/seed/purple_urkle_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "flower-2",
       "description": "Macro shot of Granddaddy Purple strain",
-      "imageUrl": "https://picsum.photos/seed/gdp_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "flower-3",
       "description": "Macro shot of Ghost Train Haze strain",
-      "imageUrl": "https://picsum.photos/seed/ghost_train_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "flower-4",
       "description": "Macro shot of Wedding Cake strain",
-      "imageUrl": "https://picsum.photos/seed/wedding_cake_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "flower-5",
       "description": "Macro shot of Northern Lights strain",
-      "imageUrl": "https://picsum.photos/seed/northern_lights_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "flower-6",
       "description": "Macro shot of Sour Diesel strain",
-      "imageUrl": "https://picsum.photos/seed/sour_diesel_macro_1/600/800",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis macro"
     },
     {
       "id": "concentrates",
       "description": "Macro shot of golden cannabis extract",
-      "imageUrl": "https://picsum.photos/seed/extract_macro_1/1000/1000",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis extract"
     },
     {
       "id": "edibles",
       "description": "Gourmet boutique cannabis edibles",
-      "imageUrl": "https://picsum.photos/seed/edible_macro_1/1000/1000",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp",
       "imageHint": "cannabis edible"
     }
   ]
