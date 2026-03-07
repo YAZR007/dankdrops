@@ -21,7 +21,7 @@ export default function HomePage() {
       <section className="relative h-[80vh] md:h-[85vh] min-h-[500px] w-full overflow-hidden flex items-center">
         <Image 
           src={heroImage} 
-          alt="DankDrops Flagship" 
+          alt="DANKDROPS Flagship" 
           fill 
           className="object-cover brightness-[0.35]"
           priority
