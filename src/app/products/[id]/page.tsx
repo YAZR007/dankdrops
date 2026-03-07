@@ -3,7 +3,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { PRODUCTS } from '@/lib/products';
+import { PRODUCTS, getPriceForSize } from '@/lib/products';
 import { useCart } from '@/context/cart-context';
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -32,15 +32,20 @@ export default function ProductPage() {
     return PRODUCTS.find(p => p.id === id);
   }, [id]);
 
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '3.5g');
+  const [selectedColor, setSelectedColor] = useState(product?.colors[0] || 'Hybrid');
+  
+  const currentPrice = useMemo(() => {
+    if (!product) return 0;
+    return getPriceForSize(product.price, selectedSize);
+  }, [product, selectedSize]);
+
   const images = useMemo(() => {
     if (!product) return [];
     return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
   }, [product]);
 
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '');
-  const [selectedColor, setSelectedColor] = useState(product?.colors[0] || '');
-  
   // Magnification State
   const [showLens, setShowLens] = useState(false);
   const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
@@ -48,7 +53,6 @@ export default function ProductPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Lock scroll when lens is active on mobile to prevent accidental page movement
     if (showLens && window.innerWidth < 768) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -129,7 +133,6 @@ export default function ProductPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
         <div className="space-y-6">
-          {/* Main Viewport */}
           <div 
             ref={containerRef}
             className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none"
@@ -148,33 +151,29 @@ export default function ProductPage() {
               priority
             />
 
-            {/* Navigation Arrows */}
             {images.length > 1 && (
               <>
                 <button 
                   onClick={prevImage}
                   className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all md:opacity-0 group-hover:opacity-100 flex items-center justify-center"
-                  aria-label="Previous image"
                 >
                   <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
                 <button 
                   onClick={nextImage}
                   className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all md:opacity-0 group-hover:opacity-100 flex items-center justify-center"
-                  aria-label="Next image"
                 >
                   <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
               </>
             )}
 
-            {/* Dank Lens (Magnifier) */}
             {showLens && (
               <div 
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-20 bg-black"
                 style={{
                   left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Offset higher on mobile to see under finger
+                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104),
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
@@ -190,7 +189,6 @@ export default function ProductPage() {
             </div>
           </div>
 
-          {/* Thumbnail Switcher */}
           {images.length > 1 && (
             <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
               {images.map((img, idx) => (
@@ -220,7 +218,7 @@ export default function ProductPage() {
               {product.name}
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-2xl md:text-3xl font-bold text-white">${product.price}</span>
+              <span className="text-2xl md:text-3xl font-bold text-white">£{currentPrice}</span>
               {product.isNewArrival && (
                 <Badge className="bg-primary text-white px-2 py-0.5 md:px-3 md:py-1 text-[8px] md:text-[10px] font-bold uppercase tracking-wider">NEW HARVEST</Badge>
               )}
@@ -262,39 +260,21 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <div className="mb-8">
-            <h4 className="text-xs font-bold uppercase tracking-wider mb-4">Strain Type</h4>
-            <div className="flex flex-wrap gap-3">
-              {product.colors.map(color => (
-                <button
-                  key={color}
-                  onClick={() => setSelectedColor(color)}
-                  className={`px-4 py-2 rounded-md border text-xs font-bold transition-all ${
-                    selectedColor === color 
-                      ? 'border-primary bg-primary/10 text-primary shadow-[0_0_10px_rgba(126,42,219,0.3)]' 
-                      : 'border-border hover:border-primary/50 text-muted-foreground'
-                  }`}
-                >
-                  {color}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="mb-10">
             <h4 className="text-xs font-bold uppercase tracking-wider mb-4">Select Weight</h4>
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+            <div className="grid grid-cols-4 gap-3">
               {product.sizes.map(size => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`aspect-square flex items-center justify-center rounded-md border text-xs font-black transition-all ${
+                  className={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${
                     selectedSize === size 
-                      ? 'border-primary bg-primary text-white shadow-[0_0_15px_rgba(126,42,219,0.4)]' 
-                      : 'border-border hover:border-primary/50 text-muted-foreground'
+                      ? 'border-primary bg-primary/10 shadow-[0_0_15px_rgba(126,42,219,0.3)]' 
+                      : 'border-white/10 hover:border-white/30 bg-black/40'
                   }`}
                 >
-                  {size}
+                  <span className={`text-xs font-black uppercase tracking-widest ${selectedSize === size ? 'text-primary' : 'text-muted-foreground'}`}>{size}</span>
+                  <span className="text-[10px] font-bold mt-1">£{getPriceForSize(product.price, size)}</span>
                 </button>
               ))}
             </div>

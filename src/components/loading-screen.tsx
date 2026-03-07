@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
-  // Initialize with 1 to avoid a 0 -> 1 jump on hydration
   const [animationKey, setAnimationKey] = useState(1);
   const pathname = usePathname();
   const lastPathname = useRef(pathname);
@@ -20,18 +19,14 @@ export function LoadingScreen() {
     if (shouldAnimate) {
       setStatus('visible');
       
-      // Only increment key on sub-navigation to force restart, 
-      // but avoid it on initial mount to prevent the hydration glitch.
       if (!isInitialMount.current) {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // The drawing animation takes 3s (defined in globals.css)
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
       }, 3000);
 
-      // Hide completely after fade transition
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
       }, 3700);
@@ -58,13 +53,13 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 800 200" className="w-full max-w-4xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-6xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-7xl sm:text-8xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-8xl sm:text-[12rem] md:text-[16rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>

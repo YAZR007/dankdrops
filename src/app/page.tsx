@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, Leaf, Shield, Award, Play } from 'lucide-react';
+import { ArrowRight, Leaf, Shield, Award } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
@@ -75,23 +75,20 @@ export default function HomePage() {
           muted 
           loop 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.4]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.6]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-40" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/50 mx-auto mb-6 md:mb-8 animate-pulse">
-            <Play className="h-6 w-6 md:h-8 md:w-8 text-primary fill-primary" />
-          </div>
-          <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4">
+          <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-lg">
             Macro <span className="text-primary">In Motion</span>.
           </h2>
-          <p className="text-white/80 text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8">
+          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-md">
             The Living Resin Experience
           </p>
-          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6">
+          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6 backdrop-blur-sm">
             <Link href="/shop?category=Flower">EXPLORE THE HARVEST</Link>
           </Button>
         </div>

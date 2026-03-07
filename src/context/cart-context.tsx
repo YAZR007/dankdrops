@@ -3,6 +3,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CartItem, Product } from '@/types/product';
+import { getPriceForSize } from '@/lib/products';
 
 interface CartContextType {
   cart: CartItem[];
@@ -35,6 +36,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [cart]);
 
   const addToCart = (product: Product, size: string, color: string) => {
+    const calculatedPrice = getPriceForSize(product.price, size);
+    
     setCart(prev => {
       const existing = prev.find(item => 
         item.id === product.id && 
@@ -48,7 +51,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1, selectedSize: size, selectedColor: color }];
+      return [...prev, { 
+        ...product, 
+        quantity: 1, 
+        selectedSize: size, 
+        selectedColor: color,
+        priceAtSelection: calculatedPrice 
+      }];
     });
   };
 
@@ -71,7 +80,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const clearCart = () => setCart([]);
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + (item.priceAtSelection || item.price) * item.quantity, 0);
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalItems, totalPrice }}>

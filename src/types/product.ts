@@ -4,7 +4,7 @@ export interface Product {
   name: string;
   description: string;
   category: string;
-  price: number;
+  price: number; // Base price for 3.5g
   imageUrl: string;
   secondaryImageUrl?: string;
   sizes: string[];
@@ -20,4 +20,5 @@ export interface CartItem extends Product {
   quantity: number;
   selectedSize: string;
   selectedColor: string;
+  priceAtSelection: number; // The actual price based on the selected size
 }

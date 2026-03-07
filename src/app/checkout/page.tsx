@@ -59,9 +59,7 @@ export default function CheckoutPage() {
       <h1 className="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter mb-12">Checkout</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Main Content */}
         <div className="lg:col-span-7 space-y-12">
-          {/* Step 1: Shipping */}
           <section className="space-y-6">
             <div className="flex items-center gap-4 mb-2">
               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">1</div>
@@ -82,16 +80,16 @@ export default function CheckoutPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="city">City</Label>
-                <Input id="city" placeholder="Mendocino" className="bg-muted/50 border-none" />
+                <Input id="city" placeholder="London" className="bg-muted/50 border-none" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="state">State</Label>
-                  <Input id="state" placeholder="CA" className="bg-muted/50 border-none" />
+                  <Label htmlFor="state">County</Label>
+                  <Input id="state" placeholder="Greater London" className="bg-muted/50 border-none" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zip">ZIP</Label>
-                  <Input id="zip" placeholder="95460" className="bg-muted/50 border-none" />
+                  <Label htmlFor="zip">Postcode</Label>
+                  <Input id="zip" placeholder="E1 6AN" className="bg-muted/50 border-none" />
                 </div>
               </div>
             </div>
@@ -99,7 +97,6 @@ export default function CheckoutPage() {
 
           <Separator className="bg-white/5" />
 
-          {/* Step 2: Payment */}
           <section className="space-y-6">
             <div className="flex items-center gap-4 mb-2">
               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">2</div>
@@ -192,7 +189,6 @@ export default function CheckoutPage() {
           </section>
         </div>
 
-        {/* Sidebar: Order Summary */}
         <aside className="lg:col-span-5">
           <Card className="bg-secondary/20 border-white/5 sticky top-24">
             <CardHeader>
@@ -209,7 +205,7 @@ export default function CheckoutPage() {
                       <h4 className="font-bold text-xs truncate uppercase">{item.name}</h4>
                       <p className="text-[10px] text-muted-foreground">{item.selectedSize} | Qty: {item.quantity}</p>
                     </div>
-                    <p className="font-bold text-xs self-center">${item.price * item.quantity}</p>
+                    <p className="font-bold text-xs self-center">£{(item.priceAtSelection || item.price) * item.quantity}</p>
                   </div>
                 ))}
               </div>
@@ -219,7 +215,7 @@ export default function CheckoutPage() {
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span>${totalPrice}</span>
+                  <span>£{totalPrice}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Discreet Shipping</span>
@@ -228,7 +224,7 @@ export default function CheckoutPage() {
                 <Separator className="bg-white/5" />
                 <div className="flex justify-between items-end">
                   <span className="font-headline text-lg font-bold uppercase tracking-tight">Total</span>
-                  <span className="text-3xl font-black text-white">${totalPrice}</span>
+                  <span className="text-3xl font-black text-white">£{totalPrice}</span>
                 </div>
               </div>
 

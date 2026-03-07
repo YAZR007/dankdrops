@@ -25,7 +25,7 @@ export const PRODUCTS: Product[] = [
     name: 'Permanent Marker',
     description: 'Leafly 2023 Strain of the Year. This high-potency hybrid is floral, soapy, and gassy with a powerful punch that leaves you in a state of creative bliss.',
     category: 'Flower',
-    price: 75,
+    price: 60, // Base price for 3.5g in GBP
     imageUrl: GENERIC_MACRO,
     secondaryImageUrl: PERMANENT_MARKER_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
@@ -41,7 +41,7 @@ export const PRODUCTS: Product[] = [
     name: 'Blue Dream',
     description: 'A legendary sativa-dominant hybrid that balances full-body relaxation with gentle cerebral invigoration. Known for its sweet berry aroma.',
     category: 'Flower',
-    price: 60,
+    price: 50,
     imageUrl: BLUE_DREAM_PRIMARY,
     secondaryImageUrl: BLUE_DREAM_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
@@ -57,7 +57,7 @@ export const PRODUCTS: Product[] = [
     name: 'GMO Cookies',
     description: 'Also known as "Garlic Cookies," this indica-dominant heavy hitter is famous for its savory, funky aroma and profound sedative effects.',
     category: 'Flower',
-    price: 70,
+    price: 55,
     imageUrl: GMO_COOKIES_PRIMARY,
     secondaryImageUrl: GMO_COOKIES_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     name: 'Gelato #41',
     description: 'A high-end hybrid featuring a complex aroma of sweet sherbet, blueberries, and citrus. Perfect for those looking for a balanced, flavorful smoke.',
     category: 'Flower',
-    price: 65,
+    price: 52,
     imageUrl: GELATO_41_PRIMARY,
     secondaryImageUrl: GELATO_41_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
@@ -89,7 +89,7 @@ export const PRODUCTS: Product[] = [
     name: 'OG Kush',
     description: 'The backbone of West Coast cannabis. OG Kush has a unique terpene profile that boasts a complex aroma with notes of fuel, skunk, and spice.',
     category: 'Flower',
-    price: 60,
+    price: 45,
     imageUrl: GENERIC_MACRO,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
@@ -100,3 +100,12 @@ export const PRODUCTS: Product[] = [
     effects: ['Relaxed', 'Hungry', 'Sleepy']
   }
 ];
+
+export const getPriceForSize = (basePrice: number, size: string): number => {
+  switch (size) {
+    case '7g': return Math.round(basePrice * 1.85);
+    case '14g': return Math.round(basePrice * 3.4);
+    case '28g': return Math.round(basePrice * 6.2);
+    default: return basePrice; // 3.5g
+  }
+};

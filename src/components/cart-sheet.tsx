@@ -89,7 +89,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
                         </Button>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="font-bold text-accent text-sm">${item.price * item.quantity}</span>
+                        <span className="font-bold text-accent text-sm">£{(item.priceAtSelection || item.price) * item.quantity}</span>
                         <Button 
                           variant="ghost" 
                           size="icon" 
@@ -111,7 +111,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
           <SheetFooter className="p-6 bg-secondary/10 border-t border-white/5 flex-col sm:flex-col gap-4">
             <div className="flex items-center justify-between w-full">
               <span className="text-muted-foreground font-bold uppercase tracking-widest text-xs">Subtotal</span>
-              <span className="text-2xl font-black">${totalPrice}</span>
+              <span className="text-2xl font-black">£{totalPrice}</span>
             </div>
             <p className="text-[10px] text-muted-foreground text-center italic">Discreet shipping calculated at next step</p>
             <SheetTrigger asChild>

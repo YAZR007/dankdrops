@@ -42,7 +42,6 @@ export function ProductCard({ product }: ProductCardProps) {
               New
             </Badge>
           )}
-          {/* Subtle hover overlay highlight */}
           <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         </div>
         <CardFooter className="flex flex-col items-start p-2 md:p-4 gap-0.5 md:gap-1 flex-grow">
@@ -50,7 +49,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <h3 className="font-headline font-bold text-sm md:text-lg leading-tight group-hover:text-primary transition-colors line-clamp-1 uppercase tracking-tight w-full">
             {product.name}
           </h3>
-          <p className="font-bold text-accent text-xs md:text-base mb-2">${product.price}</p>
+          <p className="font-bold text-accent text-xs md:text-base mb-2">£{product.price}</p>
           
           <Button 
             variant="outline" 
