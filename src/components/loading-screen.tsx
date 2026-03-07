@@ -25,6 +25,9 @@ export function LoadingScreen() {
 
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
+    
+    // Only animate on the initial load or significant navigation changes
+    // avoiding the flash on product detail transitions for better UX
     const shouldAnimate = isInitialMount.current || (isNewPath && !isProductPage);
 
     if (shouldAnimate) {
@@ -36,11 +39,11 @@ export function LoadingScreen() {
 
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 3000);
+      }, 2500);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 3700);
+      }, 3200);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -49,14 +52,17 @@ export function LoadingScreen() {
         clearTimeout(fadeTimer);
         clearTimeout(hideTimer);
       };
-    } else if (isNewPath && isProductPage) {
-      lastPathname.current = pathname;
+    } else {
+      // If we shouldn't animate, ensure it stays hidden
       setStatus('hidden');
     }
   }, [pathname, isMounted]);
 
-  // If component is not mounted yet (SSR phase) or hidden, don't render.
-  if (!isMounted || status === 'hidden') return null;
+  // If component is not mounted yet (SSR phase) don't render to avoid hydration errors
+  if (!isMounted) return null;
+  
+  // If hidden, remove from DOM
+  if (status === 'hidden') return null;
 
   return (
     <div 
@@ -65,13 +71,13 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 1000 300" className="w-full max-w-[90vw] md:max-w-6xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-4xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[10rem] sm:text-[12rem] md:text-[8rem] lg:text-[10rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[12rem] md:text-[8rem] lg:text-[9rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
