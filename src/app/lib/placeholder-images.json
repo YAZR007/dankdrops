@@ -2,26 +2,32 @@
 {
   "placeholderImages": [
     {
+      "id": "hero",
+      "description": "Elite macro shot of a frosty crystalline cannabis bud with dark purple leaves on a pure black background",
+      "imageUrl": "https://picsum.photos/seed/macro_frosty_purple_bud/1920/1080",
+      "imageHint": "macro bud"
+    },
+    {
       "id": "macro-flower-1",
-      "description": "Black placeholder for macro flower 1",
+      "description": "Black placeholder for boutique flower",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-2",
-      "description": "Black placeholder for macro flower 2",
+      "description": "Black placeholder for boutique flower",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-3",
-      "description": "Black placeholder for macro flower 3",
+      "description": "Black placeholder for boutique flower",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
     {
       "id": "macro-flower-4",
-      "description": "Black placeholder for macro flower 4",
+      "description": "Black placeholder for boutique flower",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
     },
@@ -36,12 +42,6 @@
       "description": "Black placeholder for edibles",
       "imageUrl": "https://placehold.co/600x800/000000/000000/png",
       "imageHint": "black square"
-    },
-    {
-      "id": "hero",
-      "description": "Premium macro crystalline cannabis bud on black background",
-      "imageUrl": "https://picsum.photos/seed/macro_bud_hero_1/1920/1080",
-      "imageHint": "cannabis macro"
     }
   ]
 }
