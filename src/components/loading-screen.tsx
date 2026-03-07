@@ -35,7 +35,7 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Time the fade-out to occur AFTER the logo fills (animation is 3s)
+      // Time the fade-out to occur AFTER the logo completes its fill cycle
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
       }, 3200);
@@ -71,7 +71,7 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[110px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[95px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>

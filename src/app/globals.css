@@ -48,11 +48,13 @@
   5% {
     opacity: 1;
   }
-  60% {
+  75% {
+    /* Slower stroke drawing (occupies more of the 3s) */
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
   85% {
+    /* Quicker transition to fill after drawing ends */
     stroke-dasharray: 1000 0;
     fill: hsl(var(--primary));
   }
