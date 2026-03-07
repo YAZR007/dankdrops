@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -6,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 /**
  * LoadingScreen component that displays a high-impact logo animation.
- * Optimized for mobile and desktop sizing with proper hydration deferral.
+ * Features a draw-to-fill sequence before revealing the page.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -16,7 +15,6 @@ export function LoadingScreen() {
   const lastPathname = useRef(pathname);
   const isInitialMount = useRef(true);
 
-  // Defer rendering until after hydration to prevent mismatches
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -37,13 +35,14 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
+      // Time the fade-out to occur AFTER the logo fills (animation is 2s)
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 1800);
+      }, 2200);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 2500);
+      }, 2900);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -66,7 +65,7 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-4xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-5xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"

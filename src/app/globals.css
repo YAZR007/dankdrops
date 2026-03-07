@@ -45,12 +45,16 @@
     fill: transparent;
     opacity: 0;
   }
-  10% {
+  5% {
     opacity: 1;
   }
-  80% {
+  60% {
     stroke-dasharray: 1000 0;
     fill: transparent;
+  }
+  85% {
+    stroke-dasharray: 1000 0;
+    fill: hsl(var(--primary));
   }
   100% {
     stroke-dasharray: 1000 0;
@@ -60,5 +64,5 @@
 }
 
 .animate-logo-draw {
-  animation: logo-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
