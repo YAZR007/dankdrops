@@ -8,7 +8,7 @@ import { useCart } from '@/context/cart-context';
 import { useState, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ChevronLeft, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles } from 'lucide-react';
 import { AIRecommendations } from '@/components/ai-recommendations';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -89,6 +89,16 @@ export default function ProductPage() {
     setShowLens(true);
   };
 
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <button 
@@ -103,7 +113,7 @@ export default function ProductPage() {
           {/* Main Viewport */}
           <div 
             ref={containerRef}
-            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none"
+            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setShowLens(true)}
             onMouseLeave={() => setShowLens(false)}
@@ -115,6 +125,26 @@ export default function ProductPage() {
               className="object-cover"
               priority
             />
+
+            {/* Navigation Arrows for Computer Users */}
+            {images.length > 1 && (
+              <>
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/40 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/40 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </>
+            )}
 
             {/* Dank Lens (Magnifier) */}
             {showLens && (
