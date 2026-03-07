@@ -10,15 +10,14 @@ export function LoadingScreen() {
   const lastPathname = useRef(pathname);
 
   useEffect(() => {
-    const handleStart = () => {
+    // Only trigger if pathname actually changed
+    if (lastPathname.current !== pathname) {
       setStatus('visible');
       setAnimationKey((prev) => prev + 1);
-    };
+      lastPathname.current = pathname;
+    }
 
-    handleStart();
-    lastPathname.current = pathname;
-
-    // The drawing animation now takes 3s (defined in globals.css)
+    // The drawing animation takes 3s (defined in globals.css)
     const fadeTimer = setTimeout(() => {
       setStatus('fading');
     }, 3000);
