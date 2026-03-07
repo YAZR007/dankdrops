@@ -6,6 +6,7 @@ import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, Leaf, Shield, Award } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
   const featuredFlowers = PRODUCTS.filter(p => p.category === 'Flower').slice(0, 4);
@@ -89,10 +90,11 @@ export default function HomePage() {
                 src={concentratesCatImage} 
                 alt="Concentrates" 
                 fill 
-                className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
                 <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">Artisanal Extracts</h3>
               </div>
             </Link>
@@ -101,10 +103,11 @@ export default function HomePage() {
                 src={ediblesCatImage} 
                 alt="Edibles" 
                 fill 
-                className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis edible"
               />
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
                 <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">Boutique Edibles</h3>
               </div>
             </Link>

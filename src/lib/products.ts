@@ -98,50 +98,5 @@ export const PRODUCTS: Product[] = [
     thc: '20%',
     terpenes: ['Myrcene', 'Limonene', 'Caryophyllene'],
     effects: ['Relaxed', 'Hungry', 'Sleepy']
-  },
-  {
-    id: 'c1',
-    name: 'Live Rosin: Permanent Marker',
-    description: 'Solventless extract made from fresh-frozen Permanent Marker flower. Captures the intense floral and gassy profile in its purest form.',
-    category: 'Concentrates',
-    price: 85,
-    imageUrl: GENERIC_MACRO,
-    sizes: ['1g', '2g'],
-    colors: ['Hybrid'],
-    isNewArrival: true,
-    lineage: 'Permanent Marker (First Press)',
-    thc: '82%',
-    terpenes: ['Caryophyllene', 'Limonene'],
-    effects: ['Creative', 'Relaxed', 'Happy']
-  },
-  {
-    id: 'e1',
-    name: 'Sleepy Time Indica Edibles',
-    description: 'Nano-infused gourmet gummies designed for maximum relaxation. Infused with terpene-rich Granddaddy Purple extract.',
-    category: 'Edibles',
-    price: 30,
-    imageUrl: GENERIC_MACRO,
-    sizes: ['10pk', '20pk'],
-    colors: ['Indica'],
-    isNewArrival: false,
-    lineage: 'Granddaddy Purple Infusion',
-    thc: '10mg/unit',
-    terpenes: ['Myrcene', 'Linalool'],
-    effects: ['Sleepy', 'Relaxed', 'Calm']
-  },
-  {
-    id: 'p1',
-    name: 'Infused Prerolls: GMO',
-    description: 'Top-shelf GMO flower infused with live resin and coated in blonde kief. For those seeking maximum potency and depth.',
-    category: 'Prerolls',
-    price: 45,
-    imageUrl: GENERIC_MACRO,
-    sizes: ['Single', '5-pack'],
-    colors: ['Indica'],
-    isNewArrival: true,
-    lineage: 'GMO Flower x Live Resin',
-    thc: '38%',
-    terpenes: ['Caryophyllene', 'Myrcene'],
-    effects: ['Euphoric', 'Sedated', 'Happy']
   }
 ];

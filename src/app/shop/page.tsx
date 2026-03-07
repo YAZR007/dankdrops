@@ -6,7 +6,7 @@ import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
 import { useState, useMemo } from 'react';
-import { Filter, SlidersHorizontal, X } from 'lucide-react';
+import { Filter, SlidersHorizontal, X, Clock } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Edibles', 'Vapes', 'Accessories'];
@@ -70,13 +70,16 @@ export default function ShopPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`text-left px-3 py-2 rounded-md transition-colors font-medium text-sm ${
+                  className={`text-left px-3 py-2 rounded-md transition-colors font-medium text-sm flex items-center justify-between group ${
                     activeCategory === cat 
                       ? 'bg-primary text-white' 
                       : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {cat}
+                  {cat !== 'All' && cat !== 'Flower' && (
+                    <span className="text-[8px] font-black tracking-tighter opacity-50 group-hover:opacity-100">SOON</span>
+                  )}
                 </button>
               ))}
             </div>
@@ -103,11 +106,14 @@ export default function ShopPage() {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <p className="text-xl font-bold mb-2">No results found</p>
-              <p className="text-muted-foreground mb-6">Try adjusting your filters or category.</p>
-              <Button onClick={() => setActiveCategory('All')} variant="outline">
-                Clear all filters
+            <div className="flex flex-col items-center justify-center py-20 text-center animate-in fade-in duration-700">
+              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-6">
+                <Clock className="h-8 w-8" />
+              </div>
+              <p className="font-headline text-3xl font-black uppercase tracking-tighter mb-2">Coming Soon</p>
+              <p className="text-muted-foreground mb-8 max-w-sm">We are currently curing our next batch of artisanal {activeCategory.toLowerCase()}. Sign up for drops to be notified.</p>
+              <Button onClick={() => setActiveCategory('Flower')} variant="outline" className="font-bold uppercase tracking-widest text-[10px]">
+                BROWSE CURRENT FLOWERS
               </Button>
             </div>
           )}
