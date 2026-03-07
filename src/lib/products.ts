@@ -2,6 +2,7 @@
 import { Product } from '@/types/product';
 
 const MACRO_IMG = "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_2c38c072dab44fc488cdfb554e857ee3~mv2.webp";
+const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_244,h_243,fp_0.50_0.50,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";
 
 export const PRODUCTS: Product[] = [
   {
@@ -11,6 +12,7 @@ export const PRODUCTS: Product[] = [
     category: 'Flower',
     price: 75,
     imageUrl: MACRO_IMG,
+    secondaryImageUrl: PERMANENT_MARKER_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: true,

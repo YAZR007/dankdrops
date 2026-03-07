@@ -7,6 +7,7 @@ import { Product } from '@/types/product';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
   product: Product;
@@ -21,16 +22,28 @@ export function ProductCard({ product }: ProductCardProps) {
             src={product.imageUrl}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className={cn(
+              "object-cover transition-all duration-700",
+              product.secondaryImageUrl ? "group-hover:opacity-0" : "group-hover:scale-110"
+            )}
             sizes="(max-width: 768px) 50vw, 33vw"
           />
+          {product.secondaryImageUrl && (
+            <Image
+              src={product.secondaryImageUrl}
+              alt={`${product.name} alternate view`}
+              fill
+              className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 50vw, 33vw"
+            />
+          )}
           {product.isNewArrival && (
-            <Badge className="absolute top-2 left-2 md:top-4 md:left-4 bg-primary text-white font-bold uppercase tracking-wider text-[8px] md:text-[10px] px-2 py-0.5">
+            <Badge className="absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-primary text-white font-bold uppercase tracking-wider text-[8px] md:text-[10px] px-2 py-0.5">
               New
             </Badge>
           )}
           {/* Subtle hover overlay highlight */}
-          <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         </div>
         <CardFooter className="flex flex-col items-start p-2 md:p-4 gap-0.5 md:gap-1 flex-grow">
           <p className="text-[8px] md:text-xs text-muted-foreground uppercase tracking-widest font-medium">{product.category}</p>

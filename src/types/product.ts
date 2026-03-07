@@ -6,6 +6,7 @@ export interface Product {
   category: string;
   price: number;
   imageUrl: string;
+  secondaryImageUrl?: string;
   sizes: string[];
   colors: string[];
   isNewArrival?: boolean;
