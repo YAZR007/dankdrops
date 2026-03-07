@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'twenty20mendocino.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
