@@ -1,25 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
   const [animationKey, setAnimationKey] = useState(0);
   const pathname = usePathname();
+  const lastPathname = useRef(pathname);
 
   useEffect(() => {
-    // Show the loader and reset animation key on every pathname change
-    setStatus('visible');
-    setAnimationKey((prev) => prev + 1);
-    
-    // The logo-draw animation takes 4s. 
-    // We start the fade out exactly at the 4s mark.
+    // Reset animation logic
+    const handleStart = () => {
+      setStatus('visible');
+      setAnimationKey((prev) => prev + 1);
+    };
+
+    handleStart();
+    lastPathname.current = pathname;
+
+    // The drawing animation takes 4s (defined in globals.css)
     const fadeTimer = setTimeout(() => {
       setStatus('fading');
     }, 4000);
 
-    // Completely remove from DOM after the 1s fade transition
+    // Hide completely after fade
     const hideTimer = setTimeout(() => {
       setStatus('hidden');
     }, 5000);
@@ -34,18 +39,18 @@ export function LoadingScreen() {
 
   return (
     <div 
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-1000 pointer-events-none ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-700 pointer-events-none ${
         status === 'fading' ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div className="relative" key={animationKey}>
-        <svg viewBox="0 0 500 100" className="w-[85vw] max-w-3xl h-auto overflow-visible">
+      <div className="relative w-full flex justify-center px-4" key={animationKey}>
+        <svg viewBox="0 0 800 200" className="w-full max-w-4xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.08em] text-7xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-8xl md:text-9xl stroke-primary stroke-[1.5px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
