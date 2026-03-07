@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ChevronLeft, ShoppingBag, Heart, Share2, Info } from 'lucide-react';
+import { ChevronLeft, ShoppingBag, Heart, Share2, Info, Wind, Zap, Microscope } from 'lucide-react';
 import { AIRecommendations } from '@/components/ai-recommendations';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -47,8 +47,6 @@ export default function ProductPage() {
     });
   };
 
-  const blackPlaceholder = "https://placehold.co/600x800/000000/000000/png";
-
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <button 
@@ -60,7 +58,7 @@ export default function ProductPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div className="space-y-4">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5">
             <Image 
               src={product.imageUrl} 
               alt={product.name} 
@@ -69,28 +67,21 @@ export default function ProductPage() {
               priority
             />
           </div>
-          <div className="grid grid-cols-4 gap-4">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-lg bg-black cursor-pointer hover:opacity-80 transition-opacity">
-                <Image 
-                  src={blackPlaceholder} 
-                  alt={`${product.name} placeholder ${i}`} 
-                  fill 
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="flex flex-col">
           <div className="mb-6">
-            <p className="text-sm text-primary font-bold tracking-widest uppercase mb-2">{product.category}</p>
+            <div className="flex items-center gap-2 mb-2">
+              <p className="text-sm text-primary font-bold tracking-widest uppercase">{product.category}</p>
+              {product.thc && (
+                <Badge variant="outline" className="border-accent text-accent font-black">{product.thc} THC</Badge>
+              )}
+            </div>
             <h1 className="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-2">
               {product.name}
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-bold text-accent">${product.price}</span>
+              <span className="text-3xl font-bold text-white">${product.price}</span>
               {product.isNewArrival && (
                 <Badge className="bg-primary text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider">NEW ARRIVAL</Badge>
               )}
@@ -101,7 +92,30 @@ export default function ProductPage() {
             {product.description}
           </p>
 
-          <Separator className="mb-8" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 bg-secondary/20 p-6 rounded-2xl border border-white/5">
+            <div>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2 flex items-center gap-1.5">
+                <Microscope className="h-3 w-3" /> Lineage
+              </h4>
+              <p className="font-bold text-sm">{product.lineage || 'Proprietary Hybrid'}</p>
+            </div>
+            <div>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2 flex items-center gap-1.5">
+                <Wind className="h-3 w-3" /> Top Terpenes
+              </h4>
+              <p className="font-bold text-sm">{product.terpenes?.join(', ') || 'Limonene, Myrcene'}</p>
+            </div>
+            <div className="sm:col-span-2">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2 flex items-center gap-1.5">
+                <Zap className="h-3 w-3" /> Reported Effects
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {product.effects?.map(effect => (
+                  <Badge key={effect} variant="secondary" className="bg-white/5 hover:bg-white/10 text-[10px] font-bold uppercase tracking-widest">{effect}</Badge>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <div className="mb-8">
             <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Strain Type</h4>
@@ -123,9 +137,7 @@ export default function ProductPage() {
           </div>
 
           <div className="mb-10">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-sm font-bold uppercase tracking-wider">Select Amount</h4>
-            </div>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Select Amount</h4>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
               {product.sizes.map(size => (
                 <button
@@ -161,9 +173,9 @@ export default function ProductPage() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="details">
-              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Strain Specs</AccordionTrigger>
+              <AccordionTrigger className="font-headline font-bold uppercase text-sm tracking-widest py-4">Cultivation Specs</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Hand-trimmed artisanal flower with peak trichome density.
+                Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

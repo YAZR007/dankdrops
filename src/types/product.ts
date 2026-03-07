@@ -9,6 +9,10 @@ export interface Product {
   sizes: string[];
   colors: string[];
   isNewArrival?: boolean;
+  lineage?: string;
+  thc?: string;
+  terpenes?: string[];
+  effects?: string[];
 }
 
 export interface CartItem extends Product {
