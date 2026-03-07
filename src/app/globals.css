@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,4 +37,27 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
   }
+}
+
+@keyframes logo-draw {
+  0% {
+    stroke-dasharray: 0 800;
+    fill: transparent;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    stroke-dasharray: 800 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dasharray: 800 0;
+    fill: hsl(var(--primary));
+  }
+}
+
+.animate-logo-draw {
+  animation: logo-draw 3.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }

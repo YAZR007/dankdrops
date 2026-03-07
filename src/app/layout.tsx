@@ -1,12 +1,12 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Navbar } from '@/components/navbar';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
+import { LoadingScreen } from '@/components/loading-screen';
 
 export const metadata: Metadata = {
-  title: 'DankDrops | Premium Boutique Cannabis',
+  title: 'DANKDROPS | Premium Boutique Cannabis',
   description: 'Elite cultivation, artisanal extracts, and curated cannabis experiences.',
 };
 
@@ -23,6 +23,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground min-h-screen flex flex-col">
+        <LoadingScreen />
         <CartProvider>
           <Navbar />
           <main className="flex-grow">
