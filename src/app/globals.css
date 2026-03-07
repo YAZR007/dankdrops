@@ -67,16 +67,6 @@
   animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Scroll-driven drawing animation */
-.scroll-draw-target {
-  view-timeline-name: --headlineReveal;
-  view-timeline-axis: block;
-  animation-timeline: --headlineReveal;
-  animation-name: logo-draw;
-  animation-range: entry 15% cover 50%;
-  animation-fill-mode: both;
-}
-
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }

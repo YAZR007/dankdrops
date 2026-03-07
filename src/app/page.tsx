@@ -32,26 +32,9 @@ export default function HomePage() {
               Micro-Grown • Artisanal • Elite
             </div>
             
-            <div className="mb-6 md:mb-8">
-              <svg viewBox="0 0 1000 240" className="w-full h-auto overflow-visible select-none pointer-events-none drop-shadow-2xl">
-                <text
-                  x="0"
-                  y="80"
-                  dominantBaseline="middle"
-                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent scroll-draw-target"
-                >
-                  THE <tspan fill="hsl(var(--primary))">MACRO</tspan>
-                </text>
-                <text
-                  x="0"
-                  y="180"
-                  dominantBaseline="middle"
-                  className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] md:text-[140px] stroke-primary stroke-[1.5px] md:stroke-[2px] fill-transparent scroll-draw-target"
-                >
-                  COLLECTION.
-                </text>
-              </svg>
-            </div>
+            <h1 className="font-headline text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 md:mb-8 leading-none">
+              THE <span className="text-primary">MACRO</span> COLLECTION.
+            </h1>
 
             <p className="text-base md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
               Experience cannabis through a different lens. High-potency, trichome-rich strains captured in their purest form.
@@ -71,17 +54,8 @@ export default function HomePage() {
       {/* Featured Strains */}
       <section className="container mx-auto px-4">
         <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
-          <div className="max-w-[400px] w-full">
-            <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible">
-              <text
-                x="0"
-                y="35"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
-              >
-                CURRENT STRAINS
-              </text>
-            </svg>
+          <div>
+            <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
             <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
           </div>
           <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
@@ -110,19 +84,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/30" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="mb-4">
-            <svg viewBox="0 0 800 100" className="w-full h-auto overflow-visible drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[60px] md:text-[80px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
-              >
-                MACRO <tspan fill="hsl(var(--primary))">IN MOTION</tspan>.
-              </text>
-            </svg>
-          </div>
+          <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
+            MACRO <span className="text-primary">IN MOTION</span>.
+          </h2>
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
             The Living Resin Experience
           </p>
@@ -144,18 +108,7 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-              <div className="w-full">
-                <svg viewBox="0 0 400 60" className="w-full h-auto overflow-visible">
-                  <text
-                    x="0"
-                    y="35"
-                    dominantBaseline="middle"
-                    className="font-headline font-black uppercase tracking-[-0.05em] text-[40px] md:text-[50px] stroke-primary stroke-[1px] md:stroke-[1.5px] fill-transparent scroll-draw-target"
-                  >
-                    ELITE FLOWER
-                  </text>
-                </svg>
-              </div>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-white uppercase tracking-tighter group-hover:text-primary transition-colors">Elite Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
             </div>
           </Link>
