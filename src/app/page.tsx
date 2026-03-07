@@ -99,7 +99,11 @@ export default function HomePage() {
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
-          <Link href="/shop?category=Flower" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
+          {/* Card: Elite Flower */}
+          <Link 
+            href="/shop?category=Flower" 
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:brightness-125 hover:shadow-[0_0_60px_rgba(126,42,219,0.4)]"
+          >
             <Image 
               src={flowerCatImage} 
               alt="Flower" 
@@ -108,35 +112,43 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter group-hover:text-primary transition-colors">Elite Flower</h3>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter group-hover:text-primary transition-all duration-500">Elite Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
             </div>
           </Link>
+
           <div className="grid grid-cols-1 gap-4 md:gap-10">
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
+            {/* Card: Artisanal Extracts */}
+            <div 
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:brightness-150 hover:shadow-[0_0_60px_rgba(126,42,219,0.4)] cursor-pointer"
+            >
               <Image 
                 src={concentratesCatImage} 
                 alt="Concentrates" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-50 group-hover:opacity-100 transition-all">Artisanal Extracts</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-70 group-hover:opacity-100 group-hover:text-primary transition-all duration-500">Artisanal Extracts</h3>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto hover:brightness-125 transition-all duration-500">
+
+            {/* Card: Boutique Edibles */}
+            <div 
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:brightness-150 hover:shadow-[0_0_60px_rgba(126,42,219,0.4)] cursor-pointer"
+            >
               <Image 
                 src={ediblesCatImage} 
                 alt="Edibles" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis edible"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-50 group-hover:opacity-100 transition-all">Boutique Edibles</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary uppercase tracking-tighter opacity-70 group-hover:opacity-100 group-hover:text-primary transition-all duration-500">Boutique Edibles</h3>
               </div>
             </div>
           </div>
