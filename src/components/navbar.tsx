@@ -22,9 +22,9 @@ export function Navbar() {
             <span className="font-headline text-2xl font-bold tracking-tighter text-primary">DANKDROPS</span>
           </Link>
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/shop" className="text-sm font-medium hover:text-primary transition-colors">SHOP ALL</Link>
-            <Link href="/shop?filter=new" className="text-sm font-medium hover:text-primary transition-colors">NEW ARRIVALS</Link>
-            <Link href="/shop?category=Hoodies" className="text-sm font-medium hover:text-primary transition-colors">HOODIES</Link>
+            <Link href="/shop" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">SHOP ALL</Link>
+            <Link href="/shop?category=Flower" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">BOUTIQUE FLOWER</Link>
+            <Link href="/shop?filter=new" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">NEW DROPS</Link>
           </div>
         </div>
 
@@ -32,7 +32,7 @@ export function Navbar() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input 
-              placeholder="Search drops..." 
+              placeholder="Search strains..." 
               className="pl-10 bg-muted/50 border-none focus-visible:ring-primary"
             />
           </div>
@@ -71,11 +71,11 @@ export function Navbar() {
                 <SheetTitle className="font-headline">DANKDROPS</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-4 mt-8">
-                <Link href="/shop" className="text-lg font-medium">Shop All</Link>
-                <Link href="/shop?filter=new" className="text-lg font-medium">New Arrivals</Link>
-                <Link href="/shop?category=Hoodies" className="text-lg font-medium">Hoodies</Link>
-                <Link href="/shop?category=T-Shirts" className="text-lg font-medium">T-Shirts</Link>
-                <Link href="/shop?category=Shoes" className="text-lg font-medium">Shoes</Link>
+                <Link href="/shop" className="text-lg font-bold uppercase">Shop All</Link>
+                <Link href="/shop?category=Flower" className="text-lg font-bold uppercase">Boutique Flower</Link>
+                <Link href="/shop?filter=new" className="text-lg font-bold uppercase">New Drops</Link>
+                <Link href="/shop?category=Concentrates" className="text-lg font-bold uppercase">Concentrates</Link>
+                <Link href="/shop?category=Edibles" className="text-lg font-bold uppercase">Edibles</Link>
               </div>
             </SheetContent>
           </Sheet>

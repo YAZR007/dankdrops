@@ -2,40 +2,40 @@
 {
   "placeholderImages": [
     {
-      "id": "p1",
+      "id": "macro-flower-1",
       "description": "High-resolution macro of a premium purple-hued cannabis bud with vibrant orange pistils and dense crystalline trichomes, shot against a deep black background.",
-      "imageUrl": "https://picsum.photos/seed/macro_purple_bud/600/800",
+      "imageUrl": "https://picsum.photos/seed/purple_macro_1/600/800",
       "imageHint": "cannabis macro"
     },
     {
-      "id": "p2",
-      "description": "Macro detail of artisanal hand-rolled joints, showing the texture of the organic paper against a dark void.",
-      "imageUrl": "https://picsum.photos/seed/macro_joint_1/600/800",
-      "imageHint": "cannabis joints"
+      "id": "macro-flower-2",
+      "description": "Macro shot of a frosty green and purple hybrid bud with intense trichome coverage on a black void background.",
+      "imageUrl": "https://picsum.photos/seed/purple_macro_2/600/800",
+      "imageHint": "cannabis macro"
     },
     {
-      "id": "p3",
-      "description": "Extreme close-up of golden live resin diamonds, refracting light in a dark studio setting.",
-      "imageUrl": "https://picsum.photos/seed/macro_wax_1/600/800",
+      "id": "macro-flower-3",
+      "description": "Extreme close-up of a deep violet indica flower with fiery orange hairs and shimmering resin glands.",
+      "imageUrl": "https://picsum.photos/seed/purple_macro_3/600/800",
+      "imageHint": "cannabis macro"
+    },
+    {
+      "id": "macro-flower-4",
+      "description": "Macro photography of a trichome-caked cannabis cola, displaying vibrant colors against a dark studio backdrop.",
+      "imageUrl": "https://picsum.photos/seed/purple_macro_4/600/800",
+      "imageHint": "cannabis macro"
+    },
+    {
+      "id": "macro-concentrate",
+      "description": "Macro detail of golden live resin diamonds refracting light against a black surface.",
+      "imageUrl": "https://picsum.photos/seed/macro_wax_99/600/800",
       "imageHint": "cannabis concentrate"
     },
     {
-      "id": "p4",
-      "description": "Macro shot of sugar-coated THC gummies, capturing individual sugar crystals on a matte black surface.",
-      "imageUrl": "https://picsum.photos/seed/macro_edible_1/600/800",
+      "id": "macro-edible",
+      "description": "Close-up of sugar-dusted artisanal gummies on a matte black plate.",
+      "imageUrl": "https://picsum.photos/seed/macro_edible_99/600/800",
       "imageHint": "cannabis gummy"
-    },
-    {
-      "id": "p5",
-      "description": "Close-up of a high-end ceramic vape tip, highlighting the sleek minimalist design against a dark backdrop.",
-      "imageUrl": "https://picsum.photos/seed/macro_vape_1/600/800",
-      "imageHint": "vape cartridge"
-    },
-    {
-      "id": "p6",
-      "description": "Macro view of the precision teeth inside a matte black magnetic herb grinder.",
-      "imageUrl": "https://picsum.photos/seed/macro_grinder_1/600/800",
-      "imageHint": "herb grinder"
     },
     {
       "id": "hero",
