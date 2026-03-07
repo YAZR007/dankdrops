@@ -1,82 +1,46 @@
 {
   "placeholderImages": [
     {
-      "id": "p1",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "p2",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "p3",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "p4",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "p5",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "p6",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
       "id": "hero",
-      "description": "Premium macro crystalline cannabis bud on black background",
-      "imageUrl": "https://picsum.photos/seed/macro_bud_hero_1/1920/1080",
+      "description": "Elite macro shot of a frosty dark purple cannabis bud with heavy crystalline trichomes on a pure black background",
+      "imageUrl": "https://picsum.photos/seed/macro_frosty_purple_bud/1920/1080",
+      "imageHint": "macro bud"
+    },
+    {
+      "id": "flower-1",
+      "description": "Macro shot of Purple Urkle strain",
+      "imageUrl": "https://picsum.photos/seed/purple_urkle_macro/600/800",
       "imageHint": "cannabis macro"
     },
     {
-      "id": "macro-flower-1",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
+      "id": "flower-2",
+      "description": "Macro shot of Granddaddy Purple strain",
+      "imageUrl": "https://picsum.photos/seed/gdp_macro/600/800",
+      "imageHint": "cannabis macro"
     },
     {
-      "id": "macro-flower-2",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
+      "id": "flower-3",
+      "description": "Macro shot of Ghost Train Haze strain",
+      "imageUrl": "https://picsum.photos/seed/ghost_train_macro/600/800",
+      "imageHint": "cannabis macro"
     },
     {
-      "id": "macro-flower-3",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
+      "id": "flower-4",
+      "description": "Macro shot of Wedding Cake strain",
+      "imageUrl": "https://picsum.photos/seed/wedding_cake_macro/600/800",
+      "imageHint": "cannabis macro"
     },
     {
-      "id": "macro-flower-4",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
+      "id": "flower-5",
+      "description": "Macro shot of Northern Lights strain",
+      "imageUrl": "https://picsum.photos/seed/northern_lights_macro/600/800",
+      "imageHint": "cannabis macro"
     },
     {
-      "id": "macro-concentrate",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
-    },
-    {
-      "id": "macro-edible",
-      "description": "Black placeholder",
-      "imageUrl": "https://placehold.co/600x800/000000/000000/png",
-      "imageHint": "black square"
+      "id": "flower-6",
+      "description": "Macro shot of Sour Diesel strain",
+      "imageUrl": "https://picsum.photos/seed/sour_diesel_macro/600/800",
+      "imageHint": "cannabis macro"
     }
   ]
 }
