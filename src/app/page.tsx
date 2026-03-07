@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, Leaf, Shield, Award } from 'lucide-react';
+import { ArrowRight, Leaf, Shield, Award, Play } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
@@ -68,6 +68,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Cinematic Video Section */}
+      <section className="relative h-[60vh] w-full overflow-hidden flex items-center justify-center">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.4]"
+        >
+          <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-80" />
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/50 mx-auto mb-8 animate-pulse">
+            <Play className="h-8 w-8 text-primary fill-primary" />
+          </div>
+          <h2 className="font-headline text-4xl md:text-7xl font-black uppercase tracking-tighter text-white mb-4">
+            Macro <span className="text-primary">In Motion</span>.
+          </h2>
+          <p className="text-white/80 text-sm md:text-xl font-bold uppercase tracking-[0.3em] mb-8">
+            The Living Resin Experience
+          </p>
+          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-12">
+            <Link href="/shop?category=Flower">EXPLORE THE HARVEST</Link>
+          </Button>
+        </div>
+      </section>
+
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
@@ -85,32 +114,32 @@ export default function HomePage() {
             </div>
           </Link>
           <div className="grid grid-cols-1 gap-4 md:gap-10">
-            <Link href="/shop?category=Concentrates" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
               <Image 
                 src={concentratesCatImage} 
                 alt="Concentrates" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
                 data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">Artisanal Extracts</h3>
+                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Artisanal Extracts</h3>
               </div>
-            </Link>
-            <Link href="/shop?category=Edibles" className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
+            </div>
+            <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-video md:aspect-auto">
               <Image 
                 src={ediblesCatImage} 
                 alt="Edibles" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:scale-105 transition-transform duration-1000 grayscale" 
                 data-ai-hint="cannabis edible"
               />
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">Boutique Edibles</h3>
+                <h3 className="font-headline text-2xl md:text-3xl font-black text-white uppercase tracking-tighter opacity-50">Boutique Edibles</h3>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </section>
