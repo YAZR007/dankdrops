@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 /**
  * LoadingScreen component that displays a high-impact logo animation.
- * Optimized to prevent hydration mismatches and handle navigation transitions.
+ * Optimized for mobile and desktop sizing with proper hydration deferral.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -27,8 +27,6 @@ export function LoadingScreen() {
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
     
-    // Only animate on the initial load or significant navigation changes
-    // avoiding the flash on product detail transitions for better UX
     const shouldAnimate = isInitialMount.current || (isNewPath && !isProductPage);
 
     if (shouldAnimate) {
@@ -54,15 +52,11 @@ export function LoadingScreen() {
         clearTimeout(hideTimer);
       };
     } else {
-      // If we shouldn't animate, ensure it stays hidden
       setStatus('hidden');
     }
   }, [pathname, isMounted]);
 
-  // If component is not mounted yet (SSR phase) don't render to avoid hydration errors
   if (!isMounted) return null;
-  
-  // If hidden, remove from DOM
   if (status === 'hidden') return null;
 
   return (
@@ -78,7 +72,7 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[12rem] md:text-[6rem] lg:text-[7rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[15rem] md:text-[7rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>
