@@ -10,7 +10,6 @@ export function LoadingScreen() {
   const lastPathname = useRef(pathname);
 
   useEffect(() => {
-    // Reset animation logic
     const handleStart = () => {
       setStatus('visible');
       setAnimationKey((prev) => prev + 1);
@@ -19,15 +18,15 @@ export function LoadingScreen() {
     handleStart();
     lastPathname.current = pathname;
 
-    // The drawing animation takes 4s (defined in globals.css)
+    // The drawing animation now takes 3s (defined in globals.css)
     const fadeTimer = setTimeout(() => {
       setStatus('fading');
-    }, 4000);
+    }, 3000);
 
-    // Hide completely after fade
+    // Hide completely after fade transition
     const hideTimer = setTimeout(() => {
       setStatus('hidden');
-    }, 5000);
+    }, 3700);
 
     return () => {
       clearTimeout(fadeTimer);
