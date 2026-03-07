@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -75,17 +74,17 @@ export default function HomePage() {
           muted 
           loop 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.85]"
+          className="absolute inset-0 w-full h-full object-cover brightness-100"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-black/5" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-xl">
+          <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-2xl">
             Macro <span className="text-primary">In Motion</span>.
           </h2>
-          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-lg">
+          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
             The Living Resin Experience
           </p>
           <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6 backdrop-blur-md">
