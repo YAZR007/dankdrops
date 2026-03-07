@@ -20,7 +20,7 @@ export default function HomePage() {
           src={heroImage} 
           alt="DankDrops Flagship" 
           fill 
-          className="object-cover brightness-[0.25]"
+          className="object-cover brightness-[0.4]"
           priority
           data-ai-hint="macro bud"
         />
