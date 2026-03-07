@@ -4,7 +4,7 @@ Elite cultivation, artisanal extracts, and curated cannabis experiences.
 
 ## Getting Started with GitHub
 
-To push this project to an existing GitHub repository, open your terminal and run the following commands:
+To push this project to your repository, open the terminal in this editor (usually at the bottom) and run the following commands in order:
 
 1. **Initialize Git**:
    ```bash
@@ -12,16 +12,14 @@ To push this project to an existing GitHub repository, open your terminal and ru
    ```
 
 2. **Add your remote repository**:
-   Replace the URL below with your actual repository link (e.g., `https://github.com/username/repo-name.git`). 
-   **IMPORTANT: Do not include the < > brackets.**
    ```bash
-   git remote add origin YOUR_ACTUAL_GITHUB_REPO_URL
+   git remote add origin https://github.com/YAZR007/dankdrops.git
    ```
 
 3. **Stage and commit your files**:
    ```bash
    git add .
-   git commit -m "Initial commit of DankDrops"
+   git commit -m "Initial commit of DankDrops: The Macro Collection"
    ```
 
 4. **Push the code**:
@@ -34,3 +32,11 @@ To push this project to an existing GitHub repository, open your terminal and ru
 
 - `npm run dev`: Start the Next.js development server on port 9002.
 - `npm run genkit:dev`: Start the Genkit developer UI.
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS + ShadCN UI
+- **Icons**: Lucide React
+- **AI**: Genkit for personalized recommendations
+- **Context**: Custom Cart management with local storage persistence
