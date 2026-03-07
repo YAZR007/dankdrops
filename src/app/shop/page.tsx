@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useState, useMemo } from 'react';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 
-const CATEGORIES = ['All', 'Hoodies', 'T-Shirts', 'Pants', 'Shoes', 'Jackets', 'Accessories'];
+const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Edibles', 'Vapes', 'Accessories'];
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
@@ -31,8 +31,8 @@ export default function ShopPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <header className="mb-12">
-        <h1 className="font-headline text-5xl font-black uppercase tracking-tighter mb-4">The Catalog</h1>
-        <p className="text-muted-foreground text-lg">Browse our latest drops and street essentials.</p>
+        <h1 className="font-headline text-5xl font-black uppercase tracking-tighter mb-4">The Dispensary</h1>
+        <p className="text-muted-foreground text-lg">Explore our curated selection of premium cannabis products.</p>
       </header>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -64,9 +64,9 @@ export default function ShopPage() {
               <SlidersHorizontal className="h-4 w-4" /> Sort By
             </h3>
             <div className="flex flex-col gap-2">
-              <button className="text-left px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors">Newest First</button>
+              <button className="text-left px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors">Newest Harvest</button>
+              <button className="text-left px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors">THC: High to Low</button>
               <button className="text-left px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors">Price: Low to High</button>
-              <button className="text-left px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors">Price: High to Low</button>
             </div>
           </div>
         </aside>
@@ -81,7 +81,7 @@ export default function ShopPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <p className="text-xl font-bold mb-2">No products found</p>
+              <p className="text-xl font-bold mb-2">No results found</p>
               <p className="text-muted-foreground mb-6">Try adjusting your filters or category.</p>
               <Button onClick={() => setActiveCategory('All')} variant="outline">
                 Clear all filters

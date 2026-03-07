@@ -3,45 +3,45 @@
   "placeholderImages": [
     {
       "id": "p1",
-      "description": "Premium oversized hoodie in deep black with subtle embroidery.",
-      "imageUrl": "https://picsum.photos/seed/dank1/600/800",
-      "imageHint": "streetwear hoodie"
+      "description": "Premium boutique cannabis flower with dense trichomes.",
+      "imageUrl": "https://picsum.photos/seed/cannabis1/600/800",
+      "imageHint": "cannabis flower"
     },
     {
       "id": "p2",
-      "description": "Acid wash graphic tee with neon violet design.",
-      "imageUrl": "https://picsum.photos/seed/dank2/600/800",
-      "imageHint": "graphic tshirt"
+      "description": "Hand-rolled artisanal prerolls in a sleek matte case.",
+      "imageUrl": "https://picsum.photos/seed/cannabis2/600/800",
+      "imageHint": "cannabis prerolls"
     },
     {
       "id": "p3",
-      "description": "Techwear cargo pants with multiple utility pockets.",
-      "imageUrl": "https://picsum.photos/seed/dank3/600/800",
-      "imageHint": "cargo pants"
+      "description": "High-potency golden live resin concentrates.",
+      "imageUrl": "https://picsum.photos/seed/cannabis3/600/800",
+      "imageHint": "cannabis concentrate"
     },
     {
       "id": "p4",
-      "description": "Limited edition high-top sneakers in violet and blue.",
-      "imageUrl": "https://picsum.photos/seed/dank4/600/800",
-      "imageHint": "streetwear sneakers"
+      "description": "Chef-curated THC infused fruit gummies.",
+      "imageUrl": "https://picsum.photos/seed/cannabis4/600/800",
+      "imageHint": "cannabis edibles"
     },
     {
       "id": "p5",
-      "description": "Distressed denim jacket with back patch art.",
-      "imageUrl": "https://picsum.photos/seed/dank5/600/800",
-      "imageHint": "denim jacket"
+      "description": "Ceramic-core distillate vape cartridge.",
+      "imageUrl": "https://picsum.photos/seed/cannabis5/600/800",
+      "imageHint": "vape cartridge"
     },
     {
       "id": "p6",
-      "description": "Bucket hat with reflective brand logo.",
-      "imageUrl": "https://picsum.photos/seed/dank6/600/800",
-      "imageHint": "bucket hat"
+      "description": "Heavy-duty magnetic herb grinder with a violet finish.",
+      "imageUrl": "https://picsum.photos/seed/cannabis6/600/800",
+      "imageHint": "herb grinder"
     },
     {
       "id": "hero",
-      "description": "DankDrops flagship store interior with neon lights.",
-      "imageUrl": "https://picsum.photos/seed/dankhero/1920/1080",
-      "imageHint": "streetwear store"
+      "description": "A luxury boutique dispensary interior with neon accents and clean lines.",
+      "imageUrl": "https://picsum.photos/seed/dispensaryhero/1920/1080",
+      "imageHint": "luxury dispensary"
     }
   ]
 }

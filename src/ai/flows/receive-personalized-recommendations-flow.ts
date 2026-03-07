@@ -1,6 +1,7 @@
+
 'use server';
 /**
- * @fileOverview A Genkit flow for providing personalized product recommendations.
+ * @fileOverview A Genkit flow for providing personalized cannabis product recommendations.
  *
  * - receivePersonalizedRecommendations - A function that handles the product recommendation process.
  * - ReceivePersonalizedRecommendationsInput - The input type for the receivePersonalizedRecommendations function.
@@ -14,7 +15,7 @@ const ProductSchema = z.object({
   id: z.string().describe('Unique identifier for the product.'),
   name: z.string().describe('Name of the product.'),
   description: z.string().describe('Description of the product.'),
-  category: z.string().describe('Category of the product (e.g., "T-Shirts", "Hoodies", "Accessories").'),
+  category: z.string().describe('Category (e.g., "Flower", "Edibles", "Concentrates").'),
   price: z.number().describe('Price of the product.'),
 });
 
@@ -59,9 +60,9 @@ const prompt = ai.definePrompt({
   name: 'personalizedRecommendationsPrompt',
   input: {schema: ReceivePersonalizedRecommendationsInputSchema},
   output: {schema: ReceivePersonalizedRecommendationsOutputSchema},
-  prompt: `You are an AI-powered personalized shopping assistant for DankDrops, a streetwear e-commerce store. Your goal is to provide insightful product recommendations to users based on their shopping behavior. Your suggestions should enhance their streetwear style and be relevant to their implied preferences.
+  prompt: `You are an AI-powered cannabis specialist for DankDrops, a premium boutique dispensary. Your goal is to provide insightful product recommendations based on the user's browsing and purchasing behavior. 
 
-The user has the following browsing history and items in their cart:
+You should consider strain types (Indica, Sativa, Hybrid) and product categories. For example, if a user is looking at high-potency Flower, they might enjoy premium Concentrates. If they are looking at sleepy Indica strains, they might like nighttime Edibles.
 
 Browsing History:
 {{#if browsingHistory}}
@@ -81,12 +82,12 @@ Cart Items:
   No items in cart.
 {{/if}}
 
-Here is a list of all available products in the store. Please only recommend products from this list:
+Here is the current harvest catalog. Recommend products from this list only:
 {{#each allProducts}}
 - ID: {{{id}}}, Name: {{{name}}}, Description: {{{description}}}, Category: {{{category}}}, Price: {{{price}}}
 {{/each}}
 
-Based on the browsing history and cart items, suggest 3-5 complementary or similar products from the 'allProducts' list that the user might be interested in. Do not recommend products that are already explicitly mentioned in the browsing history or cart items if possible, unless they are very highly complementary and you believe they significantly enhance the overall style. Only output product IDs, names, descriptions, and categories that exist in the provided 'allProducts' list.`,
+Suggest 3-5 complementary products that would enhance the user's experience. Focus on strain effects and usage scenarios. Only output product IDs, names, descriptions, and categories that exist in the provided list.`,
 });
 
 const receivePersonalizedRecommendationsFlow = ai.defineFlow(

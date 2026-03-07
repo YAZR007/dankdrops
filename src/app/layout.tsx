@@ -6,8 +6,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
 
 export const metadata: Metadata = {
-  title: 'DankDrops | Elite Streetwear',
-  description: 'Curated selection of apparel, accessories, and exclusive drops.',
+  title: 'DankDrops | Premium Boutique Cannabis',
+  description: 'Elite cultivation, artisanal extracts, and curated cannabis experiences.',
 };
 
 export default function RootLayout({
