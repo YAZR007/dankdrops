@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { PRODUCTS } from '@/lib/products';
 import { useCart } from '@/context/cart-context';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ChevronLeft, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles } from 'lucide-react';
@@ -25,7 +25,6 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const { toast } = useToast();
   
-  // Safely get the ID string
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   
   const product = useMemo(() => {
@@ -33,9 +32,20 @@ export default function ProductPage() {
     return PRODUCTS.find(p => p.id === id);
   }, [id]);
 
+  const images = useMemo(() => {
+    if (!product) return [];
+    return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
+  }, [product]);
+
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || '');
-  const [zoomStyle, setZoomStyle] = useState({ transformOrigin: 'center', transform: 'scale(1)' });
+  
+  // Magnification State
+  const [showLens, setShowLens] = useState(false);
+  const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
+  const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   if (!product) {
     return (
@@ -61,20 +71,22 @@ export default function ProductPage() {
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setZoomStyle({
-      transformOrigin: `${x}% ${y}%`,
-      transform: 'scale(2.5)',
-    });
-  };
+    if (!containerRef.current) return;
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
 
-  const handleMouseLeave = () => {
-    setZoomStyle({
-      transformOrigin: 'center',
-      transform: 'scale(1)',
-    });
+    if (x < 0 || y < 0 || x > width || y > height) {
+      setShowLens(false);
+      return;
+    }
+
+    const xPercent = (x / width) * 100;
+    const yPercent = (y / height) * 100;
+
+    setLensPosition({ x, y });
+    setBgPosition({ x: xPercent, y: yPercent });
+    setShowLens(true);
   };
 
   return (
@@ -87,26 +99,61 @@ export default function ProductPage() {
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        <div className="space-y-4">
+        <div className="space-y-6">
+          {/* Main Viewport */}
           <div 
-            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-zoom-in"
+            ref={containerRef}
+            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none"
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => setShowLens(true)}
+            onMouseLeave={() => setShowLens(false)}
           >
             <Image 
-              src={product.imageUrl} 
+              src={images[activeImageIndex]} 
               alt={product.name} 
               fill 
-              className="object-cover transition-transform duration-200 ease-out"
-              style={zoomStyle}
+              className="object-cover"
               priority
             />
+
+            {/* Dank Lens (Magnifier) */}
+            {showLens && (
+              <div 
+                className="absolute w-48 h-48 rounded-full border-4 border-primary shadow-[0_0_25px_rgba(126,42,219,0.6)] pointer-events-none z-20 bg-black"
+                style={{
+                  left: lensPosition.x - 96,
+                  top: lensPosition.y - 96,
+                  backgroundImage: `url(${images[activeImageIndex]})`,
+                  backgroundSize: '300%',
+                  backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
+                  backgroundRepeat: 'no-repeat'
+                }}
+              />
+            )}
+
             <div className="absolute bottom-4 left-4 z-10 bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full pointer-events-none">
               <p className="text-[9px] font-black uppercase tracking-widest text-white/80 flex items-center gap-2">
                 <Microscope className="h-3 w-3 text-primary" /> Macro-Lens Enabled
               </p>
             </div>
           </div>
+
+          {/* Thumbnail Switcher */}
+          {images.length > 1 && (
+            <div className="flex gap-4">
+              {images.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`relative w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${
+                    activeImageIndex === idx ? 'border-primary shadow-[0_0_10px_rgba(126,42,219,0.4)]' : 'border-white/10 opacity-50 hover:opacity-100'
+                  }`}
+                >
+                  <Image src={img} alt={`${product.name} ${idx + 1}`} fill className="object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col">
