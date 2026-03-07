@@ -181,12 +181,6 @@ export default function ProductPage() {
                 }}
               />
             )}
-
-            <div className="absolute bottom-4 left-4 z-10 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full pointer-events-none">
-              <p className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/80 flex items-center gap-2">
-                <Microscope className="h-3 w-3 text-primary" /> Macro-Lens {window.innerWidth < 768 ? 'Touch' : 'Enabled'}
-              </p>
-            </div>
           </div>
 
           {images.length > 1 && (
