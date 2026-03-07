@@ -27,6 +27,7 @@ export function LoadingScreen() {
     const isNewPath = lastPathname.current !== pathname;
     const isProductPage = pathname.startsWith('/products/');
     
+    // Only show the loading screen on initial mount or when navigating to main sections
     const shouldAnimate = isInitialMount.current || (isNewPath && !isProductPage);
 
     if (shouldAnimate) {
@@ -38,11 +39,11 @@ export function LoadingScreen() {
 
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 2000);
+      }, 1800);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 2700);
+      }, 2500);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;
@@ -56,8 +57,7 @@ export function LoadingScreen() {
     }
   }, [pathname, isMounted]);
 
-  if (!isMounted) return null;
-  if (status === 'hidden') return null;
+  if (!isMounted || status === 'hidden') return null;
 
   return (
     <div 
@@ -66,13 +66,13 @@ export function LoadingScreen() {
       }`}
     >
       <div className="relative w-full flex justify-center px-6" key={animationKey}>
-        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-4xl h-auto overflow-visible">
+        <svg viewBox="0 0 1000 300" className="w-full max-w-[95vw] md:max-w-5xl h-auto overflow-visible">
           <text
             x="50%"
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[15rem] md:text-[7rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[15rem] md:text-[8rem] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
           >
             DANKDROPS
           </text>

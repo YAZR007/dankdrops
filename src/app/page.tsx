@@ -69,18 +69,18 @@ export default function HomePage() {
       </section>
 
       {/* Cinematic High Resolution Video Section */}
-      <section className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-black">
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.85] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/11062b_a4055f2694934d45a278972e39130095/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-black/20" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter text-white mb-2 md:mb-4 drop-shadow-2xl">

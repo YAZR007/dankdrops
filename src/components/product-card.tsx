@@ -37,11 +37,6 @@ export function ProductCard({ product }: ProductCardProps) {
               sizes="(max-width: 768px) 50vw, 33vw"
             />
           )}
-          {product.isNewArrival && (
-            <Badge className="absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-primary text-white font-bold uppercase tracking-wider text-[8px] md:text-[10px] px-2 py-0.5">
-              New
-            </Badge>
-          )}
           <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         </div>
         <CardFooter className="flex flex-col items-start p-2 md:p-4 gap-0.5 md:gap-1 flex-grow">
