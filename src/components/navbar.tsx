@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -18,42 +17,64 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="font-headline text-2xl font-bold tracking-tighter text-primary">DANKDROPS</span>
+          <Link href="/" className="flex items-center space-x-2 group transition-all duration-300">
+            <span className="font-headline text-2xl font-bold tracking-tighter text-primary drop-shadow-[0_0_8px_rgba(126,42,219,0.4)] group-hover:scale-105 transition-transform">
+              DANKDROPS
+            </span>
           </Link>
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/shop" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">SHOP ALL</Link>
-            <Link href="/shop?category=Flower" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">BOUTIQUE FLOWER</Link>
-            <Link href="/shop?filter=new" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-widest">NEW DROPS</Link>
+            <Link 
+              href="/shop" 
+              className="text-sm font-bold hover:text-primary transition-all hover:scale-105 uppercase tracking-widest"
+            >
+              SHOP ALL
+            </Link>
+            <Link 
+              href="/shop?category=Flower" 
+              className="text-sm font-bold hover:text-primary transition-all hover:scale-105 uppercase tracking-widest"
+            >
+              BOUTIQUE FLOWER
+            </Link>
+            <Link 
+              href="/shop?filter=new" 
+              className="text-sm font-bold hover:text-primary transition-all hover:scale-105 uppercase tracking-widest"
+            >
+              NEW DROPS
+            </Link>
           </div>
         </div>
 
         <div className="flex-1 max-w-md hidden lg:block">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <div className="relative group">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
             <Input 
               placeholder="Search strains..." 
-              className="pl-10 bg-muted/50 border-none focus-visible:ring-primary"
+              className="pl-10 bg-muted/50 border-none focus-visible:ring-primary transition-all"
             />
           </div>
         </div>
 
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="lg:hidden hover:scale-110 transition-transform" 
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+          >
             <Search className="h-5 w-5" />
           </Button>
           
           <Link href="/profile">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
               <User className="h-5 w-5" />
             </Button>
           </Link>
 
           <CartSheet>
-            <Button variant="ghost" size="icon" className="relative">
+            <Button variant="ghost" size="icon" className="relative hover:scale-110 transition-transform">
               <ShoppingBag className="h-5 w-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full animate-in zoom-in">
                   {totalItems}
                 </span>
               )}
@@ -62,20 +83,20 @@ export function Navbar() {
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden hover:scale-110 transition-transform">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
               <SheetHeader>
-                <SheetTitle className="font-headline">DANKDROPS</SheetTitle>
+                <SheetTitle className="font-headline text-primary">DANKDROPS</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-4 mt-8">
-                <Link href="/shop" className="text-lg font-bold uppercase">Shop All</Link>
-                <Link href="/shop?category=Flower" className="text-lg font-bold uppercase">Boutique Flower</Link>
-                <Link href="/shop?filter=new" className="text-lg font-bold uppercase">New Drops</Link>
-                <Link href="/shop?category=Concentrates" className="text-lg font-bold uppercase">Concentrates</Link>
-                <Link href="/shop?category=Edibles" className="text-lg font-bold uppercase">Edibles</Link>
+                <Link href="/shop" className="text-lg font-bold uppercase hover:text-primary transition-colors">Shop All</Link>
+                <Link href="/shop?category=Flower" className="text-lg font-bold uppercase hover:text-primary transition-colors">Boutique Flower</Link>
+                <Link href="/shop?filter=new" className="text-lg font-bold uppercase hover:text-primary transition-colors">New Drops</Link>
+                <Link href="/shop?category=Concentrates" className="text-lg font-bold uppercase hover:text-primary transition-colors">Concentrates</Link>
+                <Link href="/shop?category=Edibles" className="text-lg font-bold uppercase hover:text-primary transition-colors">Edibles</Link>
               </div>
             </SheetContent>
           </Sheet>
