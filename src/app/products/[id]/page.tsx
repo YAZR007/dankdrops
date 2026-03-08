@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -55,9 +56,10 @@ export default function ProductPage() {
   
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isHoldingRef = useRef<boolean>(false);
   const startPosRef = useRef({ x: 0, y: 0 });
+  const tapCountRef = useRef(0);
+  const lastTapTimeRef = useRef(0);
 
   useEffect(() => {
     // Reset guidance for each new product visit
@@ -91,50 +93,51 @@ export default function ProductPage() {
     const onTouchStart = (e: TouchEvent) => {
       const touch = e.touches[0];
       startPosRef.current = { x: touch.clientX, y: touch.clientY };
-      isHoldingRef.current = false;
-
-      if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
       
-      holdTimerRef.current = setTimeout(() => {
+      const now = Date.now();
+      const delta = now - lastTapTimeRef.current;
+      
+      if (delta < 300) {
+        tapCountRef.current++;
+      } else {
+        tapCountRef.current = 1;
+      }
+      lastTapTimeRef.current = now;
+
+      // Triple tap detection
+      if (tapCountRef.current === 3) {
         isHoldingRef.current = true;
         setShowLens(true);
         setShowHeadsUp(false);
         setHasMagnified(true);
         updatePosition(touch.clientX, touch.clientY);
-      }, 3000); // 3-second hold as requested
+        
+        // Prevent default double-tap zoom behavior of browsers
+        if (e.cancelable) e.preventDefault();
+      }
     };
 
     const onTouchMove = (e: TouchEvent) => {
       const touch = e.touches[0];
-      const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
-      const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
-
-      // If user moves significantly (40px) before timer ends, it's a swipe/scroll, cancel hold
-      if (!isHoldingRef.current && (deltaX > 40 || deltaY > 40)) {
-        if (holdTimerRef.current) {
-          clearTimeout(holdTimerRef.current);
-          holdTimerRef.current = null;
-        }
-      }
-
+      
       if (isHoldingRef.current) {
-        // Prevent default browser behavior (scrolling/swiping) while magnifying
+        // Prevent standard scrolling while magnifying
         if (e.cancelable) e.preventDefault();
         updatePosition(touch.clientX, touch.clientY);
       }
     };
 
     const onTouchEnd = () => {
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current);
-        holdTimerRef.current = null;
-      }
       isHoldingRef.current = false;
       setShowLens(false);
+      // Reset tap count after release to prevent stuck state
+      if (tapCountRef.current >= 3) {
+        tapCountRef.current = 0;
+      }
     };
 
-    // Use non-passive listeners to allow e.preventDefault()
-    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    // Use non-passive listeners to allow e.preventDefault() for magnification
+    container.addEventListener('touchstart', onTouchStart, { passive: false });
     container.addEventListener('touchmove', onTouchMove, { passive: false });
     container.addEventListener('touchend', onTouchEnd, { passive: true });
     container.addEventListener('contextmenu', (e) => e.preventDefault());
@@ -144,7 +147,7 @@ export default function ProductPage() {
       container.removeEventListener('touchmove', onTouchMove);
       container.removeEventListener('touchend', onTouchEnd);
     };
-  }, [activeImageIndex]); // Re-attach when image changes to ensure correct index context
+  }, [activeImageIndex]);
 
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -218,7 +221,7 @@ export default function ProductPage() {
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    Hold 3 seconds to magnify
+                    Triple tap to magnify
                   </span>
                 </div>
               </div>
