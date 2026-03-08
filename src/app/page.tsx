@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -127,7 +126,7 @@ export default function HomePage() {
                 src={flowerCatImage} 
                 alt="Elite Flower" 
                 fill 
-                className="object-cover brightness-[0.4] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
+                className="object-cover brightness-[0.7] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
                 data-ai-hint="cannabis macro"
               />
             )}
@@ -146,7 +145,7 @@ export default function HomePage() {
                 src={concentratesCatImage} 
                 alt="Artisanal Extracts" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.5] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis extract"
               />
             )}
