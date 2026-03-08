@@ -59,7 +59,7 @@
   5% {
     opacity: 1;
   }
-  82% {
+  88% {
     stroke-dasharray: 1000 0;
     fill: transparent;
   }
@@ -127,15 +127,15 @@
 }
 
 .animate-logo-draw {
-  animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-logo-draw-hollow {
-  animation: logo-draw-hollow 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw-hollow 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .group:hover .logo-hover-target {
-  animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
