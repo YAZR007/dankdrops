@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -66,25 +65,6 @@ export default function ProductPage() {
     setHasMagnified(false);
   }, [id]);
 
-  useEffect(() => {
-    // Prevent body scroll only when lens is active on mobile
-    if (showLens && window.innerWidth < 768) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [showLens]);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.clientWidth);
-      if (index !== activeImageIndex) {
-        setActiveImageIndex(index);
-      }
-    }
-  };
-
   const updatePosition = (clientX: number, clientY: number) => {
     if (!containerRef.current) return;
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
@@ -104,50 +84,75 @@ export default function ProductPage() {
     setBgPosition({ x: xPercent, y: yPercent });
   };
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches[0];
-    startPosRef.current = { x: touch.clientX, y: touch.clientY };
-    isHoldingRef.current = false;
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-    // Start 3-second hold timer
-    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
-    
-    holdTimerRef.current = setTimeout(() => {
-      isHoldingRef.current = true;
-      setShowLens(true);
-      setShowHeadsUp(false);
-      setHasMagnified(true);
-      updatePosition(touch.clientX, touch.clientY);
-    }, 3000);
-  };
+    const onTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      startPosRef.current = { x: touch.clientX, y: touch.clientY };
+      isHoldingRef.current = false;
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches[0];
-    const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
-    const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
+      if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+      
+      holdTimerRef.current = setTimeout(() => {
+        isHoldingRef.current = true;
+        setShowLens(true);
+        setShowHeadsUp(false);
+        setHasMagnified(true);
+        updatePosition(touch.clientX, touch.clientY);
+      }, 3000); // 3-second hold as requested
+    };
 
-    // If user moves significantly (40px) before 3s, cancel the hold to allow scrolling
-    if (!isHoldingRef.current && (deltaX > 40 || deltaY > 40)) {
+    const onTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
+      const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
+
+      // If user moves significantly (40px) before timer ends, it's a swipe/scroll, cancel hold
+      if (!isHoldingRef.current && (deltaX > 40 || deltaY > 40)) {
+        if (holdTimerRef.current) {
+          clearTimeout(holdTimerRef.current);
+          holdTimerRef.current = null;
+        }
+      }
+
+      if (isHoldingRef.current) {
+        // Prevent default browser behavior (scrolling/swiping) while magnifying
+        if (e.cancelable) e.preventDefault();
+        updatePosition(touch.clientX, touch.clientY);
+      }
+    };
+
+    const onTouchEnd = () => {
       if (holdTimerRef.current) {
         clearTimeout(holdTimerRef.current);
         holdTimerRef.current = null;
       }
-    }
+      isHoldingRef.current = false;
+      setShowLens(false);
+    };
 
-    if (isHoldingRef.current) {
-      // Prevent standard browser interactions while magnifying
-      if (e.cancelable) e.preventDefault();
-      updatePosition(touch.clientX, touch.clientY);
-    }
-  };
+    // Use non-passive listeners to allow e.preventDefault()
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+    container.addEventListener('contextmenu', (e) => e.preventDefault());
 
-  const handleTouchEnd = () => {
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current);
-      holdTimerRef.current = null;
+    return () => {
+      container.removeEventListener('touchstart', onTouchStart);
+      container.removeEventListener('touchmove', onTouchMove);
+      container.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [activeImageIndex]); // Re-attach when image changes to ensure correct index context
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.clientWidth);
+      if (index !== activeImageIndex) {
+        setActiveImageIndex(index);
+      }
     }
-    isHoldingRef.current = false;
-    setShowLens(false);
   };
 
   if (!product) {
@@ -186,13 +191,9 @@ export default function ProductPage() {
         <div className="space-y-6">
           <div 
             ref={containerRef}
-            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none select-none"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            onContextMenu={(e) => e.preventDefault()}
+            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group select-none touch-none"
           >
-            {/* Fluid Swiping Gallery */}
+            {/* Fluid Swiping Gallery (Apple-style) */}
             <div 
               ref={scrollRef}
               className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
@@ -246,8 +247,8 @@ export default function ProductPage() {
               <div 
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
-                  left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Offset above finger on mobile
+                  left: lensPosition.x - (typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 104),
+                  top: lensPosition.y - (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 104), // Offset above finger on mobile
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
