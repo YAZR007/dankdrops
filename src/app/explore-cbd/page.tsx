@@ -15,7 +15,7 @@ export default function ExploreCBDPage() {
   const videoUrl1 = "https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4";
   const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
 
-  const wellnessBanner = PlaceHolderImages.find(img => img.id === 'wellness-banner')?.imageUrl || '';
+  const wellnessBanner = "https://static.wixstatic.com/media/a82ad9_61b374391c214358b8e6bf0a69b6836a~mv2.jpg";
 
   const galleryVideos = [
     { 
@@ -212,7 +212,7 @@ export default function ExploreCBDPage() {
             src={wellnessBanner} 
             alt="The New Standard" 
             fill 
-            className="object-cover opacity-60 brightness-[0.55]"
+            className="object-cover opacity-80 brightness-[0.75]"
             data-ai-hint="cannabis field"
           />
         )}
