@@ -74,7 +74,7 @@ export default function ProductPage() {
 
     // Boundary check
     if (x < 0 || y < 0 || x > width || y > height) {
-      setShowLens(false);
+      if (!isHoldingRef.current) setShowLens(false);
       return;
     }
 
@@ -89,6 +89,7 @@ export default function ProductPage() {
     const container = containerRef.current;
     if (!container) return;
 
+    // Mobile Logic: Triple tap and hold
     const onTouchStart = (e: TouchEvent) => {
       const touch = e.touches[0];
       startPosRef.current = { x: touch.clientX, y: touch.clientY };
@@ -111,7 +112,7 @@ export default function ProductPage() {
         setHasMagnified(true);
         updatePosition(touch.clientX, touch.clientY);
         
-        // Prevent default double-tap zoom behavior of browsers
+        // Prevent default browser behaviors
         if (e.cancelable) e.preventDefault();
       }
     };
@@ -120,22 +121,20 @@ export default function ProductPage() {
       const touch = e.touches[0];
       
       if (isHoldingRef.current) {
-        // Prevent standard scrolling while magnifying
         if (e.cancelable) e.preventDefault();
         updatePosition(touch.clientX, touch.clientY);
       }
     };
 
     const onTouchEnd = () => {
-      isHoldingRef.current = false;
-      setShowLens(false);
-      // Reset tap count after release to prevent stuck state
-      if (tapCountRef.current >= 3) {
+      if (isHoldingRef.current) {
+        isHoldingRef.current = false;
+        setShowLens(false);
         tapCountRef.current = 0;
       }
     };
 
-    // Use non-passive listeners to allow e.preventDefault() for magnification
+    // Use non-passive listeners for mobile magnification
     container.addEventListener('touchstart', onTouchStart, { passive: false });
     container.addEventListener('touchmove', onTouchMove, { passive: false });
     container.addEventListener('touchend', onTouchEnd, { passive: true });
@@ -193,9 +192,12 @@ export default function ProductPage() {
         <div className="space-y-6">
           <div 
             ref={containerRef}
+            onMouseMove={(e) => updatePosition(e.clientX, e.clientY)}
+            onMouseEnter={() => setShowLens(true)}
+            onMouseLeave={() => setShowLens(false)}
             className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group select-none touch-none"
           >
-            {/* Fluid Swiping Gallery (Apple-style) */}
+            {/* Fluid Swiping Gallery */}
             <div 
               ref={scrollRef}
               className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
@@ -250,7 +252,7 @@ export default function ProductPage() {
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
                   left: lensPosition.x - (typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 104), // Offset above finger on mobile
+                  top: lensPosition.y - (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 104),
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,

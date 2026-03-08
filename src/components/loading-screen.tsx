@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 
 /**
  * LoadingScreen component that displays a high-impact logo animation.
- * Features a slow draw-to-fill sequence before revealing the page.
- * Accelerated version: Shorter by 1.5s for a faster boutique experience.
+ * Features an accelerated draw-to-fill sequence before revealing the page.
+ * Version: Shortened by 1.5s for a snappier boutique experience.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -36,7 +36,7 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Shorter sequence: 2.5s fade (was 4s), 3.5s hide (was 5s).
+      // Accelerated sequence: 2.5s fade, 3.5s hide.
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
       }, 2500);
