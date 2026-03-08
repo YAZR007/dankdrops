@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 /**
  * LoadingScreen component that displays a high-impact logo animation.
  * Features a slow draw-to-fill sequence before revealing the page.
+ * Specifically handles the split fill requested: "DROPS" fills in purple.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -71,9 +72,10 @@ export function LoadingScreen() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[90px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent animate-logo-draw"
+            className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[90px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent"
           >
-            DANKDROPS
+            <tspan className="animate-logo-draw-hollow">DANK</tspan>
+            <tspan className="animate-logo-draw">DROPS</tspan>
           </text>
         </svg>
       </div>

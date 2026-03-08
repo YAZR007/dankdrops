@@ -70,6 +70,22 @@
   }
 }
 
+@keyframes logo-draw-hollow {
+  0% {
+    stroke-dasharray: 0 1000;
+    fill: transparent;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 1000 0;
+    fill: transparent;
+    opacity: 1;
+  }
+}
+
 @keyframes scroll-reveal-up {
   from {
     opacity: 0;
@@ -112,6 +128,10 @@
 
 .animate-logo-draw {
   animation: logo-draw 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-logo-draw-hollow {
+  animation: logo-draw-hollow 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .group:hover .logo-hover-target {
