@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -13,7 +12,6 @@ export default function HomePage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero')?.imageUrl || '';
   const flowerCatImage = PlaceHolderImages.find(img => img.id === 'flower-1')?.imageUrl || '';
   const concentratesCatImage = PlaceHolderImages.find(img => img.id === 'concentrates')?.imageUrl || '';
-  const ediblesCatImage = PlaceHolderImages.find(img => img.id === 'edibles')?.imageUrl || '';
 
   return (
     <div className="flex flex-col gap-8 md:gap-16 pb-16">
@@ -80,7 +78,7 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.75] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[1.1] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
@@ -99,7 +97,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid with Enhanced Hover Glow & Exposure */}
+      {/* Categories Grid - Balanced 2 Column */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
           {/* Card: Elite Flower */}
@@ -120,39 +118,21 @@ export default function HomePage() {
             </div>
           </Link>
 
-          <div className="grid grid-cols-1 gap-4 md:gap-10">
-            {/* Card: Artisanal Extracts */}
-            <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
-            >
-              <Image 
-                src={concentratesCatImage} 
-                alt="Artisanal Extracts" 
-                fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
-                data-ai-hint="cannabis extract"
-              />
-              <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-                <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Artisanal Extracts</h3>
-              </div>
-            </div>
-
-            {/* Card: Boutique Edibles */}
-            <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
-            >
-              <Image 
-                src={ediblesCatImage} 
-                alt="Boutique Edibles" 
-                fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
-                data-ai-hint="cannabis edible"
-              />
-              <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-                <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Boutique Edibles</h3>
-              </div>
+          {/* Card: Artisanal Extracts */}
+          <div 
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+          >
+            <Image 
+              src={concentratesCatImage} 
+              alt="Artisanal Extracts" 
+              fill 
+              className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+              data-ai-hint="cannabis extract"
+            />
+            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+              <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Artisanal Extracts</h3>
+              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block mt-4">Pure high-concentration CBD extracts and distillates for the true enthusiast.</p>
             </div>
           </div>
         </div>

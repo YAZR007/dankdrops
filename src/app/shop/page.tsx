@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useSearchParams } from 'next/navigation';
@@ -9,7 +8,7 @@ import { useState, useMemo } from 'react';
 import { Filter, SlidersHorizontal, X, Clock } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
-const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Edibles', 'Vapes', 'Accessories'];
+const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Vapes', 'Accessories'];
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
