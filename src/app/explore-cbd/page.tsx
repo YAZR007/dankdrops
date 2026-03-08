@@ -14,8 +14,18 @@ export default function ExploreCBDPage() {
   const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
 
   const galleryVideos = [
-    { url: videoUrl1, title: "Elite Trichome Density", label: "MACRO STUDY 1", description: "A high-magnification analysis of resinous structures in elite boutique flower." },
-    { url: videoUrl2, title: "Artisanal Resin Profile", label: "MACRO STUDY 2", description: "Observing the complex terpene and cannabinoid preservation in slow-cured CBD." },
+    { 
+      url: videoUrl1, 
+      title: "Elite Trichome Density", 
+      label: "MACRO STUDY 1", 
+      description: "A high-magnification analysis of resinous structures in elite boutique flower, showcasing the crystalline purity of our artisanal CBD harvest." 
+    },
+    { 
+      url: videoUrl2, 
+      title: "Artisanal Resin Profile", 
+      label: "MACRO STUDY 2", 
+      description: "Observing the complex terpene and cannabinoid preservation in slow-cured CBD. This study highlights the delicate balance of a master-grown phenotype." 
+    },
   ];
 
   return (
@@ -73,8 +83,8 @@ export default function ExploreCBDPage() {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black/95 border-none shadow-[0_0_100px_rgba(128,0,255,0.4)] backdrop-blur-2xl">
-                <div className="relative w-full">
+              <DialogContent className="max-w-2xl p-0 overflow-hidden bg-black/95 border-none shadow-[0_0_80px_rgba(126,42,219,0.5)] backdrop-blur-2xl">
+                <div className="relative w-full aspect-video">
                   <video 
                     autoPlay 
                     muted
@@ -84,10 +94,10 @@ export default function ExploreCBDPage() {
                   >
                     <source src={video.url} type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black via-black/60 to-transparent">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
-                    <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-white mb-1">{video.title}</h2>
-                    <p className="text-muted-foreground max-w-xl text-xs leading-relaxed">{video.description}</p>
+                  <div className="absolute bottom-0 inset-x-0 p-4 md:p-6 bg-gradient-to-t from-black via-black/70 to-transparent">
+                    <p className="text-[9px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
+                    <h2 className="font-headline text-xl font-black uppercase tracking-tight text-white mb-1">{video.title}</h2>
+                    <p className="text-white/60 max-w-xl text-[10px] md:text-xs leading-relaxed font-medium">{video.description}</p>
                   </div>
                 </div>
               </DialogContent>
