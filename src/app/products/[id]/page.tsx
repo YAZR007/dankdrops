@@ -8,7 +8,7 @@ import { useCart } from '@/context/cart-context';
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ChevronLeft, ChevronRight, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShoppingBag, Heart, Share2, Wind, Flame, Microscope, Sparkles, Search as SearchIcon } from 'lucide-react';
 import { AIRecommendations } from '@/components/ai-recommendations';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -46,11 +46,27 @@ export default function ProductPage() {
     return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
   }, [product]);
 
-  // Magnification State
+  // Magnification & Heads-up State
   const [showLens, setShowLens] = useState(false);
   const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
   const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
+  const [showHeadsUp, setShowHeadsUp] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastTapRef = useRef<number>(0);
+  const isMagnifyingRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    // Check if heads-up should be shown (once per session)
+    const hasSeenHeadsUp = sessionStorage.getItem('dankdrops_magnify_tip');
+    if (!hasSeenHeadsUp && window.innerWidth < 768) {
+      setShowHeadsUp(true);
+      const timer = setTimeout(() => {
+        setShowHeadsUp(false);
+        sessionStorage.setItem('dankdrops_magnify_tip', 'true');
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     if (showLens && window.innerWidth < 768) {
@@ -92,6 +108,7 @@ export default function ProductPage() {
 
     if (x < 0 || y < 0 || x > width || y > height) {
       setShowLens(false);
+      isMagnifyingRef.current = false;
       return;
     }
 
@@ -104,12 +121,36 @@ export default function ProductPage() {
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    updatePosition(e.clientX, e.clientY);
+    if (window.innerWidth >= 768) {
+      updatePosition(e.clientX, e.clientY);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const now = Date.now();
+    const delta = now - lastTapRef.current;
+    
+    if (delta < 300 && delta > 0) {
+      // Double tap detected
+      isMagnifyingRef.current = true;
+      const touch = e.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+      setShowHeadsUp(false); // Hide heads up if user interacts
+      sessionStorage.setItem('dankdrops_magnify_tip', 'true');
+    }
+    lastTapRef.current = now;
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches[0];
-    updatePosition(touch.clientX, touch.clientY);
+    if (isMagnifyingRef.current) {
+      const touch = e.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isMagnifyingRef.current = false;
+    setShowLens(false);
   };
 
   const nextImage = (e?: React.MouseEvent) => {
@@ -137,11 +178,11 @@ export default function ProductPage() {
             ref={containerRef}
             className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none"
             onMouseMove={handleMouseMove}
-            onMouseEnter={() => setShowLens(true)}
+            onMouseEnter={() => window.innerWidth >= 768 && setShowLens(true)}
             onMouseLeave={() => setShowLens(false)}
-            onTouchStart={() => setShowLens(true)}
+            onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            onTouchEnd={() => setShowLens(false)}
+            onTouchEnd={handleTouchEnd}
           >
             <Image 
               src={images[activeImageIndex]} 
@@ -150,6 +191,18 @@ export default function ProductPage() {
               className="object-cover"
               priority
             />
+
+            {/* Boutique Heads-up overlay */}
+            {showHeadsUp && (
+              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
+                  <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
+                    Double tap to magnify
+                  </span>
+                </div>
+              </div>
+            )}
 
             {images.length > 1 && (
               <>
