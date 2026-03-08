@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
  * LoadingScreen component that displays a high-impact logo animation.
  * Features a slow draw-to-fill sequence before revealing the page.
  * Specifically handles the split fill requested: "DROPS" fills in purple.
+ * Shorter duration for high-speed boutique experience.
  */
 export function LoadingScreen() {
   const [status, setStatus] = useState<'visible' | 'fading' | 'hidden'>('visible');
@@ -36,14 +37,14 @@ export function LoadingScreen() {
         setAnimationKey((prev) => prev + 1);
       }
 
-      // Time the fade-out to occur AFTER the logo completes its fill cycle (4s animation)
+      // Shortened sequence: 2.8s fade, 3.5s hide.
       const fadeTimer = setTimeout(() => {
         setStatus('fading');
-      }, 4300);
+      }, 2800);
 
       const hideTimer = setTimeout(() => {
         setStatus('hidden');
-      }, 5000);
+      }, 3500);
 
       lastPathname.current = pathname;
       isInitialMount.current = false;

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -59,16 +58,9 @@ export default function ProductPage() {
   const startPosRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Show heads up every time the page mounts or refreshes
-    if (window.innerWidth < 768) {
-      setShowHeadsUp(true);
-      // Auto hide after 5 seconds if they don't do anything
-      const timer = setTimeout(() => {
-        setShowHeadsUp(false);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [id]); // Also reset when product ID changes
+    // Show heads up on mount or refresh
+    setShowHeadsUp(true);
+  }, [id]);
 
   useEffect(() => {
     if (showLens && window.innerWidth < 768) {
@@ -79,13 +71,14 @@ export default function ProductPage() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [showLens]);
 
-  // Sync scroll position with active index for desktop buttons
-  useEffect(() => {
+  const handleScroll = () => {
     if (scrollRef.current) {
-      const scrollAmount = activeImageIndex * scrollRef.current.clientWidth;
-      scrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+      const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.clientWidth);
+      if (index !== activeImageIndex) {
+        setActiveImageIndex(index);
+      }
     }
-  }, [activeImageIndex]);
+  };
 
   if (!product) {
     return (
@@ -140,7 +133,7 @@ export default function ProductPage() {
     holdTimerRef.current = setTimeout(() => {
       isHoldingRef.current = true;
       setShowLens(true);
-      setShowHeadsUp(false); // Hide the tip once they successfully hold
+      setShowHeadsUp(false);
       updatePosition(touch.clientX, touch.clientY);
     }, 3000);
   };
@@ -150,8 +143,8 @@ export default function ProductPage() {
     const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
     const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
 
-    // If user moves finger significantly before 3s, it's likely a swipe or scroll
-    if (!isHoldingRef.current && (deltaX > 10 || deltaY > 10)) {
+    // If user moves significantly before 3s, cancel the hold
+    if (!isHoldingRef.current && (deltaX > 20 || deltaY > 20)) {
       if (holdTimerRef.current) {
         clearTimeout(holdTimerRef.current);
         holdTimerRef.current = null;
@@ -159,7 +152,6 @@ export default function ProductPage() {
     }
 
     if (isHoldingRef.current) {
-      // Prevent browser default swiping behavior while magnifying
       if (e.cancelable) e.preventDefault();
       updatePosition(touch.clientX, touch.clientY);
     }
@@ -172,15 +164,6 @@ export default function ProductPage() {
     }
     isHoldingRef.current = false;
     setShowLens(false);
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.clientWidth);
-      if (index !== activeImageIndex) {
-        setActiveImageIndex(index);
-      }
-    }
   };
 
   return (
@@ -257,7 +240,7 @@ export default function ProductPage() {
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
                   left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Offsets to be above finger on mobile
+                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Above finger on mobile
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
@@ -273,7 +256,12 @@ export default function ProductPage() {
               {images.map((img, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveImageIndex(idx)}
+                  onClick={() => {
+                    setActiveImageIndex(idx);
+                    if (scrollRef.current) {
+                      scrollRef.current.scrollTo({ left: idx * scrollRef.current.clientWidth, behavior: 'smooth' });
+                    }
+                  }}
                   className={cn(
                     "relative w-16 md:w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all",
                     activeImageIndex === idx ? 'border-primary shadow-[0_0_10px_rgba(126,42,219,0.4)]' : 'border-white/10 opacity-50 hover:opacity-100'

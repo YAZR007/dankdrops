@@ -139,11 +139,11 @@
 }
 
 .animate-logo-draw {
-  animation: logo-draw 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-logo-draw-hollow {
-  animation: logo-draw-hollow 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: logo-draw-hollow 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .group:hover .logo-hover-target {
