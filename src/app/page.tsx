@@ -55,7 +55,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Strains with Scroll Reveal */}
+      {/* Featured Strains */}
       <section className="container mx-auto px-4">
         <div className="animate-on-scroll">
           <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
@@ -75,50 +75,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cinematic High Resolution Video Section */}
-      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-black">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.85] contrast-[1.1]"
-        >
-          <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/30" />
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl flex flex-col items-center">
-          <div className="mb-4">
-            <svg viewBox="0 0 400 120" className="w-full max-w-md h-auto overflow-visible">
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] stroke-primary stroke-[3px] fill-transparent animate-scroll-draw"
-              >
-                CBD
-              </text>
-            </svg>
-            <h2 className="font-headline text-3xl md:text-6xl font-black text-white uppercase tracking-tighter mt-[-30px] drop-shadow-lg">
-              <span className="text-hollow-white">IN MOTION</span>.
-            </h2>
-          </div>
-          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-10 drop-shadow-xl">
-            The Living CBD Experience
-          </p>
-          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-16 md:h-20 px-12 backdrop-blur-md text-xl md:text-2xl shadow-[0_0_40px_rgba(126,42,219,0.1)]">
-            <Link href="/explore-cbd">EXPLORE CBD</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Categories Grid - Refined for Mobile Fit and Shading */}
+      {/* Categories Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:min-h-[700px]">
-          {/* Column 1: Elite Flower (Wide on mobile, Full Height on desktop) */}
+          {/* Elite Flower */}
           <Link 
             href="/shop?category=Flower" 
             className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto h-full min-h-[300px] md:min-h-[400px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
@@ -128,20 +88,23 @@ export default function HomePage() {
                 src={flowerCatImage} 
                 alt="Elite Flower" 
                 fill 
-                className="object-cover brightness-[1.3] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
+                className="object-cover brightness-[1.3] md:group-hover:brightness-150 md:group-hover:scale-105 transition-all duration-1000" 
                 data-ai-hint="cannabis macro"
               />
             )}
-            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
-              <h3 className="font-headline text-2xl md:text-6xl font-black text-white md:text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
+            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent">
+              <h3 className="font-headline text-2xl md:text-6xl font-black text-white md:text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">
+                Elite CBD Flower
+              </h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
           </Link>
 
-          {/* Column 2: Stacked Categories (Grid on mobile, flex-col on desktop) */}
+          {/* Stacked Categories */}
           <div className="grid grid-cols-2 md:flex md:flex-col gap-4 md:gap-10 h-full">
-            {/* Card: Artisanal Extracts */}
-            <div 
+            {/* Extracts */}
+            <Link 
+              href="/shop?category=Concentrates"
               className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               {concentratesCatImage && (
@@ -149,19 +112,22 @@ export default function HomePage() {
                   src={concentratesCatImage} 
                   alt="Artisanal Extracts" 
                   fill 
-                  className="object-cover brightness-[1.4] group-hover:brightness-160 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.4] md:group-hover:brightness-160 md:group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis extract"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Extracts</h3>
+                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
+                  Extracts
+                </h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Pure high-concentration CBD extracts and distillates.</p>
               </div>
-            </div>
+            </Link>
 
-            {/* Card: CBD Edibles */}
-            <div 
+            {/* Edibles */}
+            <Link 
+              href="/shop?category=Edibles"
               className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               {ediblesCatImage && (
@@ -169,16 +135,18 @@ export default function HomePage() {
                   src={ediblesCatImage} 
                   alt="CBD Edibles" 
                   fill 
-                  className="object-cover brightness-[1.3] group-hover:brightness-140 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.3] md:group-hover:brightness-140 md:group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis edible"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Edibles</h3>
+                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
+                  Edibles
+                </h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Gourmet artisanal CBD infusions for mindful consumption.</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -208,7 +176,7 @@ export default function HomePage() {
               <Shield className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
-            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Smell-proof bags and luxury packaging.</p>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Smell-proof bags and luxury packaging. Clean delivery standards.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">

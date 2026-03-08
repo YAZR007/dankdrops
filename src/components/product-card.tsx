@@ -4,7 +4,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/product';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -24,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
             fill
             className={cn(
               "object-cover transition-all duration-700",
-              product.secondaryImageUrl ? "group-hover:opacity-0" : "group-hover:scale-110"
+              product.secondaryImageUrl ? "md:group-hover:opacity-0" : "md:group-hover:scale-110"
             )}
             sizes="(max-width: 768px) 50vw, 33vw"
           />
@@ -33,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
               src={product.secondaryImageUrl}
               alt={`${product.name} alternate view`}
               fill
-              className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+              className="object-cover absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-all duration-700 md:group-hover:scale-105"
               sizes="(max-width: 768px) 50vw, 33vw"
             />
           )}
