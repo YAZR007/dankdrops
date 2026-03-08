@@ -17,7 +17,7 @@ export default function HomePage() {
   const trustBgImage = PlaceHolderImages.find(img => img.id === 'trust-badges-bg')?.imageUrl || '';
 
   return (
-    <div className="flex flex-col gap-8 md:gap-16 pb-16">
+    <div className="flex flex-col gap-8 md:gap-16 pb-16 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[80vh] md:h-[85vh] min-h-[500px] w-full overflow-hidden flex items-center">
         {heroImage && (
@@ -115,20 +115,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid - Boutique Triple Layout */}
+      {/* Categories Grid - Refined for Mobile Fit */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:min-h-[700px]">
-          {/* Column 1: Elite Flower (Full Height) */}
+          {/* Column 1: Elite Flower (Wide on mobile, Full Height on desktop) */}
           <Link 
             href="/shop?category=Flower" 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto h-full min-h-[400px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto h-full min-h-[300px] md:min-h-[400px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
           >
             {flowerCatImage && (
               <Image 
                 src={flowerCatImage} 
                 alt="Elite Flower" 
                 fill 
-                className="object-cover brightness-[1.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
+                className="object-cover brightness-[1.3] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
                 data-ai-hint="cannabis macro"
               />
             )}
@@ -138,44 +138,44 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* Column 2: Stacked Categories (Extracts & Edibles) */}
-          <div className="flex flex-col gap-4 md:gap-10 h-full">
+          {/* Column 2: Stacked Categories (Grid on mobile, flex-col on desktop) */}
+          <div className="grid grid-cols-2 md:flex md:flex-col gap-4 md:gap-10 h-full">
             {/* Card: Artisanal Extracts */}
             <div 
-              className="group relative flex-1 overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               {concentratesCatImage && (
                 <Image 
                   src={concentratesCatImage} 
                   alt="Artisanal Extracts" 
                   fill 
-                  className="object-cover brightness-[1.3] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.4] group-hover:brightness-160 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis extract"
                 />
               )}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Artisanal Extracts</h3>
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
+                <h3 className="font-headline text-lg md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Extracts</h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Pure high-concentration CBD extracts and distillates.</p>
               </div>
             </div>
 
             {/* Card: CBD Edibles */}
             <div 
-              className="group relative flex-1 overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               {ediblesCatImage && (
                 <Image 
                   src={ediblesCatImage} 
                   alt="CBD Edibles" 
                   fill 
-                  className="object-cover brightness-[1.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.3] group-hover:brightness-140 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis edible"
                 />
               )}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">CBD Edibles</h3>
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
+                <h3 className="font-headline text-lg md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Edibles</h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Gourmet artisanal CBD infusions for mindful consumption.</p>
               </div>
             </div>
