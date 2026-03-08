@@ -26,7 +26,7 @@ export const PRODUCTS: Product[] = [
     name: 'Permanent Marker CBD',
     description: 'Our flagship CBD-dominant hybrid. This boutique-grown strain is floral, soapy, and gassy, offering a powerful sense of clarity and focused bliss without psychoactive effects.',
     category: 'Flower',
-    price: 21, // Base price for 3.5g (3.5 * 6)
+    price: 21,
     imageUrl: GENERIC_MACRO,
     secondaryImageUrl: PERMANENT_MARKER_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
@@ -105,8 +105,8 @@ export const PRODUCTS: Product[] = [
 
 export const getPriceForSize = (basePrice: number, size: string): number => {
   const weight = parseFloat(size.replace('g', ''));
-  if (weight === 28) {
-    return weight * 5; // £5 per gram for 28g harvests
-  }
-  return weight * 6; // £6 per gram for all other boutique weights
+  if (weight === 7) return 35;
+  if (weight === 14) return 65;
+  if (weight === 28) return 120;
+  return basePrice; // Fallback to 3.5g base price (21)
 };
