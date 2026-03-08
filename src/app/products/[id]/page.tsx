@@ -18,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export default function ProductPage() {
   const params = useParams();
@@ -46,24 +47,25 @@ export default function ProductPage() {
     return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
   }, [product]);
 
-  // Magnification & Heads-up State
+  // Magnification & Swiping State
   const [showLens, setShowLens] = useState(false);
   const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
   const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
   const [showHeadsUp, setShowHeadsUp] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const lastTapRef = useRef<number>(0);
-  const isMagnifyingRef = useRef<boolean>(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isHoldingRef = useRef<boolean>(false);
+  const startPosRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Check if heads-up should be shown (once per session)
-    const hasSeenHeadsUp = sessionStorage.getItem('dankdrops_magnify_tip');
+    const hasSeenHeadsUp = sessionStorage.getItem('dankdrops_magnify_tip_v2');
     if (!hasSeenHeadsUp && window.innerWidth < 768) {
       setShowHeadsUp(true);
       const timer = setTimeout(() => {
         setShowHeadsUp(false);
-        sessionStorage.setItem('dankdrops_magnify_tip', 'true');
-      }, 4000);
+        sessionStorage.setItem('dankdrops_magnify_tip_v2', 'true');
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -76,6 +78,14 @@ export default function ProductPage() {
     }
     return () => { document.body.style.overflow = 'unset'; };
   }, [showLens]);
+
+  // Sync scroll position with active index for desktop buttons
+  useEffect(() => {
+    if (scrollRef.current) {
+      const scrollAmount = activeImageIndex * scrollRef.current.clientWidth;
+      scrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }, [activeImageIndex]);
 
   if (!product) {
     return (
@@ -108,7 +118,6 @@ export default function ProductPage() {
 
     if (x < 0 || y < 0 || x > width || y > height) {
       setShowLens(false);
-      isMagnifyingRef.current = false;
       return;
     }
 
@@ -117,50 +126,56 @@ export default function ProductPage() {
 
     setLensPosition({ x, y });
     setBgPosition({ x: xPercent, y: yPercent });
-    setShowLens(true);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth >= 768) {
-      updatePosition(e.clientX, e.clientY);
-    }
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const now = Date.now();
-    const delta = now - lastTapRef.current;
+    const touch = e.touches[0];
+    startPosRef.current = { x: touch.clientX, y: touch.clientY };
     
-    if (delta < 300 && delta > 0) {
-      // Double tap detected
-      isMagnifyingRef.current = true;
-      const touch = e.touches[0];
+    // Start 3-second hold timer
+    holdTimerRef.current = setTimeout(() => {
+      isHoldingRef.current = true;
+      setShowLens(true);
+      setShowHeadsUp(false);
+      sessionStorage.setItem('dankdrops_magnify_tip_v2', 'true');
       updatePosition(touch.clientX, touch.clientY);
-      setShowHeadsUp(false); // Hide heads up if user interacts
-      sessionStorage.setItem('dankdrops_magnify_tip', 'true');
-    }
-    lastTapRef.current = now;
+    }, 3000);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (isMagnifyingRef.current) {
-      const touch = e.touches[0];
+    const touch = e.touches[0];
+    const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
+    const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
+
+    // If user moves finger significantly before 3s, cancel hold
+    if (!isHoldingRef.current && (deltaX > 10 || deltaY > 10)) {
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current);
+        holdTimerRef.current = null;
+      }
+    }
+
+    if (isHoldingRef.current) {
       updatePosition(touch.clientX, touch.clientY);
     }
   };
 
   const handleTouchEnd = () => {
-    isMagnifyingRef.current = false;
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    isHoldingRef.current = false;
     setShowLens(false);
   };
 
-  const nextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setActiveImageIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.clientWidth);
+      if (index !== activeImageIndex) {
+        setActiveImageIndex(index);
+      }
+    }
   };
 
   return (
@@ -177,20 +192,29 @@ export default function ProductPage() {
           <div 
             ref={containerRef}
             className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none select-none"
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => window.innerWidth >= 768 && setShowLens(true)}
-            onMouseLeave={() => setShowLens(false)}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            onContextMenu={(e) => e.preventDefault()} // Prevent long-press context menu
           >
-            <Image 
-              src={images[activeImageIndex]} 
-              alt={product.name} 
-              fill 
-              className="object-cover pointer-events-none"
-              priority
-            />
+            {/* Fluid Swiping Gallery */}
+            <div 
+              ref={scrollRef}
+              className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+              onScroll={handleScroll}
+            >
+              {images.map((img, idx) => (
+                <div key={idx} className="relative flex-shrink-0 w-full h-full snap-center">
+                  <Image 
+                    src={img} 
+                    alt={`${product.name} ${idx + 1}`} 
+                    fill 
+                    className="object-cover pointer-events-none"
+                    priority={idx === 0}
+                  />
+                </div>
+              ))}
+            </div>
 
             {/* Boutique Heads-up overlay */}
             {showHeadsUp && (
@@ -198,32 +222,34 @@ export default function ProductPage() {
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    Double tap to magnify
+                    Hold 3 seconds to magnify
                   </span>
                 </div>
               </div>
             )}
 
+            {/* Desktop Navigation Arrows */}
             {images.length > 1 && (
-              <>
+              <div className="hidden md:block">
                 <button 
-                  onClick={prevImage}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all md:opacity-0 group-hover:opacity-100 flex items-center justify-center"
+                  onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center"
                 >
-                  <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+                  <ChevronLeft className="h-6 w-6" />
                 </button>
                 <button 
-                  onClick={nextImage}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all md:opacity-0 group-hover:opacity-100 flex items-center justify-center"
+                  onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev + 1) % images.length); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center"
                 >
-                  <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+                  <ChevronRight className="h-6 w-6" />
                 </button>
-              </>
+              </div>
             )}
 
+            {/* Magnification Lens */}
             {showLens && (
               <div 
-                className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-20 bg-black"
+                className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
                   left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
                   top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104),
@@ -236,17 +262,19 @@ export default function ProductPage() {
             )}
           </div>
 
+          {/* Thumbnail Strip */}
           {images.length > 1 && (
             <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
               {images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-16 md:w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all ${
+                  className={cn(
+                    "relative w-16 md:w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all",
                     activeImageIndex === idx ? 'border-primary shadow-[0_0_10px_rgba(126,42,219,0.4)]' : 'border-white/10 opacity-50 hover:opacity-100'
-                  }`}
+                  )}
                 >
-                  <Image src={img} alt={`${product.name} ${idx + 1}`} fill className="object-cover" />
+                  <Image src={img} alt={`${product.name} thumbnail ${idx + 1}`} fill className="object-cover" />
                 </button>
               ))}
             </div>
