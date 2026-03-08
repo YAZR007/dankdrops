@@ -36,6 +36,7 @@ export default function ProductPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || '3.5g');
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || 'Hybrid');
+  const [isMounted, setIsMounted] = useState(false);
   
   const currentPrice = useMemo(() => {
     if (!product) return 0;
@@ -64,6 +65,7 @@ export default function ProductPage() {
   const lastTapTimeRef = useRef(0);
 
   useEffect(() => {
+    setIsMounted(true);
     setShowHeadsUp(true);
     setHasMagnified(false);
   }, [id]);
@@ -302,7 +304,9 @@ export default function ProductPage() {
               {product.name}
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-2xl md:text-3xl font-bold text-white">£{currentPrice}</span>
+              <span className="text-2xl md:text-3xl font-bold text-white">
+                £{isMounted ? currentPrice : product.price}
+              </span>
               {product.isNewArrival && (
                 <Badge className="bg-primary text-white px-2 py-0.5 md:px-3 md:py-1 text-[8px] md:text-[10px] font-bold uppercase tracking-wider">NEW HARVEST</Badge>
               )}
