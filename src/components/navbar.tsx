@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -57,9 +58,9 @@ export function Navbar() {
                 setIsSearchOpen(false);
                 setIsFocused(false);
               }}
-              className="block group p-4 hover:bg-white/5 transition-all border-b border-white/5 last:border-0"
+              className="block group p-4 hover:bg-white/5 transition-all border-b border-white/5 last:border-0 active:bg-white/10"
             >
-              <div className="flex items-center justify-between group-hover:scale-[1.02] transition-all duration-300">
+              <div className="flex items-center justify-between group-hover:scale-[1.02] transition-all duration-300 active:scale-[0.98]">
                 <div className="flex flex-col gap-0.5 p-2">
                   <span className="text-[9px] font-black text-primary uppercase tracking-widest">{product.category}</span>
                   <h4 className="font-headline font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">
@@ -89,7 +90,7 @@ export function Navbar() {
         <div className="flex items-center gap-4 md:gap-6">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden hover:scale-110 active:scale-90 transition-transform">
+              <Button variant="ghost" size="icon" className="md:hidden hover:scale-110 active:scale-90 transition-transform transform-gpu">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -98,17 +99,17 @@ export function Navbar() {
                 <SheetTitle className="font-headline text-2xl font-black text-primary tracking-tighter uppercase">DANKDROPS</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-1 p-4">
-                <Link href="/shop" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group">
+                <Link href="/shop" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group active:scale-95 transform-gpu">
                   Shop All <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
-                <Link href="/shop?category=Flower" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group">
+                <Link href="/shop?category=Flower" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group active:scale-95 transform-gpu">
                   Boutique Flower <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
-                <Link href="/shop?filter=new" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group">
+                <Link href="/shop?filter=new" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group active:scale-95 transform-gpu">
                   New Drops <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
                 <div className="mt-8 pt-8 border-t border-white/5">
-                  <Link href="/profile" className="flex items-center gap-3 p-4 text-muted-foreground font-bold uppercase tracking-widest text-sm">
+                  <Link href="/profile" className="flex items-center gap-3 p-4 text-muted-foreground font-bold uppercase tracking-widest text-sm active:bg-white/5 transition-colors">
                     <User className="h-5 w-5" /> Account Settings
                   </Link>
                 </div>
@@ -118,7 +119,7 @@ export function Navbar() {
 
           <Link 
             href="/" 
-            className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-95 transform-gpu"
+            className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-90 transform-gpu"
           >
             {!mounted ? (
               <span className="font-headline text-2xl md:text-3xl font-black tracking-tighter text-primary">DANKDROPS</span>
@@ -140,19 +141,19 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/shop" 
-              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-95 inline-block uppercase tracking-widest"
+              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-90 inline-block uppercase tracking-widest transform-gpu"
             >
               SHOP ALL
             </Link>
             <Link 
               href="/shop?category=Flower" 
-              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-95 inline-block uppercase tracking-widest"
+              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-90 inline-block uppercase tracking-widest transform-gpu"
             >
               BOUTIQUE FLOWER
             </Link>
             <Link 
               href="/shop?filter=new" 
-              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-95 inline-block uppercase tracking-widest"
+              className="text-[10px] font-black hover:text-primary transition-all hover:scale-110 active:scale-90 inline-block uppercase tracking-widest transform-gpu"
             >
               NEW DROPS
             </Link>
@@ -160,7 +161,7 @@ export function Navbar() {
         </div>
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
-          <Link href="/" className="flex items-center group active:scale-95 transition-transform">
+          <Link href="/" className="flex items-center group active:scale-90 transition-transform transform-gpu">
             {!mounted ? (
               <span className="font-headline text-xl font-black tracking-tighter text-primary">DANKDROPS</span>
             ) : (
@@ -198,20 +199,20 @@ export function Navbar() {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="lg:hidden hover:scale-110 active:scale-90 transition-transform" 
+            className="lg:hidden hover:scale-110 active:scale-90 transition-transform transform-gpu" 
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
             <Search className="h-5 w-5" />
           </Button>
           
           <Link href="/profile" className="hidden sm:block">
-            <Button variant="ghost" size="icon" className="hover:scale-110 active:scale-90 transition-transform">
+            <Button variant="ghost" size="icon" className="hover:scale-110 active:scale-90 transition-transform transform-gpu">
               <User className="h-5 w-5" />
             </Button>
           </Link>
 
           <CartSheet>
-            <Button variant="ghost" size="icon" className="relative hover:scale-110 active:scale-90 transition-transform">
+            <Button variant="ghost" size="icon" className="relative hover:scale-110 active:scale-90 transition-transform transform-gpu">
               <ShoppingBag className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-accent text-white text-[8px] font-black h-4 w-4 flex items-center justify-center rounded-full animate-in zoom-in">
@@ -238,7 +239,7 @@ export function Navbar() {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute right-1 top-1/2 -translate-y-1/2"
+              className="absolute right-1 top-1/2 -translate-y-1/2 active:scale-90 transition-transform"
               onClick={() => {
                 setIsSearchOpen(false);
                 setSearchQuery("");
