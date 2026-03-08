@@ -57,14 +57,25 @@ export default function ExploreCBDPage() {
           <h2 className="font-headline text-3xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap items-center gap-x-4">
             <span className="text-primary relative inline-block">
               TRICHOMES
-              {/* Minimal Trichome Decorative Elements */}
-              <span className="absolute -top-4 -right-6 flex flex-col gap-1">
-                <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_12px_rgba(126,42,219,0.8)] animate-pulse" />
-                <span className="w-1 h-1 rounded-full bg-primary/60 animate-bounce delay-150" />
-              </span>
-              <span className="absolute top-1/2 -left-4 -translate-y-1/2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse delay-300" />
-              </span>
+              {/* Artisanal Trichome Glands sprouting from the word */}
+              <div className="absolute -top-8 left-[10%] flex flex-col items-center">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_15px_rgba(126,42,219,0.9)] animate-pulse" />
+                <div className="w-[1.5px] h-6 bg-gradient-to-t from-primary/0 to-primary/80" />
+              </div>
+              <div className="absolute -top-6 left-[45%] flex flex-col items-center">
+                <div className="w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_12px_rgba(126,42,219,0.7)] animate-bounce delay-75" />
+                <div className="w-[1px] h-4 bg-gradient-to-t from-primary/0 to-primary/60" />
+              </div>
+              <div className="absolute -top-10 right-[15%] flex flex-col items-center">
+                <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_20px_rgba(126,42,219,0.8)] animate-pulse delay-150" />
+                <div className="w-[1.5px] h-8 bg-gradient-to-t from-primary/0 to-primary/90" />
+              </div>
+              <div className="absolute top-1/2 -left-4 -translate-y-1/2">
+                <div className="w-2 h-2 rounded-full bg-primary/40 animate-ping" />
+              </div>
+              <div className="absolute -top-4 right-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse delay-300" />
+              </div>
             </span>{" "}
             <span className="text-hollow-white">IN MOTION</span>.
           </h2>

@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -78,7 +79,7 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[1.1] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[1.4] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
@@ -104,7 +105,7 @@ export default function HomePage() {
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-10 drop-shadow-xl">
             The Living CBD Experience
           </p>
-          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-14 md:h-16 px-10 backdrop-blur-md text-lg md:text-xl">
+          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-16 md:h-20 px-12 backdrop-blur-md text-xl md:text-2xl shadow-[0_0_40px_rgba(255,255,255,0.1)]">
             <Link href="/explore-cbd">EXPLORE CBD</Link>
           </Button>
         </div>
@@ -116,13 +117,13 @@ export default function HomePage() {
           {/* Card: Elite Flower */}
           <Link 
             href="/shop?category=Flower" 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
           >
             <Image 
               src={flowerCatImage} 
               alt="Elite Flower" 
               fill 
-              className="object-cover brightness-[0.4] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
+              className="object-cover brightness-[0.4] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
@@ -133,13 +134,13 @@ export default function HomePage() {
 
           {/* Card: Artisanal Extracts */}
           <div 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
           >
             <Image 
               src={concentratesCatImage} 
               alt="Artisanal Extracts" 
               fill 
-              className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+              className="object-cover brightness-[0.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
               data-ai-hint="cannabis extract"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
