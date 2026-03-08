@@ -6,7 +6,7 @@ import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
 import { useState, useMemo, Suspense } from 'react';
-import { Filter, SlidersHorizontal, X, Clock, ArrowDownWideArrow, ArrowUpNarrowWide } from 'lucide-react';
+import { Filter, SlidersHorizontal, X, Clock, ArrowDownWideNarrow, ArrowUpNarrowWide } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Vapes', 'Accessories'];
@@ -116,7 +116,7 @@ function ShopContent() {
                 }`}
               >
                 CBD: High to Low
-                {sortBy === 'cbd-desc' && <ArrowDownWideArrow className="h-3 w-3" />}
+                {sortBy === 'cbd-desc' && <ArrowDownWideNarrow className="h-3 w-3" />}
               </button>
               <button 
                 onClick={() => setSortBy(sortBy === 'price-asc' ? 'default' : 'price-asc')}
