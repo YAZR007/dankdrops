@@ -59,16 +59,16 @@ export default function ProductPage() {
   const startPosRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const hasSeenHeadsUp = sessionStorage.getItem('dankdrops_magnify_tip_v2');
-    if (!hasSeenHeadsUp && window.innerWidth < 768) {
+    // Show heads up every time the page mounts or refreshes
+    if (window.innerWidth < 768) {
       setShowHeadsUp(true);
+      // Auto hide after 5 seconds if they don't do anything
       const timer = setTimeout(() => {
         setShowHeadsUp(false);
-        sessionStorage.setItem('dankdrops_magnify_tip_v2', 'true');
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [id]); // Also reset when product ID changes
 
   useEffect(() => {
     if (showLens && window.innerWidth < 768) {
@@ -116,6 +116,7 @@ export default function ProductPage() {
     const x = clientX - left;
     const y = clientY - top;
 
+    // Boundary check
     if (x < 0 || y < 0 || x > width || y > height) {
       setShowLens(false);
       return;
@@ -131,13 +132,15 @@ export default function ProductPage() {
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0];
     startPosRef.current = { x: touch.clientX, y: touch.clientY };
-    
+    isHoldingRef.current = false;
+
     // Start 3-second hold timer
+    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+    
     holdTimerRef.current = setTimeout(() => {
       isHoldingRef.current = true;
       setShowLens(true);
-      setShowHeadsUp(false);
-      sessionStorage.setItem('dankdrops_magnify_tip_v2', 'true');
+      setShowHeadsUp(false); // Hide the tip once they successfully hold
       updatePosition(touch.clientX, touch.clientY);
     }, 3000);
   };
@@ -147,7 +150,7 @@ export default function ProductPage() {
     const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
     const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
 
-    // If user moves finger significantly before 3s, cancel hold
+    // If user moves finger significantly before 3s, it's likely a swipe or scroll
     if (!isHoldingRef.current && (deltaX > 10 || deltaY > 10)) {
       if (holdTimerRef.current) {
         clearTimeout(holdTimerRef.current);
@@ -156,6 +159,8 @@ export default function ProductPage() {
     }
 
     if (isHoldingRef.current) {
+      // Prevent browser default swiping behavior while magnifying
+      if (e.cancelable) e.preventDefault();
       updatePosition(touch.clientX, touch.clientY);
     }
   };
@@ -195,7 +200,7 @@ export default function ProductPage() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            onContextMenu={(e) => e.preventDefault()} // Prevent long-press context menu
+            onContextMenu={(e) => e.preventDefault()}
           >
             {/* Fluid Swiping Gallery */}
             <div 
@@ -252,7 +257,7 @@ export default function ProductPage() {
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
                   left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104),
+                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Offsets to be above finger on mobile
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
