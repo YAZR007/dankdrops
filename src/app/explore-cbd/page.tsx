@@ -57,45 +57,60 @@ export default function ExploreCBDPage() {
           <h2 className="font-headline text-3xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap items-center gap-x-4">
             <span className="text-primary relative inline-block">
               TRICHOMES
-              {/* Dense Minimal Trichomes Sprouting All Over */}
-              {/* Top Row */}
-              <div className="absolute -top-3 left-[5%] flex flex-col items-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(126,42,219,0.6)] animate-pulse" />
+              {/* Top Row - Attached to Letters */}
+              <div className="absolute top-[-8px] left-[8%] flex flex-col items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(126,42,219,0.6)] animate-pulse" />
                 <div className="w-[1px] h-2 bg-primary/40" />
               </div>
-              <div className="absolute -top-4 left-[25%] flex flex-col items-center">
-                <div className="w-1 h-1 rounded-full bg-primary/60 shadow-[0_0_10px_rgba(126,42,219,0.4)] animate-bounce delay-75" />
-                <div className="w-[1px] h-3 bg-primary/30" />
+              <div className="absolute top-[-10px] left-[22%] flex flex-col items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/60 shadow-[0_0_6px_rgba(126,42,219,0.4)] animate-bounce delay-75" />
+                <div className="w-[1px] h-2.5 bg-primary/30" />
               </div>
-              <div className="absolute -top-3 left-[45%] flex flex-col items-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_12px_rgba(126,42,219,0.7)] animate-pulse delay-150" />
-                <div className="w-[1px] h-2 bg-primary/50" />
+              <div className="absolute top-[-6px] left-[35%] flex flex-col items-center">
+                <div className="w-1 h-1 rounded-full bg-primary shadow-[0_0_10px_rgba(126,42,219,0.7)] animate-pulse delay-150" />
+                <div className="w-[1px] h-1.5 bg-primary/50" />
               </div>
-              <div className="absolute -top-5 left-[65%] flex flex-col items-center">
-                <div className="w-1 h-1 rounded-full bg-primary/40 shadow-[0_0_8px_rgba(126,42,219,0.3)] animate-bounce delay-300" />
-                <div className="w-[1px] h-4 bg-primary/20" />
+              <div className="absolute top-[-12px] left-[50%] flex flex-col items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/40 shadow-[0_0_6px_rgba(126,42,219,0.3)] animate-bounce delay-300" />
+                <div className="w-[1px] h-3 bg-primary/20" />
               </div>
-              <div className="absolute -top-3 left-[85%] flex flex-col items-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/90 shadow-[0_0_10px_rgba(126,42,219,0.8)] animate-pulse delay-500" />
-                <div className="w-[1px] h-2 bg-primary/60" />
+              <div className="absolute top-[-7px] left-[68%] flex flex-col items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/90 shadow-[0_0_8px_rgba(126,42,219,0.8)] animate-pulse delay-500" />
+                <div className="w-[1px] h-1.5 bg-primary/60" />
+              </div>
+              <div className="absolute top-[-9px] left-[82%] flex flex-col items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/70 shadow-[0_0_6px_rgba(126,42,219,0.5)] animate-bounce delay-200" />
+                <div className="w-[1px] h-2 bg-primary/40" />
+              </div>
+              <div className="absolute top-[-11px] left-[94%] flex flex-col items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/50 shadow-[0_0_8px_rgba(126,42,219,0.3)] animate-pulse delay-400" />
+                <div className="w-[1px] h-2.5 bg-primary/20" />
               </div>
 
-              {/* Bottom Row */}
-              <div className="absolute -bottom-2 left-[15%] flex flex-col-reverse items-center">
-                <div className="w-1 h-1 rounded-full bg-primary/50 shadow-[0_0_8px_rgba(126,42,219,0.4)] animate-pulse delay-200" />
-                <div className="w-[1px] h-2 bg-primary/30" />
+              {/* Bottom Row - Attached to Baseline */}
+              <div className="absolute bottom-[-6px] left-[15%] flex flex-col-reverse items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/50 shadow-[0_0_6px_rgba(126,42,219,0.4)] animate-pulse delay-200" />
+                <div className="w-[1px] h-1.5 bg-primary/30" />
               </div>
-              <div className="absolute -bottom-3 left-[40%] flex flex-col-reverse items-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(126,42,219,0.5)] animate-bounce delay-400" />
-                <div className="w-[1px] h-3 bg-primary/40" />
+              <div className="absolute bottom-[-10px] left-[32%] flex flex-col-reverse items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(126,42,219,0.5)] animate-bounce delay-400" />
+                <div className="w-[1px] h-2.5 bg-primary/40" />
               </div>
-              <div className="absolute -bottom-2 left-[70%] flex flex-col-reverse items-center">
-                <div className="w-1 h-1 rounded-full bg-primary/60 shadow-[0_0_8px_rgba(126,42,219,0.3)] animate-pulse delay-100" />
+              <div className="absolute bottom-[-8px] left-[45%] flex flex-col-reverse items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/60 shadow-[0_0_6px_rgba(126,42,219,0.3)] animate-pulse delay-100" />
                 <div className="w-[1px] h-2 bg-primary/20" />
               </div>
-              <div className="absolute -bottom-4 left-[90%] flex flex-col-reverse items-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary/80 shadow-[0_0_12px_rgba(126,42,219,0.6)] animate-bounce delay-600" />
+              <div className="absolute bottom-[-12px] left-[62%] flex flex-col-reverse items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/80 shadow-[0_0_12px_rgba(126,42,219,0.6)] animate-bounce delay-600" />
                 <div className="w-[1px] h-3 bg-primary/50" />
+              </div>
+              <div className="absolute bottom-[-7px] left-[78%] flex flex-col-reverse items-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-primary/60 shadow-[0_0_8px_rgba(126,42,219,0.3)] animate-pulse delay-300" />
+                <div className="w-[1px] h-1.5 bg-primary/20" />
+              </div>
+              <div className="absolute bottom-[-11px] left-[90%] flex flex-col-reverse items-center">
+                <div className="w-1 h-1 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(126,42,219,0.5)] animate-bounce delay-150" />
+                <div className="w-[1px] h-2.5 bg-primary/40" />
               </div>
             </span>{" "}
             <span className="text-hollow-white">IN MOTION</span>.
