@@ -21,6 +21,7 @@ const GELATO_41_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a92ad8ab1
 
 // Specific images for Blueberry Pancakes
 const BLUEBERRY_PANCAKES_PRIMARY = "https://litfarms.com/cdn/shop/files/BlueberryPancakesS-LEO_2_550f9d9b-4342-494b-855f-d78ebebfaefe.jpg?v=1760471298";
+const BLUEBERRY_PANCAKES_SECONDARY = "https://img1.wsimg.com/isteam/ip/f2fde525-c314-4f56-8c04-c78d31ae1285/ols/donez3.jpg/:/rs=w:1200,h:1200";
 
 export const PRODUCTS: Product[] = [
   {
@@ -30,6 +31,7 @@ export const PRODUCTS: Product[] = [
     category: 'Flower',
     price: 21,
     imageUrl: BLUEBERRY_PANCAKES_PRIMARY,
+    secondaryImageUrl: BLUEBERRY_PANCAKES_SECONDARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true,
