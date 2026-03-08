@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -216,9 +217,9 @@ export default function ProductPage() {
               ))}
             </div>
 
-            {/* Boutique Heads-up overlay */}
+            {/* Boutique Heads-up overlay - Mobile Only */}
             {showHeadsUp && !hasMagnified && (
-              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none">
+              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none md:hidden">
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
