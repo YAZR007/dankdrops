@@ -113,7 +113,7 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Elite CBD Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
           </Link>
