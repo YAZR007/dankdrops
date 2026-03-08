@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useSearchParams } from 'next/navigation';
 import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { Filter, SlidersHorizontal, X, Clock, ArrowDownWideArrow, ArrowUpNarrowWide } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
@@ -12,7 +13,7 @@ const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Vapes', 'Acces
 
 type SortOption = 'default' | 'cbd-desc' | 'price-asc';
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category') || 'All';
   const filterParam = searchParams.get('filter');
@@ -153,5 +154,25 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-24 text-center">
+        <div className="animate-pulse space-y-8">
+          <div className="h-12 w-48 bg-muted rounded-md mx-auto" />
+          <div className="h-4 w-64 bg-muted rounded-md mx-auto" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-80 bg-muted/50 rounded-xl" />
+            ))}
+          </div>
+        </div>
+      </div>
+    }>
+      <ShopContent />
+    </Suspense>
   );
 }
