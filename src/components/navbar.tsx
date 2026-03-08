@@ -188,6 +188,7 @@ export function Navbar() {
               onFocus={() => setIsFocused(true)}
               placeholder="Search strains..." 
               className="pl-10 bg-muted/50 border-none focus-visible:ring-primary transition-all hover:bg-muted/70 text-xs font-bold h-10"
+              suppressHydrationWarning
             />
           </div>
           {isFocused && searchQuery.trim() && <SearchResultsList />}
@@ -232,6 +233,7 @@ export function Navbar() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search strains..." 
               className="pl-10 bg-muted/50 border-none focus-visible:ring-primary text-sm font-bold h-12"
+              suppressHydrationWarning
             />
             <Button 
               variant="ghost" 
