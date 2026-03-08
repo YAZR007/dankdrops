@@ -1,4 +1,3 @@
-
 import { Product } from '@/types/product';
 
 // Generic placeholder for other products
@@ -20,7 +19,25 @@ const GMO_COOKIES_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a36855e
 const GELATO_41_PRIMARY = "https://static.wixstatic.com/media/a82ad9_56bd23227d7844f09a21700efcdef619~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_56bd23227d7844f09a21700efcdef619~mv2.webp";
 const GELATO_41_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a92ad8ab14fc4476ad4d7216f3f30035~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_a92ad8ab14fc4476ad4d7216f3f30035~mv2.webp";
 
+// Specific images for Blueberry Pancakes
+const BLUEBERRY_PANCAKES_PRIMARY = "https://litfarms.com/cdn/shop/files/BlueberryPancakesS-LEO_2_550f9d9b-4342-494b-855f-d78ebebfaefe.jpg?v=1760471298";
+
 export const PRODUCTS: Product[] = [
+  {
+    id: 'f6',
+    name: 'Blueberry Pancakes CBD',
+    description: 'A boutique CBD phenotype of the legendary Blueberry Pancakes. This strain is an indica-dominant hybrid featuring an artisanal profile of sweet berries and buttery dough. It delivers exactly what it promises: a sensory experience like a big stack of blueberry pancakes, providing deeply relaxing effects and gentle mental clarity.',
+    category: 'Flower',
+    price: 21,
+    imageUrl: BLUEBERRY_PANCAKES_PRIMARY,
+    sizes: ['3.5g', '7g', '14g', '28g'],
+    colors: ['Indica'],
+    isNewArrival: true,
+    lineage: 'Slurrican x Purple Panty Dropper (CBD Phenotype)',
+    cbd: '20%',
+    terpenes: ['Caryophyllene', 'Myrcene', 'Limonene'],
+    effects: ['Relaxed', 'Happy', 'Hungry']
+  },
   {
     id: 'f1',
     name: 'Permanent Marker CBD',
