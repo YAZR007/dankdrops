@@ -59,6 +59,12 @@
       "description": "Elite boutique CBD harvest landscape",
       "imageUrl": "https://static.wixstatic.com/media/a82ad9_61b374391c214358b8e6bf0a69b6836a~mv2.jpg",
       "imageHint": "cannabis field"
+    },
+    {
+      "id": "trust-badges-bg",
+      "description": "Artisanal cannabis heritage landscape",
+      "imageUrl": "https://static.wixstatic.com/media/a82ad9_c5fc0bd7d61c4c72a30e33c182863a00~mv2.jpg",
+      "imageHint": "cannabis farm"
     }
   ]
 }

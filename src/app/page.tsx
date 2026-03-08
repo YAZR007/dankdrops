@@ -19,14 +19,16 @@ export default function HomePage() {
     <div className="flex flex-col gap-8 md:gap-16 pb-16">
       {/* Hero Section */}
       <section className="relative h-[80vh] md:h-[85vh] min-h-[500px] w-full overflow-hidden flex items-center">
-        <Image 
-          src={heroImage} 
-          alt="DANKDROPS Flagship" 
-          fill 
-          className="object-cover brightness-[0.35]"
-          priority
-          data-ai-hint="macro bud"
-        />
+        {heroImage && (
+          <Image 
+            src={heroImage} 
+            alt="DANKDROPS Flagship" 
+            fill 
+            className="object-cover brightness-[0.35]"
+            priority
+            data-ai-hint="macro bud"
+          />
+        )}
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-[8px] md:text-xs font-black tracking-[0.2em] uppercase text-white mb-4 md:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -80,7 +82,7 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.8] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
@@ -120,13 +122,15 @@ export default function HomePage() {
             href="/shop?category=Flower" 
             className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
           >
-            <Image 
-              src={flowerCatImage} 
-              alt="Elite Flower" 
-              fill 
-              className="object-cover brightness-[0.4] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
-              data-ai-hint="cannabis macro"
-            />
+            {flowerCatImage && (
+              <Image 
+                src={flowerCatImage} 
+                alt="Elite Flower" 
+                fill 
+                className="object-cover brightness-[0.4] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
+                data-ai-hint="cannabis macro"
+              />
+            )}
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
               <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
@@ -137,13 +141,15 @@ export default function HomePage() {
           <div 
             className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
           >
-            <Image 
-              src={concentratesCatImage} 
-              alt="Artisanal Extracts" 
-              fill 
-              className="object-cover brightness-[0.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
-              data-ai-hint="cannabis extract"
-            />
+            {concentratesCatImage && (
+              <Image 
+                src={concentratesCatImage} 
+                alt="Artisanal Extracts" 
+                fill 
+                className="object-cover brightness-[0.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                data-ai-hint="cannabis extract"
+              />
+            )}
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
               <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
               <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Artisanal Extracts</h3>
@@ -155,13 +161,16 @@ export default function HomePage() {
 
       {/* Trust Badges */}
       <section className="relative py-24 md:py-32 overflow-hidden border-y border-white/5">
-        <Image 
-          src={trustBgImage}
-          alt="Artisanal Heritage"
-          fill
-          className="object-cover opacity-100 brightness-[0.4]"
-          data-ai-hint="cannabis farm"
-        />
+        {trustBgImage && (
+          <Image 
+            src={trustBgImage}
+            alt="Artisanal Heritage"
+            fill
+            className="object-cover opacity-100 brightness-[0.4]"
+            priority
+            data-ai-hint="cannabis farm"
+          />
+        )}
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 relative z-10">
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-3">
