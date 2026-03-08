@@ -73,20 +73,21 @@ export default function ExploreCBDPage() {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-6xl p-0 overflow-hidden bg-black/95 border-none shadow-[0_0_100px_rgba(128,0,255,0.4)] backdrop-blur-2xl">
-                <div className="relative aspect-video w-full">
+              <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black/95 border-none shadow-[0_0_100px_rgba(128,0,255,0.4)] backdrop-blur-2xl">
+                <div className="relative w-full">
                   <video 
                     autoPlay 
+                    muted
                     controls 
                     loop 
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   >
                     <source src={video.url} type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-black via-black/50 to-transparent">
-                    <p className="text-xs font-black uppercase tracking-widest text-primary mb-2">{video.label}</p>
-                    <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-white mb-2">{video.title}</h2>
-                    <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">{video.description}</p>
+                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black via-black/60 to-transparent">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
+                    <h2 className="font-headline text-2xl font-black uppercase tracking-tight text-white mb-1">{video.title}</h2>
+                    <p className="text-muted-foreground max-w-xl text-xs leading-relaxed">{video.description}</p>
                   </div>
                 </div>
               </DialogContent>
