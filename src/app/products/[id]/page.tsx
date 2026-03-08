@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -189,54 +190,68 @@ export default function ProductPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
         <div className="space-y-6">
-          <div 
-            ref={containerRef}
-            onMouseMove={(e) => updatePosition(e.clientX, e.clientY)}
-            onMouseEnter={() => setShowLens(true)}
-            onMouseLeave={() => setShowLens(false)}
-            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group select-none touch-none"
-          >
-            {/* Gallery: Fluid Swiping on Mobile, Button Nav on Desktop */}
+          <div className="relative group/gallery">
             <div 
-              ref={scrollRef}
-              className="flex w-full h-full overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-hide scroll-smooth"
-              onScroll={handleScroll}
+              ref={containerRef}
+              onMouseMove={(e) => updatePosition(e.clientX, e.clientY)}
+              onMouseEnter={() => setShowLens(true)}
+              onMouseLeave={() => setShowLens(false)}
+              className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none select-none touch-none"
             >
-              {images.map((img, idx) => (
-                <div key={idx} className="relative flex-shrink-0 w-full h-full snap-center">
-                  <Image 
-                    src={img} 
-                    alt={`${product.name} ${idx + 1}`} 
-                    fill 
-                    className="object-cover pointer-events-none"
-                    priority={idx === 0}
-                  />
+              <div 
+                ref={scrollRef}
+                className="flex w-full h-full overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                onScroll={handleScroll}
+              >
+                {images.map((img, idx) => (
+                  <div key={idx} className="relative flex-shrink-0 w-full h-full snap-center">
+                    <Image 
+                      src={img} 
+                      alt={`${product.name} ${idx + 1}`} 
+                      fill 
+                      className="object-cover pointer-events-none"
+                      priority={idx === 0}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {showHeadsUp && !hasMagnified && (
+                <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none md:hidden">
+                  <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
+                    <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
+                      Triple tap and hold to magnify
+                    </span>
+                  </div>
                 </div>
-              ))}
+              )}
+
+              {showLens && (
+                <div 
+                  className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
+                  style={{
+                    left: lensPosition.x - (typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 104),
+                    top: lensPosition.y - (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 104),
+                    backgroundImage: `url(${images[activeImageIndex]})`,
+                    backgroundSize: '600%',
+                    backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                />
+              )}
             </div>
 
-            {/* Boutique Heads-up overlay - Mobile Only */}
-            {showHeadsUp && !hasMagnified && (
-              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none md:hidden">
-                <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
-                  <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    Triple tap and hold to magnify
-                  </span>
-                </div>
-              </div>
-            )}
-
-            {/* PC Desktop Navigation Arrows (Removed swipe, forced buttons) */}
+            {/* External Navigation Arrows for PC */}
             {images.length > 1 && (
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <button 
                   onClick={(e) => { 
                     e.stopPropagation(); 
                     const nextIdx = (activeImageIndex - 1 + images.length) % images.length;
                     scrollToIndex(nextIdx);
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                  className="absolute left-0 -translate-x-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/gallery:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
@@ -246,30 +261,14 @@ export default function ProductPage() {
                     const nextIdx = (activeImageIndex + 1) % images.length;
                     scrollToIndex(nextIdx);
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                  className="absolute right-0 translate-x-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/gallery:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>
               </div>
             )}
-
-            {/* Magnification Lens */}
-            {showLens && (
-              <div 
-                className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
-                style={{
-                  left: lensPosition.x - (typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 104),
-                  backgroundImage: `url(${images[activeImageIndex]})`,
-                  backgroundSize: '600%',
-                  backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
-                  backgroundRepeat: 'no-repeat'
-                }}
-              />
-            )}
           </div>
 
-          {/* Thumbnail Strip */}
           {images.length > 1 && (
             <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
               {images.map((img, idx) => (
