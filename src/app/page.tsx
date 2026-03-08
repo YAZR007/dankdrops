@@ -80,7 +80,7 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
@@ -159,7 +159,7 @@ export default function HomePage() {
           src={trustBgImage}
           alt="Artisanal Heritage"
           fill
-          className="object-cover opacity-20 brightness-50"
+          className="object-cover opacity-100 brightness-[0.4]"
           data-ai-hint="cannabis farm"
         />
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 relative z-10">
