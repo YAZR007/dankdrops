@@ -7,14 +7,21 @@ import { Product } from '@/types/product';
 import { Card, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
-    <Link href={`/products/${product.id}`} className="block group h-full">
+    <Link 
+      href={`/products/${product.id}`} 
+      className="block group h-full"
+      onClick={() => product.secondaryImageUrl && setIsClicked(true)}
+    >
       <Card className="h-full overflow-hidden border-none bg-transparent hover:bg-muted/30 transition-all duration-300 flex flex-col">
         <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-secondary/10">
           <Image
@@ -23,6 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
             fill
             className={cn(
               "object-cover transition-all duration-700",
+              isClicked && product.secondaryImageUrl ? "opacity-0" : "opacity-100",
               product.secondaryImageUrl ? "md:group-hover:opacity-0" : "md:group-hover:scale-110"
             )}
             sizes="(max-width: 768px) 50vw, 33vw"
@@ -32,7 +40,11 @@ export function ProductCard({ product }: ProductCardProps) {
               src={product.secondaryImageUrl}
               alt={`${product.name} alternate view`}
               fill
-              className="object-cover absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-all duration-700 md:group-hover:scale-105"
+              className={cn(
+                "object-cover absolute inset-0 transition-all duration-700",
+                isClicked ? "opacity-100" : "opacity-0",
+                "md:group-hover:opacity-100 md:group-hover:scale-105"
+              )}
               sizes="(max-width: 768px) 50vw, 33vw"
             />
           )}
