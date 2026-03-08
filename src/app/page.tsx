@@ -86,13 +86,13 @@ export default function HomePage() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
-            <span className="text-hollow-white">MACRO</span> <span className="text-primary">IN MOTION</span>.
+            MACRO <span className="text-hollow-white">IN MOTION</span>.
           </h2>
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
             The Living CBD Experience
           </p>
           <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6 backdrop-blur-md">
-            <Link href="/shop?category=Flower">EXPLORE THE HARVEST</Link>
+            <Link href="/explore-cbd">EXPLORE CBD</Link>
           </Button>
         </div>
       </section>
