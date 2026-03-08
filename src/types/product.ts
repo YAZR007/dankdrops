@@ -7,6 +7,7 @@ export interface Product {
   price: number; // Base price for 3.5g
   imageUrl: string;
   secondaryImageUrl?: string;
+  tertiaryImageUrl?: string;
   sizes: string[];
   colors: string[];
   isNewArrival?: boolean;

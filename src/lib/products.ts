@@ -7,6 +7,7 @@ const GENERIC_MACRO = "https://static.wixstatic.com/media/a82ad9_2c38c072dab44fc
 // Specific images for Blue Dream
 const BLUE_DREAM_PRIMARY = "https://static.wixstatic.com/media/a82ad9_cda5746897164e49912146db6a489808~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_cda5746897164e49912146db6a489808~mv2.webp";
 const BLUE_DREAM_SECONDARY = "https://static.wixstatic.com/media/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_017d2aea4b704288b4b723e8b382a962~mv2.webp";
+const BLUE_DREAM_TERTIARY = "https://friscolabs.com/cdn/shop/files/1-Pound-Dream-Star-THCA-Strain-_small_-Frisco-Labs-30906654.heic?v=1767044337&width=600";
 
 // Specific images for Permanent Marker
 const PERMANENT_MARKER_SECONDARY = "https://static.wixstatic.com/media/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.jpg/v1/fill/w_1138,h_1708,al_c,q_90/a82ad9_575ca2f738b84e9bb3cec63714690669~mv2.webp";
@@ -44,6 +45,7 @@ export const PRODUCTS: Product[] = [
     price: 50,
     imageUrl: BLUE_DREAM_PRIMARY,
     secondaryImageUrl: BLUE_DREAM_SECONDARY,
+    tertiaryImageUrl: BLUE_DREAM_TERTIARY,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Sativa'],
     isNewArrival: false,

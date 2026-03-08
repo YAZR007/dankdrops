@@ -44,7 +44,10 @@ export default function ProductPage() {
 
   const images = useMemo(() => {
     if (!product) return [];
-    return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
+    const imgs = [product.imageUrl];
+    if (product.secondaryImageUrl) imgs.push(product.secondaryImageUrl);
+    if (product.tertiaryImageUrl) imgs.push(product.tertiaryImageUrl);
+    return imgs;
   }, [product]);
 
   // Magnification & Navigation State
@@ -200,7 +203,7 @@ export default function ProductPage() {
             >
               <div 
                 ref={scrollRef}
-                className="flex w-full h-full overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                className="flex w-full h-full overflow-x-auto lg:overflow-hidden snap-x snap-mandatory scrollbar-hide scroll-smooth"
                 onScroll={handleScroll}
               >
                 {images.map((img, idx) => (
