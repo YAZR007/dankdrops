@@ -115,7 +115,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid - Refined for Mobile Fit */}
+      {/* Categories Grid - Refined for Mobile Fit and Shading */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:min-h-[700px]">
           {/* Column 1: Elite Flower (Wide on mobile, Full Height on desktop) */}
@@ -132,7 +132,7 @@ export default function HomePage() {
                 data-ai-hint="cannabis macro"
               />
             )}
-            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
               <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
@@ -153,9 +153,9 @@ export default function HomePage() {
                   data-ai-hint="cannabis extract"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/95 via-black/40 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Extracts</h3>
+                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Extracts</h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Pure high-concentration CBD extracts and distillates.</p>
               </div>
             </div>
@@ -173,9 +173,9 @@ export default function HomePage() {
                   data-ai-hint="cannabis edible"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/95 via-black/40 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg md:text-4xl lg:text-5xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Edibles</h3>
+                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">Edibles</h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Gourmet artisanal CBD infusions for mindful consumption.</p>
               </div>
             </div>
