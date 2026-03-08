@@ -8,10 +8,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Leaf, Shield, Info, Scale, Heart, Zap, Maximize2, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function ExploreCBDPage() {
   const videoUrl1 = "https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4";
   const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
+
+  const wellnessBanner = PlaceHolderImages.find(img => img.id === 'wellness-banner')?.imageUrl || '';
 
   const galleryVideos = [
     { 
@@ -202,19 +206,28 @@ export default function ExploreCBDPage() {
       </section>
 
       {/* Trust Seal */}
-      <section className="bg-black py-20 border-y border-white/5">
-        <div className="container mx-auto px-4 text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary font-black uppercase tracking-widest text-xs">
-            <Shield className="h-4 w-4" /> TRIPLE TESTED PURITY
+      <section className="relative py-32 border-y border-white/5 overflow-hidden">
+        {wellnessBanner && (
+          <Image 
+            src={wellnessBanner} 
+            alt="The New Standard" 
+            fill 
+            className="object-cover opacity-40 brightness-[0.35]"
+            data-ai-hint="cannabis field"
+          />
+        )}
+        <div className="container mx-auto px-4 text-center space-y-8 relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full text-white font-black uppercase tracking-widest text-xs">
+            <Shield className="h-4 w-4 text-primary" /> TRIPLE TESTED PURITY
           </div>
-          <h2 className="font-headline text-4xl md:text-7xl font-black uppercase tracking-tighter">
+          <h2 className="font-headline text-4xl md:text-7xl font-black uppercase tracking-tighter text-white drop-shadow-2xl">
             THE <span className="text-hollow-white">NEW STANDARD</span> IN WELLNESS.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="h-14 px-10 font-black uppercase tracking-tighter text-lg">
+            <Button asChild size="lg" className="h-16 px-12 font-black uppercase tracking-tighter text-lg shadow-[0_0_30px_rgba(126,42,219,0.5)]">
               <Link href="/shop">SHOP ELITE FLOWER</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-10 font-black uppercase tracking-tighter text-lg border-white/20">
+            <Button asChild variant="outline" size="lg" className="h-16 px-12 font-black uppercase tracking-tighter text-lg border-white/40 bg-black/40 backdrop-blur-md hover:bg-black/60">
               <Link href="/">RETURN HOME</Link>
             </Button>
           </div>
