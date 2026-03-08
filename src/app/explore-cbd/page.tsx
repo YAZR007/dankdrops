@@ -5,7 +5,13 @@ import { Leaf, Shield, Info, Scale, Heart, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ExploreCBDPage() {
-  const videoUrl = "https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4";
+  const videoUrl1 = "https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4";
+  const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
+
+  const galleryVideos = [
+    { url: videoUrl1, title: "Elite Trichome Density", label: "MACRO STUDY 1" },
+    { url: videoUrl2, title: "Artisanal Resin Profile", label: "MACRO STUDY 2" },
+  ];
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-24">
@@ -18,7 +24,7 @@ export default function ExploreCBDPage() {
           playsInline 
           className="absolute inset-0 w-full h-full object-cover opacity-40 brightness-75 scale-110"
         >
-          <source src={videoUrl} type="video/mp4" />
+          <source src={videoUrl1} type="video/mp4" />
         </video>
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <h1 className="font-headline text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-6">
@@ -39,8 +45,8 @@ export default function ExploreCBDPage() {
           <p className="text-muted-foreground uppercase tracking-widest text-sm font-bold mt-2">Artisanal Macro Gallery</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {galleryVideos.map((video, i) => (
             <div key={i} className="group relative aspect-[16/9] overflow-hidden rounded-3xl border border-white/5 bg-black">
               <video 
                 autoPlay 
@@ -49,11 +55,11 @@ export default function ExploreCBDPage() {
                 playsInline 
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 brightness-110"
               >
-                <source src={videoUrl} type="video/mp4" />
+                <source src={video.url} type="video/mp4" />
               </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
-                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">MACRO STUDY {i}</p>
-                <h3 className="font-headline font-black text-xl uppercase tracking-tight text-white">Elite Trichome Density</h3>
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
+                <h3 className="font-headline font-black text-xl uppercase tracking-tight text-white">{video.title}</h3>
               </div>
             </div>
           ))}
