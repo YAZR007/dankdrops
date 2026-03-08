@@ -220,7 +220,7 @@ export default function ProductPage() {
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    Triple tap to magnify
+                    Triple tap and hold to magnify
                   </span>
                 </div>
               </div>
