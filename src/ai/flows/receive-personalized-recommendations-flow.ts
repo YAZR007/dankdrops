@@ -1,7 +1,7 @@
 
 'use server';
 /**
- * @fileOverview A Genkit flow for providing personalized cannabis product recommendations.
+ * @fileOverview A Genkit flow for providing personalized CBD product recommendations.
  *
  * - receivePersonalizedRecommendations - A function that handles the product recommendation process.
  * - ReceivePersonalizedRecommendationsInput - The input type for the receivePersonalizedRecommendations function.
@@ -60,9 +60,9 @@ const prompt = ai.definePrompt({
   name: 'personalizedRecommendationsPrompt',
   input: {schema: ReceivePersonalizedRecommendationsInputSchema},
   output: {schema: ReceivePersonalizedRecommendationsOutputSchema},
-  prompt: `You are an AI-powered cannabis specialist for DankDrops, a premium boutique dispensary. Your goal is to provide insightful product recommendations based on the user's browsing and purchasing behavior. 
+  prompt: `You are an AI-powered CBD specialist for DankDrops, a premium boutique dispensary in the UK. Your goal is to provide insightful wellness-focused recommendations based on the user's browsing and purchasing behavior. 
 
-You should consider strain types (Indica, Sativa, Hybrid) and product categories. For example, if a user is looking at high-potency Flower, they might enjoy premium Concentrates. If they are looking at sleepy Indica strains, they might like nighttime Edibles.
+You should consider terpene profiles and product categories. For example, if a user is looking at high-CBD Flower for relaxation, they might enjoy premium CBD Concentrates. If they are looking for daytime focus strains, they might like specific CBD Edibles. Focus on wellness, recovery, and artisanal quality.
 
 Browsing History:
 {{#if browsingHistory}}
@@ -87,7 +87,7 @@ Here is the current harvest catalog. Recommend products from this list only:
 - ID: {{{id}}}, Name: {{{name}}}, Description: {{{description}}}, Category: {{{category}}}, Price: {{{price}}}
 {{/each}}
 
-Suggest 3-5 complementary products that would enhance the user's experience. Focus on strain effects and usage scenarios. Only output product IDs, names, descriptions, and categories that exist in the provided list.`,
+Suggest 3-5 complementary CBD products that would enhance the user's wellness journey. Focus on effects like relaxation, recovery, and focus. Only output product IDs, names, descriptions, and categories that exist in the provided list.`,
 });
 
 const receivePersonalizedRecommendationsFlow = ai.defineFlow(

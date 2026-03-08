@@ -22,8 +22,8 @@ const GELATO_41_SECONDARY = "https://static.wixstatic.com/media/a82ad9_a92ad8ab1
 export const PRODUCTS: Product[] = [
   {
     id: 'f1',
-    name: 'Permanent Marker',
-    description: 'Leafly 2023 Strain of the Year. This high-potency hybrid is floral, soapy, and gassy with a powerful punch that leaves you in a state of creative bliss.',
+    name: 'Permanent Marker CBD',
+    description: 'Our flagship CBD-dominant hybrid. This boutique-grown strain is floral, soapy, and gassy, offering a powerful sense of clarity and focused bliss without psychoactive effects.',
     category: 'Flower',
     price: 60, // Base price for 3.5g in GBP
     imageUrl: GENERIC_MACRO,
@@ -31,15 +31,15 @@ export const PRODUCTS: Product[] = [
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: true,
-    lineage: '(Biscotti x Jealousy) x London Pound Cake',
-    thc: '28%',
+    lineage: '(Biscotti x Jealousy) x London Pound Cake (Hemp Derivative)',
+    cbd: '18%',
     terpenes: ['Caryophyllene', 'Limonene', 'Myrcene'],
-    effects: ['Hungry', 'Relaxed', 'Giggly']
+    effects: ['Focused', 'Relaxed', 'Calm']
   },
   {
     id: 'f2',
-    name: 'Blue Dream',
-    description: 'A legendary sativa-dominant hybrid that balances full-body relaxation with gentle cerebral invigoration. Known for its sweet berry aroma.',
+    name: 'Blue Dream CBD',
+    description: 'A premium CBD sativa-dominant strain that balances full-body relaxation with gentle mental clarity. Renowned for its sweet berry aroma and smooth finish.',
     category: 'Flower',
     price: 50,
     imageUrl: BLUE_DREAM_PRIMARY,
@@ -47,15 +47,15 @@ export const PRODUCTS: Product[] = [
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Sativa'],
     isNewArrival: false,
-    lineage: 'Blueberry x Haze',
-    thc: '18%',
+    lineage: 'Blueberry x Haze (CBD Phenotype)',
+    cbd: '15%',
     terpenes: ['Myrcene', 'Pinene', 'Caryophyllene'],
-    effects: ['Uplifted', 'Energetic', 'Creative']
+    effects: ['Uplifted', 'Clear-headed', 'Creative']
   },
   {
     id: 'f3',
-    name: 'GMO Cookies',
-    description: 'Also known as "Garlic Cookies," this indica-dominant heavy hitter is famous for its savory, funky aroma and profound sedative effects.',
+    name: 'GMO Cookies CBD',
+    description: 'An artisanal CBD indica-dominant strain famous for its savory, funky aroma and profound physical comfort. Perfect for evening relaxation.',
     category: 'Flower',
     price: 55,
     imageUrl: GMO_COOKIES_PRIMARY,
@@ -63,15 +63,15 @@ export const PRODUCTS: Product[] = [
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Indica'],
     isNewArrival: true,
-    lineage: 'Chemdog x Girl Scout Cookies',
-    thc: '30%',
+    lineage: 'Chemdog x Girl Scout Cookies (High CBD)',
+    cbd: '22%',
     terpenes: ['Caryophyllene', 'Limonene', 'Myrcene'],
-    effects: ['Sleepy', 'Relaxed', 'Hungry']
+    effects: ['Sleepy', 'Relaxed', 'Comfortable']
   },
   {
     id: 'f4',
-    name: 'Gelato #41',
-    description: 'A high-end hybrid featuring a complex aroma of sweet sherbet, blueberries, and citrus. Perfect for those looking for a balanced, flavorful smoke.',
+    name: 'Gelato #41 CBD',
+    description: 'A top-shelf CBD hybrid featuring a complex aroma of sweet sherbet and citrus. Delivers a balanced, flavorful experience for connoisseurs.',
     category: 'Flower',
     price: 52,
     imageUrl: GELATO_41_PRIMARY,
@@ -79,25 +79,25 @@ export const PRODUCTS: Product[] = [
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: false,
-    lineage: 'Sunset Sherbert x Thin Mint GSC',
-    thc: '22%',
+    lineage: 'Sunset Sherbert x Thin Mint GSC (CBD Cross)',
+    cbd: '19%',
     terpenes: ['Caryophyllene', 'Limonene', 'Linalool'],
-    effects: ['Happy', 'Relaxed', 'Euphoric']
+    effects: ['Happy', 'Relaxed', 'Balanced']
   },
   {
     id: 'f5',
-    name: 'OG Kush',
-    description: 'The backbone of West Coast cannabis. OG Kush has a unique terpene profile that boasts a complex aroma with notes of fuel, skunk, and spice.',
+    name: 'OG Kush CBD',
+    description: 'The backbone of our artisanal CBD collection. This phenotype boasts a complex fuel and spice aroma with classic relaxation benefits.',
     category: 'Flower',
     price: 45,
     imageUrl: GENERIC_MACRO,
     sizes: ['3.5g', '7g', '14g', '28g'],
     colors: ['Hybrid'],
     isNewArrival: false,
-    lineage: 'Unknown (Hindu Kush x Chemdog)',
-    thc: '20%',
+    lineage: 'Hindu Kush x Chemdog (Hemp Selection)',
+    cbd: '17%',
     terpenes: ['Myrcene', 'Limonene', 'Caryophyllene'],
-    effects: ['Relaxed', 'Hungry', 'Sleepy']
+    effects: ['Relaxed', 'Grounded', 'Sleepy']
   }
 ];
 

@@ -33,7 +33,7 @@ export default function ShopPage() {
     <div className="container mx-auto px-4 py-8 md:py-12">
       <header className="mb-8 md:mb-12">
         <h1 className="font-headline text-3xl md:text-5xl font-black uppercase tracking-tighter mb-2">The Dispensary</h1>
-        <p className="text-muted-foreground text-xs md:text-lg uppercase tracking-[0.2em] font-bold">Curated Artisanal Harvest</p>
+        <p className="text-muted-foreground text-xs md:text-lg uppercase tracking-[0.2em] font-bold">Curated Artisanal CBD Harvest</p>
       </header>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -91,7 +91,7 @@ export default function ShopPage() {
             </h3>
             <div className="flex flex-col gap-2">
               <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Newest Harvest</button>
-              <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">THC: High to Low</button>
+              <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">CBD: High to Low</button>
               <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Price: Low to High</button>
             </div>
           </div>

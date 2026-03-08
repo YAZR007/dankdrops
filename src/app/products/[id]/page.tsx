@@ -204,8 +204,8 @@ export default function ProductPage() {
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
               <p className="text-[10px] md:text-sm text-primary font-bold tracking-widest uppercase">{product.category}</p>
-              {product.thc && (
-                <Badge variant="outline" className="border-accent text-accent font-black text-[10px]">{product.thc} THC</Badge>
+              {product.cbd && (
+                <Badge variant="outline" className="border-accent text-accent font-black text-[10px]">{product.cbd} CBD</Badge>
               )}
             </div>
             <h1 className="font-headline text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-2">
@@ -232,9 +232,9 @@ export default function ProductPage() {
             </div>
             <div>
               <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 flex items-center gap-1.5">
-                <Flame className="h-2.5 w-2.5 text-primary" /> Potency
+                <Flame className="h-2.5 w-2.5 text-primary" /> Concentration
               </h4>
-              <p className="font-bold text-xs md:text-sm">{product.thc || 'N/A'}</p>
+              <p className="font-bold text-xs md:text-sm">{product.cbd || 'N/A'}</p>
             </div>
             <div className="col-span-2">
               <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 flex items-center gap-1.5">
@@ -244,7 +244,7 @@ export default function ProductPage() {
             </div>
             <div className="col-span-2">
               <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 flex items-center gap-1.5">
-                <Sparkles className="h-2.5 w-2.5 text-primary" /> Reported Effects
+                <Sparkles className="h-2.5 w-2.5 text-primary" /> Reported Benefits
               </h4>
               <div className="flex flex-wrap gap-2">
                 {product.effects?.map(effect => (
@@ -296,7 +296,7 @@ export default function ProductPage() {
             <AccordionItem value="details" className="border-white/10">
               <AccordionTrigger className="font-headline font-bold uppercase text-xs md:text-sm tracking-widest py-4">Cultivation Specs</AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-xs md:text-base leading-relaxed">
-                Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness and preserve volatile terpenes.
+                UK Compliant CBD strains. Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness and preserve volatile terpenes.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

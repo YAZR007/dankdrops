@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -29,7 +30,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-[8px] md:text-xs font-black tracking-[0.2em] uppercase text-white mb-4 md:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              Micro-Grown • Artisanal • Elite
+              Micro-Grown • Artisanal • UK Compliant
             </div>
             
             <h1 className="font-headline text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 md:mb-8 leading-none">
@@ -37,7 +38,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-base md:text-2xl text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              Experience cannabis through a different lens. High-potency, trichome-rich strains captured in their purest form.
+              Experience artisanal CBD through a different lens. High-purity, trichome-rich hemp strains captured in their purest form.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto">
@@ -56,8 +57,8 @@ export default function HomePage() {
         <div className="animate-on-scroll">
           <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
             <div>
-              <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
-              <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
+              <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current CBD Strains</h2>
+              <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite wellness flower</p>
             </div>
             <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
               EXPLORE ALL <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
@@ -90,7 +91,7 @@ export default function HomePage() {
             <span className="text-hollow-white">MACRO</span> <span className="text-primary">IN MOTION</span>.
           </h2>
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
-            The Living Resin Experience
+            The Living CBD Experience
           </p>
           <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6 backdrop-blur-md">
             <Link href="/shop?category=Flower">EXPLORE THE HARVEST</Link>
@@ -114,8 +115,8 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter transition-all duration-500">Elite Flower</h3>
-              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, purple-hued buds with extreme trichome density.</p>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
+              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
           </Link>
 
@@ -165,7 +166,7 @@ export default function HomePage() {
               <Leaf className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Purity Guaranteed</h4>
-            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Triple-tested for heavy metals, pesticides, and potency. Clean cannabis only.</p>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Triple-tested for heavy metals, pesticides, and UK compliance. Clean CBD only.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center text-accent -rotate-3">
@@ -179,7 +180,7 @@ export default function HomePage() {
               <Award className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Master Growers</h4>
-            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Cultivated by our award-winning internal collective of artisanal growers.</p>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Cultivated by our award-winning internal collective of artisanal hemp growers.</p>
           </div>
         </div>
       </section>

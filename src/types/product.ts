@@ -11,7 +11,7 @@ export interface Product {
   colors: string[];
   isNewArrival?: boolean;
   lineage?: string;
-  thc?: string;
+  cbd?: string;
   terpenes?: string[];
   effects?: string[];
 }
