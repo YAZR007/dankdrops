@@ -17,7 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from 'next/link';
+import Link from 'link';
 
 export default function ProductPage() {
   const params = useParams();
@@ -176,7 +176,7 @@ export default function ProductPage() {
         <div className="space-y-6">
           <div 
             ref={containerRef}
-            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none"
+            className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group touch-none select-none"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => window.innerWidth >= 768 && setShowLens(true)}
             onMouseLeave={() => setShowLens(false)}
@@ -188,13 +188,13 @@ export default function ProductPage() {
               src={images[activeImageIndex]} 
               alt={product.name} 
               fill 
-              className="object-cover"
+              className="object-cover pointer-events-none"
               priority
             />
 
             {/* Boutique Heads-up overlay */}
             {showHeadsUp && (
-              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none">
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
