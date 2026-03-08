@@ -1,7 +1,12 @@
+
+"use client";
+
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Leaf, Shield, Info, Scale, Heart, Zap } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Leaf, Shield, Info, Scale, Heart, Zap, Maximize2, X } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ExploreCBDPage() {
@@ -9,8 +14,8 @@ export default function ExploreCBDPage() {
   const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
 
   const galleryVideos = [
-    { url: videoUrl1, title: "Elite Trichome Density", label: "MACRO STUDY 1" },
-    { url: videoUrl2, title: "Artisanal Resin Profile", label: "MACRO STUDY 2" },
+    { url: videoUrl1, title: "Elite Trichome Density", label: "MACRO STUDY 1", description: "A high-magnification analysis of resinous structures in elite boutique flower." },
+    { url: videoUrl2, title: "Artisanal Resin Profile", label: "MACRO STUDY 2", description: "Observing the complex terpene and cannabinoid preservation in slow-cured CBD." },
   ];
 
   return (
@@ -47,21 +52,45 @@ export default function ExploreCBDPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {galleryVideos.map((video, i) => (
-            <div key={i} className="group relative aspect-[16/9] overflow-hidden rounded-3xl border border-white/5 bg-black">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 brightness-110"
-              >
-                <source src={video.url} type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
-                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
-                <h3 className="font-headline font-black text-xl uppercase tracking-tight text-white">{video.title}</h3>
-              </div>
-            </div>
+            <Dialog key={i}>
+              <DialogTrigger asChild>
+                <div className="group relative aspect-[16/9] overflow-hidden rounded-3xl border border-white/5 bg-black cursor-pointer">
+                  <video 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 brightness-110"
+                  >
+                    <source src={video.url} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{video.label}</p>
+                    <h3 className="font-headline font-black text-xl uppercase tracking-tight text-white mb-2">{video.title}</h3>
+                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-tighter text-white/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Maximize2 className="h-3 w-3" /> CLICK TO EXPAND
+                    </div>
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-6xl p-0 overflow-hidden bg-black/95 border-none shadow-[0_0_100px_rgba(128,0,255,0.4)] backdrop-blur-2xl">
+                <div className="relative aspect-video w-full">
+                  <video 
+                    autoPlay 
+                    controls 
+                    loop 
+                    className="w-full h-full object-contain"
+                  >
+                    <source src={video.url} type="video/mp4" />
+                  </video>
+                  <div className="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-black via-black/50 to-transparent">
+                    <p className="text-xs font-black uppercase tracking-widest text-primary mb-2">{video.label}</p>
+                    <h2 className="font-headline text-3xl font-black uppercase tracking-tight text-white mb-2">{video.title}</h2>
+                    <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">{video.description}</p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
       </section>
@@ -120,7 +149,7 @@ export default function ExploreCBDPage() {
           </div>
 
           <aside className="lg:col-span-5 space-y-8">
-            <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8 sticky top-24">
+            <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8 sticky top-24 shadow-[0_0_50px_rgba(126,42,219,0.1)]">
               <div className="flex items-center gap-3 mb-6">
                 <Scale className="h-8 w-8 text-primary" />
                 <h2 className="font-headline text-2xl font-black uppercase tracking-tighter">UK Legal Standing</h2>
