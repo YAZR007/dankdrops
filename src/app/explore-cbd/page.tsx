@@ -15,7 +15,7 @@ export default function ExploreCBDPage() {
   const videoUrl1 = "https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4";
   const videoUrl2 = "https://video.wixstatic.com/video/a82ad9_17c8d4a393094bf0a490459c8af28ba3/1080p/mp4/file.mp4";
 
-  const wellnessBanner = "https://static.wixstatic.com/media/a82ad9_61b374391c214358b8e6bf0a69b6836a~mv2.jpg";
+  const wellnessBanner = "https://static.wixstatic.com/media/a82ad9_c5fc0bd7d61c4c72a30e33c182863a00~mv2.jpg";
 
   const galleryVideos = [
     { 
@@ -212,10 +212,12 @@ export default function ExploreCBDPage() {
             src={wellnessBanner} 
             alt="The New Standard" 
             fill 
-            className="object-cover opacity-90 brightness-[0.9]"
+            className="object-cover opacity-100 brightness-[1.05]"
+            priority
             data-ai-hint="cannabis field"
           />
         )}
+        <div className="absolute inset-0 bg-black/40 z-[1]" />
         <div className="container mx-auto px-4 text-center space-y-8 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full text-white font-black uppercase tracking-widest text-xs">
             <Shield className="h-4 w-4 text-primary" /> TRIPLE TESTED PURITY
@@ -224,7 +226,7 @@ export default function ExploreCBDPage() {
             THE <span className="text-hollow-white">NEW STANDARD</span> IN WELLNESS.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="h-16 px-12 font-black uppercase tracking-tighter text-lg shadow-[0_0_30px_rgba(126,42,219,0.5)]">
+            <Button asChild size="lg" className="h-16 px-12 font-black uppercase tracking-tighter text-lg shadow-[0_0_30px_rgba(126,42,219,0.5)] bg-primary/90 hover:bg-primary backdrop-blur-sm">
               <Link href="/shop">SHOP ELITE FLOWER</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-16 px-12 font-black uppercase tracking-tighter text-lg border-white/40 bg-black/40 backdrop-blur-md hover:bg-black/60">
