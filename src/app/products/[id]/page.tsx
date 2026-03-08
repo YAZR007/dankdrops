@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -47,7 +46,7 @@ export default function ProductPage() {
     return [product.imageUrl, ...(product.secondaryImageUrl ? [product.secondaryImageUrl] : [])];
   }, [product]);
 
-  // Magnification & Swiping State
+  // Magnification & Navigation State
   const [showLens, setShowLens] = useState(false);
   const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
   const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
@@ -57,12 +56,10 @@ export default function ProductPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const isHoldingRef = useRef<boolean>(false);
-  const startPosRef = useRef({ x: 0, y: 0 });
   const tapCountRef = useRef(0);
   const lastTapTimeRef = useRef(0);
 
   useEffect(() => {
-    // Reset guidance for each new product visit
     setShowHeadsUp(true);
     setHasMagnified(false);
   }, [id]);
@@ -73,7 +70,6 @@ export default function ProductPage() {
     const x = clientX - left;
     const y = clientY - top;
 
-    // Boundary check
     if (x < 0 || y < 0 || x > width || y > height) {
       if (!isHoldingRef.current) setShowLens(false);
       return;
@@ -86,15 +82,23 @@ export default function ProductPage() {
     setBgPosition({ x: xPercent, y: yPercent });
   };
 
+  const scrollToIndex = (index: number) => {
+    if (scrollRef.current) {
+      const width = scrollRef.current.clientWidth;
+      scrollRef.current.scrollTo({
+        left: width * index,
+        behavior: 'smooth'
+      });
+      setActiveImageIndex(index);
+    }
+  };
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Mobile Logic: Triple tap and hold
     const onTouchStart = (e: TouchEvent) => {
       const touch = e.touches[0];
-      startPosRef.current = { x: touch.clientX, y: touch.clientY };
-      
       const now = Date.now();
       const delta = now - lastTapTimeRef.current;
       
@@ -105,23 +109,19 @@ export default function ProductPage() {
       }
       lastTapTimeRef.current = now;
 
-      // Triple tap detection
       if (tapCountRef.current === 3) {
         isHoldingRef.current = true;
         setShowLens(true);
         setShowHeadsUp(false);
         setHasMagnified(true);
         updatePosition(touch.clientX, touch.clientY);
-        
-        // Prevent default browser behaviors
         if (e.cancelable) e.preventDefault();
       }
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      
       if (isHoldingRef.current) {
+        const touch = e.touches[0];
         if (e.cancelable) e.preventDefault();
         updatePosition(touch.clientX, touch.clientY);
       }
@@ -135,7 +135,6 @@ export default function ProductPage() {
       }
     };
 
-    // Use non-passive listeners for mobile magnification
     container.addEventListener('touchstart', onTouchStart, { passive: false });
     container.addEventListener('touchmove', onTouchMove, { passive: false });
     container.addEventListener('touchend', onTouchEnd, { passive: true });
@@ -164,7 +163,6 @@ export default function ProductPage() {
           <ShoppingBag className="h-8 w-8" />
         </div>
         <h1 className="font-headline text-3xl font-black uppercase tracking-tighter mb-4">Strain Not Found</h1>
-        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">This drop might have expired or been rotated out of the harvest.</p>
         <Button asChild size="lg" className="font-bold uppercase tracking-widest">
           <Link href="/shop">BACK TO THE HARVEST</Link>
         </Button>
@@ -198,10 +196,10 @@ export default function ProductPage() {
             onMouseLeave={() => setShowLens(false)}
             className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/5 cursor-none group select-none touch-none"
           >
-            {/* Fluid Swiping Gallery */}
+            {/* Gallery: Fluid Swiping on Mobile, Button Nav on Desktop */}
             <div 
               ref={scrollRef}
-              className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+              className="flex w-full h-full overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-hide scroll-smooth"
               onScroll={handleScroll}
             >
               {images.map((img, idx) => (
@@ -229,18 +227,26 @@ export default function ProductPage() {
               </div>
             )}
 
-            {/* Desktop Navigation Arrows */}
+            {/* PC Desktop Navigation Arrows (Removed swipe, forced buttons) */}
             {images.length > 1 && (
               <div className="hidden md:block">
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length); }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center"
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    const nextIdx = (activeImageIndex - 1 + images.length) % images.length;
+                    scrollToIndex(nextIdx);
+                  }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev + 1) % images.length); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-primary transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center"
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    const nextIdx = (activeImageIndex + 1) % images.length;
+                    scrollToIndex(nextIdx);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>
@@ -269,12 +275,7 @@ export default function ProductPage() {
               {images.map((img, idx) => (
                 <button
                   key={idx}
-                  onClick={() => {
-                    setActiveImageIndex(idx);
-                    if (scrollRef.current) {
-                      scrollRef.current.scrollTo({ left: idx * scrollRef.current.clientWidth, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToIndex(idx)}
                   className={cn(
                     "relative w-16 md:w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all",
                     activeImageIndex === idx ? 'border-primary shadow-[0_0_10px_rgba(126,42,219,0.4)]' : 'border-white/10 opacity-50 hover:opacity-100'
@@ -369,21 +370,13 @@ export default function ProductPage() {
             >
               <ShoppingBag className="mr-2 h-5 w-5" /> ADD TO BAG
             </Button>
-            <div className="flex gap-3">
-              <Button size="lg" variant="outline" className="h-14 flex-1 sm:w-14 p-0 border-white/20 hover:bg-white/10 active:scale-95 transition-transform">
-                <Heart className="h-6 w-6" />
-              </Button>
-              <Button size="lg" variant="outline" className="h-14 flex-1 sm:w-14 p-0 border-white/20 hover:bg-white/10 active:scale-95 transition-transform">
-                <Share2 className="h-6 w-6" />
-              </Button>
-            </div>
           </div>
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="details" className="border-white/10">
               <AccordionTrigger className="font-headline font-bold uppercase text-xs md:text-sm tracking-widest py-4">Cultivation Specs</AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-xs md:text-base leading-relaxed">
-                UK Compliant CBD strains. Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans to preserve trichome integrity. Packaged in light-resistant, air-tight glass jars to maintain peak freshness and preserve volatile terpenes.
+                UK Compliant CBD strains. Slow-cured for 21 days in controlled environments. Hand-trimmed by master artisans.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
