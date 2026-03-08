@@ -51,21 +51,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Strains */}
+      {/* Featured Strains with Scroll Reveal */}
       <section className="container mx-auto px-4">
-        <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
-          <div>
-            <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
-            <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
+        <div className="animate-on-scroll">
+          <div className="flex flex-row items-end justify-between mb-8 md:mb-10 border-b pb-4 md:pb-6 border-white/10 gap-4">
+            <div>
+              <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current Strains</h2>
+              <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite flower</p>
+            </div>
+            <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
+              EXPLORE ALL <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
+            </Link>
           </div>
-          <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
-            EXPLORE ALL <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-10">
-          {featuredFlowers.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-10">
+            {featuredFlowers.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -77,11 +79,11 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] contrast-[1.1]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.75] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/10" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
@@ -96,19 +98,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid */}
+      {/* Categories Grid with Enhanced Hover Glow & Exposure */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:h-[650px]">
           {/* Card: Elite Flower */}
           <Link 
             href="/shop?category=Flower" 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50"
           >
             <Image 
               src={flowerCatImage} 
               alt="Elite Flower" 
               fill 
-              className="object-cover brightness-[0.4] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
+              className="object-cover brightness-[0.4] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
@@ -120,35 +122,35 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-4 md:gap-10">
             {/* Card: Artisanal Extracts */}
             <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               <Image 
                 src={concentratesCatImage} 
                 alt="Artisanal Extracts" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis extract"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:text-primary group-hover:fill-primary uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Artisanal Extracts</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Artisanal Extracts</h3>
               </div>
             </div>
 
             {/* Card: Boutique Edibles */}
             <div 
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_80px_rgba(126,42,219,0.6)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[21/9] md:aspect-auto transition-all duration-500 hover:shadow-[0_0_100px_rgba(126,42,219,0.7)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
             >
               <Image 
                 src={ediblesCatImage} 
                 alt="Boutique Edibles" 
                 fill 
-                className="object-cover brightness-[0.2] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+                className="object-cover brightness-[0.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0" 
                 data-ai-hint="cannabis edible"
               />
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
                 <Badge className="w-fit mb-1 md:mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:text-primary group-hover:fill-primary uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Boutique Edibles</h3>
+                <h3 className="font-headline text-lg md:text-3xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Boutique Edibles</h3>
               </div>
             </div>
           </div>

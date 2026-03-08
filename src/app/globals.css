@@ -45,7 +45,7 @@
     color: transparent;
   }
   .text-hollow-primary {
-    -webkit-text-stroke: 1px hsl(var(--primary));
+    -webkit-text-stroke: 1.5px hsl(var(--primary));
     color: transparent;
   }
 }
@@ -68,6 +68,26 @@
     fill: hsl(var(--primary));
     opacity: 1;
   }
+}
+
+@keyframes scroll-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  view-timeline-name: --reveal;
+  view-timeline-axis: block;
+  animation-timeline: --reveal;
+  animation-name: scroll-reveal-up;
+  animation-range: entry 10% cover 30%;
+  animation-fill-mode: both;
 }
 
 .animate-logo-draw {
