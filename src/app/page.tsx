@@ -47,7 +47,7 @@ export default function HomePage() {
               <Button asChild size="lg" className="bg-transparent border-2 border-primary text-white hover:bg-primary/40 hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(126,42,219,0.2)] hover:shadow-[0_0_40px_rgba(126,42,219,0.5)]">
                 <Link href="/shop?category=Flower">Enter The Harvest</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto">
+              <Button asChild size="lg" className="bg-transparent border-2 border-white/20 text-white hover:bg-white/10 hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 <Link href="/shop">View Full Catalog</Link>
               </Button>
             </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
                 src={flowerCatImage} 
                 alt="Elite Flower" 
                 fill 
-                className="object-cover brightness-[1.1] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
+                className="object-cover brightness-[1.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
                 data-ai-hint="cannabis macro"
               />
             )}
@@ -149,7 +149,7 @@ export default function HomePage() {
                   src={concentratesCatImage} 
                   alt="Artisanal Extracts" 
                   fill 
-                  className="object-cover brightness-[1.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.3] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis extract"
                 />
               )}
@@ -169,7 +169,7 @@ export default function HomePage() {
                   src={ediblesCatImage} 
                   alt="CBD Edibles" 
                   fill 
-                  className="object-cover brightness-[1.1] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.2] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis edible"
                 />
               )}
@@ -208,7 +208,7 @@ export default function HomePage() {
               <Shield className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
-            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Smell-proof bags and unbranded luxury packaging.</p>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Smell-proof bags and luxury packaging.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">
