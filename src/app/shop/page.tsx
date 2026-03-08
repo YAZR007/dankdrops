@@ -5,10 +5,12 @@ import { PRODUCTS } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
 import { useState, useMemo } from 'react';
-import { Filter, SlidersHorizontal, X, Clock } from 'lucide-react';
+import { Filter, SlidersHorizontal, X, Clock, ArrowDownWideArrow, ArrowUpNarrowWide } from 'lucide-react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const CATEGORIES = ['All', 'Flower', 'Prerolls', 'Concentrates', 'Vapes', 'Accessories'];
+
+type SortOption = 'default' | 'cbd-desc' | 'price-asc';
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
@@ -16,17 +18,34 @@ export default function ShopPage() {
   const filterParam = searchParams.get('filter');
 
   const [activeCategory, setActiveCategory] = useState(categoryParam);
+  const [sortBy, setSortBy] = useState<SortOption>('default');
 
   const filteredProducts = useMemo(() => {
-    let result = PRODUCTS;
+    let result = [...PRODUCTS];
+    
+    // Category Filtering
     if (activeCategory !== 'All') {
       result = result.filter(p => p.category === activeCategory);
     }
+    
+    // 'New' Filter from params
     if (filterParam === 'new') {
       result = result.filter(p => p.isNewArrival);
     }
+
+    // Sorting Logic
+    if (sortBy === 'cbd-desc') {
+      result.sort((a, b) => {
+        const cbdA = parseFloat(a.cbd?.replace('%', '') || '0');
+        const cbdB = parseFloat(b.cbd?.replace('%', '') || '0');
+        return cbdB - cbdA;
+      });
+    } else if (sortBy === 'price-asc') {
+      result.sort((a, b) => a.price - b.price);
+    }
+
     return result;
-  }, [activeCategory, filterParam]);
+  }, [activeCategory, filterParam, sortBy]);
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -89,9 +108,24 @@ export default function ShopPage() {
               <SlidersHorizontal className="h-4 w-4" /> Sort By
             </h3>
             <div className="flex flex-col gap-2">
-              <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Newest Harvest</button>
-              <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">CBD: High to Low</button>
-              <button className="text-left px-3 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Price: Low to High</button>
+              <button 
+                onClick={() => setSortBy(sortBy === 'cbd-desc' ? 'default' : 'cbd-desc')}
+                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-between ${
+                  sortBy === 'cbd-desc' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                CBD: High to Low
+                {sortBy === 'cbd-desc' && <ArrowDownWideArrow className="h-3 w-3" />}
+              </button>
+              <button 
+                onClick={() => setSortBy(sortBy === 'price-asc' ? 'default' : 'price-asc')}
+                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-between ${
+                  sortBy === 'price-asc' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                Price: Low to High
+                {sortBy === 'price-asc' && <ArrowUpNarrowWide className="h-3 w-3" />}
+              </button>
             </div>
           </div>
         </aside>
