@@ -71,7 +71,7 @@ export default function HomePage() {
       </section>
 
       {/* Cinematic High Resolution Video Section */}
-      <section className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-black">
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-black">
         <video 
           autoPlay 
           muted 
@@ -84,14 +84,27 @@ export default function HomePage() {
         </video>
         <div className="absolute inset-0 bg-black/10" />
         
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h2 className="font-headline text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_20px_rgba(126,42,219,0.5)]">
-            MACRO <span className="text-hollow-white">IN MOTION</span>.
-          </h2>
-          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 drop-shadow-xl">
+        <div className="relative z-10 text-center px-4 max-w-4xl flex flex-col items-center">
+          <div className="mb-4">
+            <svg viewBox="0 0 400 120" className="w-full max-w-md h-auto overflow-visible">
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="font-headline font-black uppercase tracking-[-0.05em] text-[100px] stroke-primary stroke-[3px] fill-transparent animate-scroll-draw"
+              >
+                CBD
+              </text>
+            </svg>
+            <h2 className="font-headline text-3xl md:text-6xl font-black text-white uppercase tracking-tighter mt-[-30px] drop-shadow-lg">
+              <span className="text-hollow-white">IN MOTION</span>.
+            </h2>
+          </div>
+          <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-10 drop-shadow-xl">
             The Living CBD Experience
           </p>
-          <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-10 md:h-12 px-6 backdrop-blur-md">
+          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-14 md:h-16 px-10 backdrop-blur-md text-lg md:text-xl">
             <Link href="/explore-cbd">EXPLORE CBD</Link>
           </Button>
         </div>
@@ -113,7 +126,7 @@ export default function HomePage() {
               data-ai-hint="cannabis macro"
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Elite CBD Flower</h3>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Elite CBD Flower</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
           </Link>
@@ -131,7 +144,7 @@ export default function HomePage() {
             />
             <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
               <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">COMING SOON</Badge>
-              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-all duration-500">Artisanal Extracts</h3>
+              <h3 className="font-headline text-3xl md:text-6xl font-black text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">Artisanal Extracts</h3>
               <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block mt-4">Pure high-concentration CBD extracts and distillates for the true enthusiast.</p>
             </div>
           </div>
