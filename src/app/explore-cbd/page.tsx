@@ -53,9 +53,20 @@ export default function ExploreCBDPage() {
 
       {/* Video Gallery */}
       <section className="container mx-auto px-4">
-        <div className="mb-12 border-b border-white/10 pb-6">
-          <h2 className="font-headline text-3xl md:text-6xl font-black uppercase tracking-tighter">
-            TRICHOMES <span className="text-hollow-white">IN MOTION</span>.
+        <div className="mb-12 border-b border-white/10 pb-6 relative">
+          <h2 className="font-headline text-3xl md:text-6xl font-black uppercase tracking-tighter flex flex-wrap items-center gap-x-4">
+            <span className="text-primary relative inline-block">
+              TRICHOMES
+              {/* Minimal Trichome Decorative Elements */}
+              <span className="absolute -top-4 -right-6 flex flex-col gap-1">
+                <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_12px_rgba(126,42,219,0.8)] animate-pulse" />
+                <span className="w-1 h-1 rounded-full bg-primary/60 animate-bounce delay-150" />
+              </span>
+              <span className="absolute top-1/2 -left-4 -translate-y-1/2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse delay-300" />
+              </span>
+            </span>{" "}
+            <span className="text-hollow-white">IN MOTION</span>.
           </h2>
           <p className="text-muted-foreground uppercase tracking-widest text-sm font-bold mt-2">Artisanal Macro Gallery</p>
         </div>
