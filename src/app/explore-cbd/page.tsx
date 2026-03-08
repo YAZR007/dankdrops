@@ -212,7 +212,7 @@ export default function ExploreCBDPage() {
             src={wellnessBanner} 
             alt="The New Standard" 
             fill 
-            className="object-cover opacity-80 brightness-[0.75]"
+            className="object-cover opacity-90 brightness-[0.9]"
             data-ai-hint="cannabis field"
           />
         )}

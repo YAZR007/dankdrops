@@ -79,11 +79,11 @@ export default function HomePage() {
           loop 
           playsInline 
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.4] contrast-[1.2]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] contrast-[1.1]"
         >
           <source src="https://video.wixstatic.com/video/a82ad9_9e5ae1b2d845406fba0a902c92d7d03a/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl flex flex-col items-center">
           <div className="mb-4">
@@ -105,7 +105,7 @@ export default function HomePage() {
           <p className="text-white text-[10px] md:text-xl font-bold uppercase tracking-[0.3em] mb-10 drop-shadow-xl">
             The Living CBD Experience
           </p>
-          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-16 md:h-20 px-12 backdrop-blur-md text-xl md:text-2xl shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+          <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest h-16 md:h-20 px-12 backdrop-blur-md text-xl md:text-2xl shadow-[0_0_40px_rgba(126,42,219,0.1)]">
             <Link href="/explore-cbd">EXPLORE CBD</Link>
           </Button>
         </div>
