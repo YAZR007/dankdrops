@@ -128,7 +128,7 @@ export default function HomePage() {
                 src={flowerCatImage} 
                 alt="Elite Flower" 
                 fill 
-                className="object-cover brightness-[0.9] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
+                className="object-cover brightness-[1.1] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
                 data-ai-hint="cannabis macro"
               />
             )}
@@ -149,7 +149,7 @@ export default function HomePage() {
                   src={concentratesCatImage} 
                   alt="Artisanal Extracts" 
                   fill 
-                  className="object-cover brightness-[0.9] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.2] group-hover:brightness-150 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis extract"
                 />
               )}
@@ -169,7 +169,7 @@ export default function HomePage() {
                   src={ediblesCatImage} 
                   alt="CBD Edibles" 
                   fill 
-                  className="object-cover brightness-[0.9] group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000" 
+                  className="object-cover brightness-[1.1] group-hover:brightness-125 group-hover:scale-105 transition-all duration-1000" 
                   data-ai-hint="cannabis edible"
                 />
               )}
@@ -208,7 +208,7 @@ export default function HomePage() {
               <Shield className="h-6 w-6 md:h-10 md:w-10" />
             </div>
             <h4 className="font-headline text-lg md:text-2xl font-black uppercase tracking-tighter">Discreet Logistics</h4>
-            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Double-sealed, vacuum-packed delivery in unbranded luxury packaging.</p>
+            <p className="text-muted-foreground text-xs md:text-lg max-w-xs leading-relaxed">Double-sealed, smell-proof bags and unbranded luxury packaging.</p>
           </div>
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-1">
