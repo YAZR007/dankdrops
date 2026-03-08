@@ -13,6 +13,7 @@ export default function HomePage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero')?.imageUrl || '';
   const flowerCatImage = PlaceHolderImages.find(img => img.id === 'flower-1')?.imageUrl || '';
   const concentratesCatImage = PlaceHolderImages.find(img => img.id === 'concentrates')?.imageUrl || '';
+  const trustBgImage = PlaceHolderImages.find(img => img.id === 'trust-badges-bg')?.imageUrl || '';
 
   return (
     <div className="flex flex-col gap-8 md:gap-16 pb-16">
@@ -153,8 +154,15 @@ export default function HomePage() {
       </section>
 
       {/* Trust Badges */}
-      <section className="bg-secondary/30 py-12 md:py-24">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+      <section className="relative py-24 md:py-32 overflow-hidden border-y border-white/5">
+        <Image 
+          src={trustBgImage}
+          alt="Artisanal Heritage"
+          fill
+          className="object-cover opacity-20 brightness-50"
+          data-ai-hint="cannabis farm"
+        />
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 relative z-10">
           <div className="flex flex-col items-center text-center gap-4 md:gap-6">
             <div className="w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary rotate-3">
               <Leaf className="h-6 w-6 md:h-10 md:w-10" />
