@@ -36,7 +36,7 @@ export default function CheckoutPage() {
         <p className="text-muted-foreground text-lg max-w-md mb-10">
           Your drop is being prepared. Check your email for a confirmation and tracking details shortly.
         </p>
-        <Button asChild size="lg" className="h-16 px-10 text-xl font-bold uppercase tracking-tighter">
+        <Button asChild size="lg" className="h-16 px-10 text-xl font-bold uppercase tracking-tighter active:scale-95 transition-transform">
           <Link href="/shop">BACK TO THE HARVEST</Link>
         </Button>
       </div>
@@ -47,7 +47,7 @@ export default function CheckoutPage() {
     return (
       <div className="container mx-auto px-4 py-24 text-center">
         <h1 className="text-2xl font-bold mb-4">Your bag is empty</h1>
-        <Button asChild>
+        <Button asChild className="active:scale-95 transition-transform">
           <Link href="/shop">GO SHOPPING</Link>
         </Button>
       </div>
@@ -110,7 +110,7 @@ export default function CheckoutPage() {
             >
               <Label
                 htmlFor="crypto"
-                className={`flex flex-col items-start gap-4 p-6 rounded-2xl border cursor-pointer transition-all ${
+                className={`flex flex-col items-start gap-4 p-6 rounded-2xl border cursor-pointer transition-all active:scale-95 transform-gpu ${
                   paymentMethod === 'crypto' ? 'border-primary bg-primary/5 ring-1 ring-primary' : 'border-white/5 bg-secondary/20 hover:bg-secondary/30'
                 }`}
               >
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
                       key={type}
                       variant={cryptoType === type ? 'default' : 'outline'}
                       onClick={() => setCryptoType(type)}
-                      className={`h-12 px-6 font-bold uppercase tracking-widest ${
+                      className={`h-12 px-6 font-bold uppercase tracking-widest active:scale-95 transition-all ${
                         cryptoType === type ? 'bg-primary' : 'border-white/10 hover:bg-white/5'
                       }`}
                     >
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                           value={cryptoType === 'btc' ? 'bc1q...x9z2' : '0x71...f3a2'} 
                           className="bg-muted/30 border-none font-mono text-xs h-12"
                         />
-                        <Button variant="secondary" size="icon" className="h-12 w-12">
+                        <Button variant="secondary" size="icon" className="h-12 w-12 active:scale-90 transition-transform">
                           <CheckCircle2 className="h-4 w-4" />
                         </Button>
                       </div>
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
             <CardFooter>
               <Button 
                 onClick={handlePlaceOrder}
-                className="w-full h-16 bg-primary hover:bg-primary/90 text-xl font-bold uppercase tracking-tighter shadow-[0_0_20px_rgba(126,42,219,0.3)]"
+                className="w-full h-16 bg-primary hover:bg-primary/90 text-xl font-bold uppercase tracking-tighter shadow-[0_0_20px_rgba(126,42,219,0.3)] active:scale-95 transition-transform transform-gpu"
               >
                 PLACE DROP ORDER <ChevronRight className="ml-2 h-5 w-5" />
               </Button>

@@ -64,7 +64,7 @@ function ShopContent() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-6 py-2.5 rounded-full transition-all font-black text-[10px] uppercase tracking-widest border active:scale-95 ${
+                  className={`px-6 py-2.5 rounded-full transition-all font-black text-[10px] uppercase tracking-widest border active:scale-90 transform-gpu ${
                     activeCategory === cat 
                       ? 'bg-primary border-primary text-white shadow-[0_0_15px_rgba(126,42,219,0.4)]' 
                       : 'bg-secondary/20 border-white/5 text-muted-foreground'
@@ -89,7 +89,7 @@ function ShopContent() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`text-left px-3 py-2 rounded-md transition-colors font-bold text-xs uppercase tracking-widest flex items-center justify-between group ${
+                  className={`text-left px-3 py-2 rounded-md transition-all font-bold text-xs uppercase tracking-widest flex items-center justify-between group active:scale-95 transform-gpu ${
                     activeCategory === cat 
                       ? 'bg-primary text-white' 
                       : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground'
@@ -111,7 +111,7 @@ function ShopContent() {
             <div className="flex flex-col gap-2">
               <button 
                 onClick={() => setSortBy(sortBy === 'cbd-desc' ? 'default' : 'cbd-desc')}
-                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-between ${
+                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-between active:scale-95 transform-gpu ${
                   sortBy === 'cbd-desc' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                 }`}
               >
@@ -120,7 +120,7 @@ function ShopContent() {
               </button>
               <button 
                 onClick={() => setSortBy(sortBy === 'price-asc' ? 'default' : 'price-asc')}
-                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-between ${
+                className={`text-left px-3 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-between active:scale-95 transform-gpu ${
                   sortBy === 'price-asc' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                 }`}
               >
@@ -146,7 +146,7 @@ function ShopContent() {
               </div>
               <p className="font-headline text-2xl md:text-3xl font-black uppercase tracking-tighter mb-2">Coming Soon</p>
               <p className="text-muted-foreground mb-8 max-w-sm text-xs md:text-base">We are currently curing our next batch of artisanal {activeCategory.toLowerCase()}. Sign up for drops to be notified.</p>
-              <Button onClick={() => setActiveCategory('Flower')} variant="outline" className="font-black uppercase tracking-widest text-[10px] h-12">
+              <Button onClick={() => setActiveCategory('Flower')} variant="outline" className="font-black uppercase tracking-widest text-[10px] h-12 active:scale-95 transition-transform">
                 BROWSE CURRENT FLOWERS
               </Button>
             </div>

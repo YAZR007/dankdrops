@@ -37,7 +37,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
               <p className="text-sm text-muted-foreground">Looks like you haven't added anything to your drop yet.</p>
             </div>
             <SheetTrigger asChild>
-              <Button asChild className="w-full mt-4 font-bold tracking-widest uppercase h-12">
+              <Button asChild className="w-full mt-4 font-bold tracking-widest uppercase h-12 active:scale-95 transition-transform">
                 <Link href="/shop">START SHOPPING</Link>
               </Button>
             </SheetTrigger>
@@ -48,7 +48,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
               {cart.map((item) => (
                 <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="flex gap-4">
                   <SheetTrigger asChild>
-                    <Link href={`/products/${item.id}`} className="relative aspect-[3/4] h-24 w-18 overflow-hidden rounded-md flex-shrink-0 group">
+                    <Link href={`/products/${item.id}`} className="relative aspect-[3/4] h-24 w-18 overflow-hidden rounded-md flex-shrink-0 group active:scale-95 transition-transform transform-gpu">
                       <Image 
                         src={item.imageUrl} 
                         alt={item.name} 
@@ -73,7 +73,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-7 w-7 rounded-none hover:bg-white/5"
+                          className="h-7 w-7 rounded-none hover:bg-white/5 active:bg-white/10 transition-colors"
                           onClick={() => updateQuantity(item.id, item.selectedSize, item.selectedColor, item.quantity - 1)}
                         >
                           <Minus className="h-3 w-3" />
@@ -82,7 +82,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-7 w-7 rounded-none hover:bg-white/5"
+                          className="h-7 w-7 rounded-none hover:bg-white/5 active:bg-white/10 transition-colors"
                           onClick={() => updateQuantity(item.id, item.selectedSize, item.selectedColor, item.quantity + 1)}
                         >
                           <Plus className="h-3 w-3" />
@@ -93,7 +93,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                          className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 active:scale-90 transition-all"
                           onClick={() => removeFromCart(item.id, item.selectedSize, item.selectedColor)}
                         >
                           <Trash2 className="h-3.5 w-3.5" />
@@ -115,7 +115,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
             </div>
             <p className="text-[10px] text-muted-foreground text-center italic">Discreet shipping calculated at next step</p>
             <SheetTrigger asChild>
-              <Button asChild className="w-full h-14 text-lg font-black tracking-[0.2em] bg-primary hover:bg-primary/90 uppercase shadow-[0_0_20px_rgba(126,42,219,0.3)]">
+              <Button asChild className="w-full h-14 text-lg font-black tracking-[0.2em] bg-primary hover:bg-primary/90 uppercase shadow-[0_0_20px_rgba(126,42,219,0.3)] active:scale-95 transition-transform transform-gpu">
                 <Link href="/checkout">
                   CHECKOUT NOW <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

@@ -19,7 +19,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link 
       href={`/products/${product.id}`} 
-      className="block group h-full"
+      className="block group h-full active:scale-[0.98] transition-transform duration-200 transform-gpu"
       onClick={() => product.secondaryImageUrl && setIsClicked(true)}
     >
       <Card className="h-full overflow-hidden border-none bg-transparent hover:bg-muted/30 transition-all duration-300 flex flex-col">
