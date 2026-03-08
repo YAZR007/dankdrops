@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
@@ -50,7 +51,9 @@ export default function ProductPage() {
   const [showLens, setShowLens] = useState(false);
   const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
   const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
-  const [showHeadsUp, setShowHeadsUp] = useState(false);
+  const [showHeadsUp, setShowHeadsUp] = useState(true);
+  const [hasMagnified, setHasMagnified] = useState(false);
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -58,11 +61,13 @@ export default function ProductPage() {
   const startPosRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Show heads up on mount or refresh
+    // Reset guidance for each new product visit
     setShowHeadsUp(true);
+    setHasMagnified(false);
   }, [id]);
 
   useEffect(() => {
+    // Prevent body scroll only when lens is active on mobile
     if (showLens && window.innerWidth < 768) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -78,29 +83,6 @@ export default function ProductPage() {
         setActiveImageIndex(index);
       }
     }
-  };
-
-  if (!product) {
-    return (
-      <div className="container mx-auto px-4 py-24 text-center">
-        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6 text-muted-foreground">
-          <ShoppingBag className="h-8 w-8" />
-        </div>
-        <h1 className="font-headline text-3xl font-black uppercase tracking-tighter mb-4">Strain Not Found</h1>
-        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">This drop might have expired or been rotated out of the harvest.</p>
-        <Button asChild size="lg" className="font-bold uppercase tracking-widest">
-          <Link href="/shop">BACK TO THE HARVEST</Link>
-        </Button>
-      </div>
-    );
-  }
-
-  const handleAddToCart = () => {
-    addToCart(product, selectedSize, selectedColor);
-    toast({
-      title: "Added to bag",
-      description: `${product.name} (${selectedSize}) has been added to your drop.`,
-    });
   };
 
   const updatePosition = (clientX: number, clientY: number) => {
@@ -134,6 +116,7 @@ export default function ProductPage() {
       isHoldingRef.current = true;
       setShowLens(true);
       setShowHeadsUp(false);
+      setHasMagnified(true);
       updatePosition(touch.clientX, touch.clientY);
     }, 3000);
   };
@@ -143,8 +126,8 @@ export default function ProductPage() {
     const deltaX = Math.abs(touch.clientX - startPosRef.current.x);
     const deltaY = Math.abs(touch.clientY - startPosRef.current.y);
 
-    // If user moves significantly before 3s, cancel the hold
-    if (!isHoldingRef.current && (deltaX > 20 || deltaY > 20)) {
+    // If user moves significantly (40px) before 3s, cancel the hold to allow scrolling
+    if (!isHoldingRef.current && (deltaX > 40 || deltaY > 40)) {
       if (holdTimerRef.current) {
         clearTimeout(holdTimerRef.current);
         holdTimerRef.current = null;
@@ -152,6 +135,7 @@ export default function ProductPage() {
     }
 
     if (isHoldingRef.current) {
+      // Prevent standard browser interactions while magnifying
       if (e.cancelable) e.preventDefault();
       updatePosition(touch.clientX, touch.clientY);
     }
@@ -164,6 +148,29 @@ export default function ProductPage() {
     }
     isHoldingRef.current = false;
     setShowLens(false);
+  };
+
+  if (!product) {
+    return (
+      <div className="container mx-auto px-4 py-24 text-center">
+        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6 text-muted-foreground">
+          <ShoppingBag className="h-8 w-8" />
+        </div>
+        <h1 className="font-headline text-3xl font-black uppercase tracking-tighter mb-4">Strain Not Found</h1>
+        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">This drop might have expired or been rotated out of the harvest.</p>
+        <Button asChild size="lg" className="font-bold uppercase tracking-widest">
+          <Link href="/shop">BACK TO THE HARVEST</Link>
+        </Button>
+      </div>
+    );
+  }
+
+  const handleAddToCart = () => {
+    addToCart(product, selectedSize, selectedColor);
+    toast({
+      title: "Added to bag",
+      description: `${product.name} (${selectedSize}) has been added to your drop.`,
+    });
   };
 
   return (
@@ -205,7 +212,7 @@ export default function ProductPage() {
             </div>
 
             {/* Boutique Heads-up overlay */}
-            {showHeadsUp && (
+            {showHeadsUp && !hasMagnified && (
               <div className="absolute inset-x-0 bottom-10 flex justify-center z-40 px-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 pointer-events-none">
                 <div className="bg-black/80 backdrop-blur-xl border border-primary/40 rounded-full px-6 py-3 flex items-center gap-3 shadow-[0_0_30px_rgba(126,42,219,0.3)]">
                   <SearchIcon className="h-4 w-4 text-primary animate-pulse" />
@@ -240,7 +247,7 @@ export default function ProductPage() {
                 className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-primary shadow-[0_0_30px_rgba(126,42,219,0.7)] pointer-events-none z-50 bg-black"
                 style={{
                   left: lensPosition.x - (window.innerWidth < 768 ? 80 : 104),
-                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Above finger on mobile
+                  top: lensPosition.y - (window.innerWidth < 768 ? 160 : 104), // Offset above finger on mobile
                   backgroundImage: `url(${images[activeImageIndex]})`,
                   backgroundSize: '600%',
                   backgroundPosition: `${bgPosition.x}% ${bgPosition.y}%`,
