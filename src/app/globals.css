@@ -50,6 +50,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  /* Hide technical framework indicators and overlays on phone devices */
+  #next-js-toast,
+  [data-nextjs-toast],
+  [data-nextjs-dialog-overlay],
+  [data-nextjs-dialog-content],
+  #nextjs-dev-indicator,
+  [data-vercel-toolbar] {
+    display: none !important;
+  }
+}
+
 @keyframes logo-draw {
   0% {
     stroke-dasharray: 0 1000;

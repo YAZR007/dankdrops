@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -44,10 +43,10 @@ export default function HomePage() {
               Experience artisanal CBD through a different lens. High-purity, trichome-rich hemp strains captured in their purest form.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-              <Button asChild size="lg" className="bg-transparent border-2 border-primary text-white hover:bg-primary/40 hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(126,42,219,0.2)] hover:shadow-[0_0_40px_rgba(126,42,219,0.5)]">
+              <Button asChild size="lg" className="bg-transparent border-2 border-primary text-white md:hover:bg-primary/40 md:hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(126,42,219,0.2)] md:hover:shadow-[0_0_40px_rgba(126,42,219,0.5)] active:bg-primary/60">
                 <Link href="/shop?category=Flower">Enter The Harvest</Link>
               </Button>
-              <Button asChild size="lg" className="bg-transparent border-2 border-white/20 text-white hover:bg-white/10 hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+              <Button asChild size="lg" className="bg-transparent border-2 border-white/20 text-white md:hover:bg-white/10 md:hover:backdrop-blur-md transition-all duration-300 font-bold h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl tracking-tighter uppercase w-full sm:w-auto shadow-[0_0_20px_rgba(255,255,255,0.05)] md:hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] active:bg-white/20">
                 <Link href="/shop">View Full Catalog</Link>
               </Button>
             </div>
@@ -63,7 +62,7 @@ export default function HomePage() {
               <h2 className="font-headline text-2xl md:text-5xl font-black uppercase tracking-tighter">Current CBD Strains</h2>
               <p className="text-muted-foreground text-[10px] md:text-lg uppercase tracking-widest hidden sm:block">Hand-picked elite wellness flower</p>
             </div>
-            <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
+            <Link href="/shop?category=Flower" className="text-primary font-bold flex items-center gap-2 md:hover:gap-3 transition-all text-[10px] md:text-sm tracking-widest whitespace-nowrap">
               EXPLORE ALL <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
             </Link>
           </div>
@@ -77,11 +76,11 @@ export default function HomePage() {
 
       {/* Categories Grid */}
       <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 h-auto md:min-h-[700px]">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-10 h-auto md:min-h-[700px]">
           {/* Elite Flower */}
           <Link 
             href="/shop?category=Flower" 
-            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto h-full min-h-[300px] md:min-h-[400px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50"
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto h-full min-h-[300px] md:min-h-[400px] transition-all duration-500 md:hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] md:hover:ring-2 md:hover:ring-primary/50"
           >
             {flowerCatImage && (
               <Image 
@@ -92,20 +91,20 @@ export default function HomePage() {
                 data-ai-hint="cannabis macro"
               />
             )}
-            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/70 to-transparent">
-              <h3 className="font-headline text-2xl md:text-6xl font-black text-white md:text-hollow-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-4 group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">
+            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
+              <h3 className="font-headline text-2xl md:text-6xl font-black text-white md:text-hollow-primary md:group-hover:bg-primary md:group-hover:text-primary-foreground md:group-hover:px-4 md:group-hover:py-1 rounded-sm uppercase tracking-tighter transition-all duration-500">
                 Elite CBD Flower
               </h3>
-              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
+              <p className="text-white/70 text-xs md:text-lg max-w-sm hidden md:block mt-2">Frosty, terpene-rich CBD hemp buds with extreme trichome density.</p>
             </div>
           </Link>
 
           {/* Stacked Categories */}
-          <div className="grid grid-cols-2 md:flex md:flex-col gap-4 md:gap-10 h-full">
+          <div className="flex flex-col gap-4 md:gap-10 h-full">
             {/* Extracts */}
             <Link 
               href="/shop?category=Concentrates"
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto md:flex-1 min-h-[200px] md:min-h-[250px] transition-all duration-500 md:hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] md:hover:ring-2 md:hover:ring-primary/50 cursor-pointer"
             >
               {concentratesCatImage && (
                 <Image 
@@ -116,9 +115,9 @@ export default function HomePage() {
                   data-ai-hint="cannabis extract"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/70 to-transparent">
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
+                <h3 className="font-headline text-2xl md:text-4xl lg:text-5xl font-black text-white md:text-hollow-primary md:group-hover:bg-primary md:group-hover:text-primary-foreground md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
                   Extracts
                 </h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Pure high-concentration CBD extracts and distillates.</p>
@@ -128,7 +127,7 @@ export default function HomePage() {
             {/* Edibles */}
             <Link 
               href="/shop?category=Edibles"
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[1/1] md:aspect-auto md:flex-1 min-h-[150px] md:min-h-[250px] transition-all duration-500 hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] hover:ring-2 hover:ring-primary/50 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[16/9] md:aspect-auto md:flex-1 min-h-[200px] md:min-h-[250px] transition-all duration-500 md:hover:shadow-[0_0_120px_rgba(126,42,219,0.8)] md:hover:ring-2 md:hover:ring-primary/50 cursor-pointer"
             >
               {ediblesCatImage && (
                 <Image 
@@ -139,9 +138,9 @@ export default function HomePage() {
                   data-ai-hint="cannabis edible"
                 />
               )}
-              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/70 to-transparent">
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/40 to-transparent">
                 <Badge className="w-fit mb-2 bg-accent text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">SOON</Badge>
-                <h3 className="font-headline text-lg font-black text-white md:text-hollow-primary md:text-4xl lg:text-5xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-2 md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
+                <h3 className="font-headline text-2xl md:text-4xl lg:text-5xl font-black text-white md:text-hollow-primary md:group-hover:bg-primary md:group-hover:text-primary-foreground md:group-hover:px-4 rounded-sm uppercase tracking-tighter transition-all duration-500">
                   Edibles
                 </h3>
                 <p className="text-white/70 text-xs md:text-sm max-w-sm hidden md:block mt-2">Gourmet artisanal CBD infusions for mindful consumption.</p>
