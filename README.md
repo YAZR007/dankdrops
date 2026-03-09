@@ -1,27 +1,38 @@
-
 # DANKDROPS | Premium Boutique Cannabis
 
 Elite cultivation, artisanal extracts, and curated cannabis experiences.
 
+## 🚀 How to Deploy Your Harvest
+
+Your code is ready for the world. To trigger the live build and push to your repository, follow these steps:
+
+### 1. Open the Terminal
+The terminal is usually located at the **bottom of your screen**. 
+- Look for a tab named **"Terminal"**.
+- If you don't see it, go to the top menu: **Terminal > New Terminal**.
+- Or use the shortcut: **Ctrl + `** (backtick).
+
+### 2. Run the Deployment Commands
+Once the terminal is open, you can simply run our artisanal deployment script:
+
+```bash
+sh deploy.sh
+```
+
+*Or, you can run the commands manually:*
+```bash
+git init
+git remote add origin https://github.com/YAZR007/dankdrops.git
+git add .
+git commit -m "Final boutique harvest deployment"
+git branch -M main
+git push -u origin main
+```
+
 ## Accessing the Live Site
 
-Your app is configured for Firebase. Once you run the deployment commands, it will be accessible at:
-
+Once deployed, your app will be available at:
 - **Primary URL:** `https://studio-5674632108-4dce7.web.app`
-- **Secondary URL:** `https://studio-5674632108-4dce7.firebaseapp.com`
-
-## 🚀 How to fix "Site Not Found"
-
-Your code is ready, but it needs to be pushed to your repository to trigger the live build. Open the terminal in this editor and run these commands:
-
-1. `git init` (if not already initialized)
-2. `git remote add origin https://github.com/YAZR007/dankdrops.git`
-3. `git add .`
-4. `git commit -m "Final boutique harvest deployment"`
-5. `git branch -M main`
-6. `git push -u origin main`
-
-*Note: The site will take 2-3 minutes to build and go live after the push.*
 
 ## Development
 
