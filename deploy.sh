@@ -1,8 +1,10 @@
 #!/bin/bash
 # Artisanal Deployment Script for DANKDROPS
+# Optimized to handle remote conflicts for the final harvest.
 git init
 git remote add origin https://github.com/YAZR007/dankdrops.git
 git add .
 git commit -m "Final boutique harvest deployment"
 git branch -M main
-git push -u origin main
+# We use --force to ensure the Studio's artisanal state overwrites any remote placeholders.
+git push -u origin main --force

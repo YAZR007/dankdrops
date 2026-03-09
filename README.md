@@ -9,24 +9,20 @@ Your code is ready for the world. To trigger the live build and push to your rep
 ### 1. Open the Terminal
 The terminal is usually located at the **bottom of your screen**. 
 - Look for a tab named **"Terminal"**.
-- If you don't see it, go to the top menu: **Terminal > New Terminal**.
-- Or use the shortcut: **Ctrl + `** (backtick).
+- If you don't see it, use the shortcut: **Ctrl + `** (backtick).
 
-### 2. Run the Deployment Commands
-Once the terminal is open, you can simply run our artisanal deployment script:
+### 2. Run the Artisanal Deployment Script
+Once the terminal is open, simply run:
 
 ```bash
 sh deploy.sh
 ```
 
-*Or, you can run the commands manually:*
+### 3. Troubleshooting "Rejected" Pushes
+If you see a "rejected" error, it's because GitHub has files (like a default README) that aren't in your studio. Our updated script uses a **force push** to ensure your boutique code takes priority. If you want to run it manually:
+
 ```bash
-git init
-git remote add origin https://github.com/YAZR007/dankdrops.git
-git add .
-git commit -m "Final boutique harvest deployment"
-git branch -M main
-git push -u origin main
+git push -u origin main --force
 ```
 
 ## Accessing the Live Site
