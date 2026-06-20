@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { logIn } from '@/firebase/auth';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,26 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import axios, { isAxiosError } from 'axios';
+
+const PasswordChecklist = ({ password }) => {
+  const checks = {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /[0-9]/.test(password),
+    special: /[^A-Za-z0-9]/.test(password),
+  };
+
+  return (
+    <div className="flex justify-between items-center mt-2 font-mono text-xs text-muted-foreground">
+      <span className={checks.length ? 'text-green-500' : ''}>8+ chars</span>
+      <span className={checks.uppercase ? 'text-green-500' : ''}>A-Z</span>
+      <span className={checks.lowercase ? 'text-green-500' : ''}>a-z</span>
+      <span className={checks.number ? 'text-green-500' : ''}>0-9</span>
+      <span className={checks.special ? 'text-green-500' : ''}>!@#$</span>
+    </div>
+  );
+};
 
 export default function AuthPage() {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -88,6 +108,7 @@ export default function AuthPage() {
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <Input id="confirmPassword" type="password" placeholder="********" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="bg-muted/50 border-none font-mono" required />
+                <PasswordChecklist password={password} />
               </div>
             )}
             <Button type="submit" className="w-full font-black uppercase tracking-widest h-12">

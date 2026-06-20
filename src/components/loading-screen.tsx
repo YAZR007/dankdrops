@@ -74,8 +74,8 @@ export function LoadingScreen() {
             dominantBaseline="middle"
             className="font-headline font-black uppercase tracking-[-0.05em] text-[80px] md:text-[90px] stroke-primary stroke-[2px] md:stroke-[3px] fill-transparent"
           >
-            <tspan className="animate-logo-draw-hollow">DANK</tspan>
-            <tspan className="animate-logo-draw">DROPS</tspan>
+            <tspan className="animate-logo-draw-hollow">RESIN</tspan>
+            <tspan className="animate-logo-draw">ROOM</tspan>
           </text>
         </svg>
       </div>
