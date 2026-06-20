@@ -96,7 +96,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="left" className="w-full sm:max-w-xs border-r border-white/5 p-0 flex flex-col">
               <SheetHeader className="p-6 border-b border-white/5">
-                <SheetTitle className="font-headline text-2xl font-black text-primary tracking-tighter uppercase">DANKDROPS</SheetTitle>
+                <SheetTitle className="font-headline text-2xl font-black text-primary tracking-tighter uppercase">RESINROOM</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-1 p-4">
                 <Link href="/shop" className="p-4 text-xl font-black uppercase tracking-tighter hover:text-primary transition-all flex items-center justify-between group active:scale-95 transform-gpu">
@@ -122,7 +122,7 @@ export function Navbar() {
             className="hidden md:flex items-center group transition-all duration-300 hover:scale-105 active:scale-90 transform-gpu"
           >
             {!mounted ? (
-              <span className="font-headline text-2xl md:text-3xl font-black tracking-tighter text-primary">DANKDROPS</span>
+              <span className="font-headline text-2xl md:text-3xl font-black tracking-tighter text-primary">RESINROOM</span>
             ) : (
               <svg viewBox="0 0 240 50" className="h-10 w-auto overflow-visible">
                 <text
@@ -132,7 +132,7 @@ export function Navbar() {
                   dominantBaseline="middle"
                   className="font-headline font-black uppercase tracking-[-0.05em] text-[28px] stroke-primary stroke-[1.5px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)] group-hover:drop-shadow-[0_0_15px_rgba(126,42,219,0.6)]"
                 >
-                  DANKDROPS
+                  RESINROOM
                 </text>
               </svg>
             )}
@@ -163,7 +163,7 @@ export function Navbar() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
           <Link href="/" className="flex items-center group active:scale-90 transition-transform transform-gpu">
             {!mounted ? (
-              <span className="font-headline text-xl font-black tracking-tighter text-primary">DANKDROPS</span>
+              <span className="font-headline text-xl font-black tracking-tighter text-primary">RESINROOM</span>
             ) : (
               <svg viewBox="0 0 200 40" className="h-8 w-auto overflow-visible">
                 <text
@@ -173,7 +173,7 @@ export function Navbar() {
                   dominantBaseline="middle"
                   className="font-headline font-black uppercase tracking-[-0.05em] text-[22px] stroke-primary stroke-[1px] fill-primary logo-hover-target drop-shadow-[0_0_8px_rgba(126,42,219,0.3)]"
                 >
-                  DANKDROPS
+                  RESINROOM
                 </text>
               </svg>
             )}
