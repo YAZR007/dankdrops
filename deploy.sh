@@ -1,8 +1,8 @@
 #!/bin/bash
-# Artisanal Deployment Script for RESINROOM
+# Artisanal Deployment Script for DANKDROPS
 # Optimized to handle remote conflicts for the final harvest.
 git init
-git remote add origin https://github.com/YAZR007/resinroom.git
+git remote add origin https://github.com/YAZR007/dankdrops.git
 git add .
 git commit -m "Final boutique harvest deployment"
 git branch -M main
